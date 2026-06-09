@@ -1,42 +1,50 @@
 <section class="sf-collection-hero full-width">
   <div class="sf-page">
-    <p class="sf-eyebrow">Kuratierte Einkaufsstrecke</p>
-    <h1 class="sf-heading">{{ collection.title }}</h1>
-    <p class="sf-copy" style="margin-inline:auto;">
-      {{ collection.description | strip_html | default: 'Filter, Anlass und Aroma werden sichtbar, damit Kundinnen schneller vom Kochanlass zum passenden Gewürz finden.' }}
+    <p class="sf-eyebrow">Kuratierte Auswahl</p>
+    <h1 class="sf-heading sf-heading--medium">{{ collection.title }}</h1>
+    <p class="sf-copy">
+      {{ collection.description | strip_html | default: 'Finde Gewürze nach Kochanlass, Aroma und gewünschter Größe. So wird aus einer Produktliste eine schnelle Kaufentscheidung.' }}
     </p>
   </div>
 </section>
 
 <section class="sf-page sf-collection-grid">
   <aside class="sf-card sf-filter-panel">
-    <p class="sf-eyebrow">Filtern nach</p>
+    <p class="sf-eyebrow">Orientierung</p>
     <div class="sf-filter-group">
-      <h3>Verwendung</h3>
-      <span class="sf-chip">Grillen</span>
-      <span class="sf-chip">Dips & Saucen</span>
-      <span class="sf-chip">Frühstück</span>
-      <span class="sf-chip">Kartoffeln</span>
+      <h3>Kochanlass</h3>
+      <div class="sf-chip-row">
+        <span class="sf-chip">Grillen</span>
+        <span class="sf-chip">Dips & Saucen</span>
+        <span class="sf-chip">Brunch</span>
+        <span class="sf-chip">Gemüse</span>
+      </div>
     </div>
     <div class="sf-filter-group">
       <h3>Ernährung</h3>
-      <span class="sf-chip">Ohne Knoblauch</span>
-      <span class="sf-chip">Ohne Salz</span>
-      <span class="sf-chip">Ohne Zucker</span>
+      <div class="sf-chip-row">
+        <span class="sf-chip">Bio</span>
+        <span class="sf-chip">Ohne Zusätze</span>
+        <span class="sf-chip">Nachfüllbar</span>
+      </div>
     </div>
     <div class="sf-filter-group">
       <h3>Aroma</h3>
-      <span class="sf-chip">Umami</span>
-      <span class="sf-chip">Rauchig</span>
-      <span class="sf-chip">Zitronig</span>
+      <div class="sf-chip-row">
+        <span class="sf-chip">Kräutrig</span>
+        <span class="sf-chip">Zitronig</span>
+        <span class="sf-chip">Umami</span>
+        <span class="sf-chip">Rauchig</span>
+      </div>
     </div>
   </aside>
 
   <div>
-    <div class="sf-chip-row" style="justify-content: space-between; margin-bottom: 22px;">
-      <span>{{ collection.products_count }} Produkte</span>
-      <span>Sortieren nach: Bestseller</span>
+    <div class="sf-section-intro" style="margin-bottom: 22px;">
+      <p class="sf-copy">{{ collection.products_count }} Produkte für Küche, Geschenk und Vorrat.</p>
+      <span class="sf-chip">Sortiert nach Bestseller</span>
     </div>
+
     {% paginate collection.products by 24 %}
       <div class="sf-products-grid">
         {% for product in collection.products %}

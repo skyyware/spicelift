@@ -211,7 +211,7 @@ function createProduct(definition) {
         title: definition.title,
         handle: definition.handle,
         descriptionHtml: `<p>${definition.description}</p>`,
-        vendor: 'Spiceflow Preview',
+        vendor: 'Spicelift',
         productType: definition.type,
         status: 'ACTIVE',
         tags: definition.tags,

@@ -1,6 +1,6 @@
 <div class="sf-topbar">
   <div class="sf-page sf-topbar__inner">
-    <span>Bio Gewürze aus unserer Manufaktur</span>
+    <span>Bio Gewürze aus der Manufaktur</span>
     <span class="sf-topbar__rating">★★★★★ 4,94 von 5</span>
     <span class="sf-topbar__right">Ab 40 EUR versandkostenfrei in Deutschland</span>
   </div>
@@ -12,22 +12,25 @@
 <header class="sf-header">
   <div class="sf-page sf-header__inner">
     <a class="sf-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
-      <span class="sf-logo__wordmark">RIMOCO</span>
-      <span class="sf-logo__tagline">Growth Preview</span>
+      <span class="sf-logo__wordmark">SPICELIFT</span>
+      <span class="sf-logo__tagline">Bio Gewürzmanufaktur</span>
     </a>
 
     <nav class="sf-nav" aria-label="Hauptnavigation">
-      <a href="{{ spice_collection_url }}">Bio Gewürze</a>
+      <a href="{{ spice_collection_url }}">Gewürzmischungen</a>
       <a href="{{ set_collection_url }}">Gewürzsets</a>
       <a href="/#recipe-to-cart">Rezepte</a>
+      <a href="/#gifts">Geschenke</a>
       <a href="/#b2b">B2B</a>
     </nav>
 
     <div class="sf-header__actions">
-      <div class="sf-search" aria-hidden="true">
-        <span>Wonach suchst du?</span>
-        <span>⌕</span>
-      </div>
+      <form class="sf-search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="Search-{{ section.id }}">Suche</label>
+        <input id="Search-{{ section.id }}" type="search" name="q" placeholder="Wonach suchst du?">
+        <button type="submit" aria-label="Suche starten">⌕</button>
+      </form>
+
       <a class="sf-cart" href="{{ routes.cart_url }}">
         Warenkorb
         <span class="sf-cart__count">{{ cart.item_count }}</span>

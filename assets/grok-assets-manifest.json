@@ -1,0 +1,84 @@
+{
+  "generated": [
+    {
+      "file": "assets/spice-hero-premium.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "16:9",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Wide homepage hero scene: three matte black spice jars grouped on a warm limestone counter, small ceramic bowls with red paprika powder, green herbs and golden curry, a few tasteful ingredient traces, generous dark negative space on the left for headline overlay, premium D2C food brand mood, editorial still life, 85mm lens feel.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:22:00.536Z"
+    },
+    {
+      "file": "assets/spice-editorial-workbench.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "16:9",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Editorial workbench scene for a premium spice manufactory: five matte black jars aligned with ceramic bowls, kraft paper, linen cloth, measuring spoon, warm daylight from one side, calm composition, enough clean negative space, no readable text anywhere.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:22:14.244Z"
+    },
+    {
+      "file": "assets/spice-product-bio-bagel-gewuerz.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "1:1",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Square product image for an everything-bagel style organic spice blend: one matte black jar with blank cream label and orange accent band, sesame, poppy seeds, onion flakes and coarse salt arranged tastefully around it, warm neutral background, premium packshot, no readable text.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:22:26.487Z"
+    },
+    {
+      "file": "assets/spice-product-bio-avocado-gewuerz.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "1:1",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Square product image for an avocado spice blend: one matte black jar with blank cream label and green accent band, avocado half, lime zest, dried herbs and chili flakes arranged sparsely, premium packshot on pale stone, no readable text.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:22:39.908Z"
+    },
+    {
+      "file": "assets/spice-product-bio-cafe-de-paris-gewuerz.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "1:1",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Square product image for a cafe de paris herb spice blend: one matte black jar with blank cream label and muted golden accent band, dried green herbs, butter curls, peppercorns, warm neutral stone surface, refined European food styling, no readable text.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:22:52.525Z"
+    },
+    {
+      "file": "assets/spice-product-bio-gemuesebruehe.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "1:1",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Square product image for organic vegetable broth powder: one matte black jar with blank cream label and deep green accent band, dried vegetables, celery leaves, carrot pieces and golden broth powder in a small ceramic bowl, calm premium packshot, no readable text.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:23:04.712Z"
+    },
+    {
+      "file": "assets/spice-product-bio-grillabend-set.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "1:1",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Square product image for a premium grilling spice gift set: three matte black jars with blank cream labels and restrained red, green and gold accent bands in a low gift tray, rosemary, smoked paprika and pepper, elegant summer dinner mood, no readable text.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:23:18.087Z"
+    },
+    {
+      "file": "assets/spice-product-bio-brunch-bagel-set.jpg",
+      "model": "grok-imagine-image-quality",
+      "aspect_ratio": "1:1",
+      "resolution": "2k",
+      "prompt": "Ultra high-end commercial product photography for a premium organic spice brand. Photorealistic, elegant, restrained, editorial food-commerce art direction. Matte black glass spice jars with blank cream labels and subtle colored label bands, no readable text, no logos, no brand names. Natural premium lighting, stone or warm paper surface, shallow depth of field, controlled shadows, realistic materials, no CGI look. Avoid cheesy styling, cartoon look, fake typography, distorted labels, watermark, plastic shine, over-saturated colors, clutter, hands, people. Square product image for a brunch and bagel spice gift set: three matte black jars with blank cream labels and subtle teal, orange and green accent bands, bagel, avocado, egg, linen napkin, premium breakfast table styling, no readable text.",
+      "revised_prompt": "",
+      "mime_type": "image/png",
+      "generated_at": "2026-06-09T16:23:31.922Z"
+    }
+  ]
+}

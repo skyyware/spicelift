@@ -1,41 +1,38 @@
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
 {% assign recipe_url = routes.root_url | append: '#recipe-to-cart' %}
+{% assign gifts_url = routes.root_url | append: '#gifts' %}
 {% assign b2b_url = routes.root_url | append: '#b2b' %}
-{% assign audit_url = routes.root_url | append: '#audit' %}
-{% assign performance_url = routes.root_url | append: '#performance' %}
 
 <footer class="sf-footer">
-  <div class="sf-page sf-footer__inner">
+  <div class="sf-page sf-footer__grid">
     <div>
       <a class="sf-logo" href="{{ routes.root_url }}">
-        <span class="sf-logo__wordmark">RIMOCO</span>
-        <span class="sf-logo__tagline">Growth Preview</span>
+        <span class="sf-logo__wordmark">SPICELIFT</span>
+        <span class="sf-logo__tagline">Bio Gewürzmanufaktur</span>
       </a>
-      <p class="sf-copy">
-        Shopify-native Preview für einen Premium-Bio-Gewürzshop: Produktdetailseiten,
-        Rezeptstrecken, Variantenlogik, Cross-Selling und App-Governance.
+      <p>
+        Bio-Gewürze, kuratierte Sets und Rezeptideen für Alltag, Geschenk und
+        professionelle Küche.
       </p>
     </div>
-    <div class="sf-grid sf-grid--3">
-      <div>
-        <h3>Shop</h3>
-        <p><a href="{{ spice_collection_url }}">Bio Gewürze</a></p>
-        <p><a href="{{ set_collection_url }}">Gewürzsets</a></p>
-        <p><a href="{{ recipe_url }}">Rezepte</a></p>
-      </div>
-      <div>
-        <h3>Manufaktur</h3>
-        <p><a href="{{ b2b_url }}">B2B</a></p>
-        <p><a href="{{ audit_url }}">Shop-Audit</a></p>
-        <p><a href="{{ performance_url }}">Performance</a></p>
-      </div>
-      <div>
-        <h3>Preview</h3>
-        <p>Unpublished Shopify Theme</p>
-        <p>Online Store 2.0</p>
-        <p>Liquid, Sections, Metafields</p>
-      </div>
+    <div>
+      <h3>Shop</h3>
+      <p><a href="{{ spice_collection_url }}">Gewürzmischungen</a></p>
+      <p><a href="{{ set_collection_url }}">Gewürzsets</a></p>
+      <p><a href="{{ recipe_url }}">Rezepte</a></p>
+    </div>
+    <div>
+      <h3>Anlässe</h3>
+      <p><a href="{{ gifts_url }}">Geschenke</a></p>
+      <p><a href="{{ b2b_url }}">B2B</a></p>
+      <p><a href="{{ spice_collection_url }}">Vorrat & Nachfüllen</a></p>
+    </div>
+    <div>
+      <h3>Service</h3>
+      <p>Versandkostenfrei ab 40 EUR</p>
+      <p>Bio-Qualität</p>
+      <p>Sichere Zahlung</p>
     </div>
   </div>
 </footer>

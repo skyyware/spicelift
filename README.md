@@ -1,8 +1,8 @@
-# Rimoco Spiceflow Shopify Theme
+# Spicelift Shopify Theme
 
-Shopify-native preview theme for a premium organic spice manufacturer. The project shows how a Rimoco-like shop could turn recipe content, product variants, refill logic, gifting and B2B paths into a clearer buying experience.
+Premium Shopify theme for the demo dev store `Spicelift`.
 
-The theme is intentionally built as a real Shopify theme for the demo dev store `Spicelift`, not as a standalone mockup.
+The project is a real Online Store 2.0 theme, not a static mockup. It shows how a premium organic spice shop can combine product variants, refill logic, recipe-led commerce, gift sets and B2B paths into a clearer buying experience.
 
 ## What This Shows
 
@@ -11,6 +11,7 @@ The theme is intentionally built as a real Shopify theme for the demo dev store 
 - Collections that guide by usage, nutrition and aroma instead of only showing a grid
 - Recipe-to-cart concept for turning content into a direct purchase path
 - Storefront modules that can be maintained in Shopify without coupling the shop to a custom app
+- 2k Grok Imagine asset pipeline for high-value product and editorial imagery
 
 ## Stack
 
@@ -19,11 +20,12 @@ The theme is intentionally built as a real Shopify theme for the demo dev store 
 - JSON templates
 - CSS custom properties
 - Shopify Admin GraphQL via `shopify store execute`
+- xAI Grok Imagine image generation via `XAI_API_KEY`
 
 ## Local Workflow
 
 ```bash
-shopify theme dev --store spicelift --path /Volumes/web/rimoco-spice-shopify
+shopify theme dev --store spicelift --path /Volumes/web/spicelift
 ```
 
 ## Seed Demo Store
@@ -31,7 +33,7 @@ shopify theme dev --store spicelift --path /Volumes/web/rimoco-spice-shopify
 The seed script creates products, variants, metafields and collections in the `Spicelift` dev store.
 
 ```bash
-node /Volumes/web/rimoco-spice-shopify/scripts/seed-store.mjs
+node /Volumes/web/spicelift/scripts/seed-store.mjs
 ```
 
 Environment overrides:
@@ -42,13 +44,23 @@ SHOPIFY_PUBLICATION_ID=gid://shopify/Publication/192855605474 \
 node scripts/seed-store.mjs
 ```
 
-## Push Preview Theme
+## Generate Premium Assets
+
+Requires `XAI_API_KEY`.
+
+```bash
+node scripts/generate-grok-assets.mjs
+```
+
+The generator uses `grok-imagine-image-quality` at `2k`, stores final JPGs in `assets/`, and writes `assets/grok-assets-manifest.json`.
+
+## Push Theme
 
 ```bash
 shopify theme push \
   --store spicelift \
-  --path /Volumes/web/rimoco-spice-shopify \
-  --unpublished
+  --path /Volumes/web/spicelift \
+  --theme 160055492834
 ```
 
 ## Architecture Notes
@@ -59,5 +71,6 @@ shopify theme push \
 - `sections/collection.liquid` implements the guided product grid.
 - `snippets/product-card-spice.liquid` keeps product tiles reusable.
 - `scripts/seed-store.mjs` keeps store content reproducible.
+- `scripts/generate-grok-assets.mjs` keeps generated visual assets reproducible and documented.
 
-The demo deliberately avoids theme-app coupling. The point is to show how far the first improvement pass can go with Shopify-native primitives before adding app complexity.
+The theme deliberately avoids theme-app coupling. The first improvement pass is built with Shopify-native primitives before adding app complexity.
