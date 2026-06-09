@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 const store = process.env.SHOPIFY_STORE || 'spicelift.myshopify.com';
 const rawBase = process.env.SPICELIFT_RAW_BASE || 'https://raw.githubusercontent.com/skyyware/spicelift/main/assets';
 const forceMedia = process.env.FORCE_MEDIA === '1';
+const premiumAltSuffix = 'Premium Packshot';
 
 const products = [
   {
@@ -155,14 +156,21 @@ for (const definition of products) {
   const media = forceMedia || product.media.nodes.length === 0
     ? [{
         originalSource: `${rawBase}/${definition.image}`,
-        alt: `${definition.title} von Spicelift`,
+        alt: `${definition.title} von Spicelift - ${premiumAltSuffix}`,
         mediaContentType: 'IMAGE',
       }]
     : [];
   const data = execute(
     `mutation UpdateProduct($product: ProductUpdateInput!, $media: [CreateMediaInput!]) {
       productUpdate(product: $product, media: $media) {
-        product { id handle title vendor seo { title description } media(first: 1) { nodes { id } } }
+        product {
+          id
+          handle
+          title
+          vendor
+          seo { title description }
+          media(first: 20) { nodes { id alt } }
+        }
         userErrors { field message }
       }
     }`,
@@ -180,6 +188,28 @@ for (const definition of products) {
     },
   );
   reportErrors('productUpdate', data.productUpdate.userErrors);
+  if (media.length) {
+    const preferredMedia = data.productUpdate.product.media.nodes
+      .find((node) => node.alt === `${definition.title} von Spicelift - ${premiumAltSuffix}`);
+    if (preferredMedia) {
+      const reorder = execute(
+        `mutation ReorderProductMedia($id: ID!, $moves: [MoveInput!]!) {
+          productReorderMedia(id: $id, moves: $moves) {
+            job { id done }
+            mediaUserErrors { field message }
+          }
+        }`,
+        {
+          id: product.id,
+          moves: [{ id: preferredMedia.id, newPosition: 0 }],
+        },
+      );
+      reportErrors('productReorderMedia', reorder.productReorderMedia.mediaUserErrors);
+      console.log(`moved premium media first for ${definition.handle}`);
+    } else {
+      console.warn(`premium media was not returned for ${definition.handle}`);
+    }
+  }
   console.log(`updated product ${definition.handle}`);
 }
 
