@@ -1,0 +1,26 @@
+{% assign accent = product.metafields.custom.accent_color.value | default: '#f0703c' %}
+{% assign subtitle = product.metafields.custom.subtitle.value | default: product.type %}
+{% assign usage = product.metafields.custom.usage.value | default: 'Gewürzküche' %}
+
+<a class="sf-product-card" href="{{ product.url }}" style="--spice-accent: {{ accent }}">
+  <div class="sf-product-card__visual">
+    <span class="sf-bio-badge">Bio</span>
+    {% if product.featured_image %}
+      {% render 'image', image: product.featured_image, width: 500, height: 500, crop: 'center' %}
+    {% else %}
+      <div class="sf-jar" aria-hidden="true">
+        <div class="sf-jar__label">{{ product.title | remove: 'Bio ' }}</div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="sf-product-card__content">
+    <span class="sf-rating">★★★★★</span>
+    <h3>{{ product.title }}</h3>
+    <p>{{ subtitle }}</p>
+    <div class="sf-chip-row">
+      <span class="sf-chip">{{ usage }}</span>
+      <span class="sf-chip">Nachfüllbar</span>
+    </div>
+    <span class="sf-price">ab {{ product.price_min | money_without_trailing_zeros }}</span>
+  </div>
+</a>

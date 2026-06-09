@@ -1,0 +1,56 @@
+<section class="sf-collection-hero full-width">
+  <div class="sf-page">
+    <p class="sf-eyebrow">Kuratierte Einkaufsstrecke</p>
+    <h1 class="sf-heading">{{ collection.title }}</h1>
+    <p class="sf-copy" style="margin-inline:auto;">
+      {{ collection.description | strip_html | default: 'Filter, Anlass und Aroma werden sichtbar, damit Kundinnen schneller vom Kochanlass zum passenden Gewürz finden.' }}
+    </p>
+  </div>
+</section>
+
+<section class="sf-page sf-collection-grid">
+  <aside class="sf-card sf-filter-panel">
+    <p class="sf-eyebrow">Filtern nach</p>
+    <div class="sf-filter-group">
+      <h3>Verwendung</h3>
+      <span class="sf-chip">Grillen</span>
+      <span class="sf-chip">Dips & Saucen</span>
+      <span class="sf-chip">Frühstück</span>
+      <span class="sf-chip">Kartoffeln</span>
+    </div>
+    <div class="sf-filter-group">
+      <h3>Ernährung</h3>
+      <span class="sf-chip">Ohne Knoblauch</span>
+      <span class="sf-chip">Ohne Salz</span>
+      <span class="sf-chip">Ohne Zucker</span>
+    </div>
+    <div class="sf-filter-group">
+      <h3>Aroma</h3>
+      <span class="sf-chip">Umami</span>
+      <span class="sf-chip">Rauchig</span>
+      <span class="sf-chip">Zitronig</span>
+    </div>
+  </aside>
+
+  <div>
+    <div class="sf-chip-row" style="justify-content: space-between; margin-bottom: 22px;">
+      <span>{{ collection.products_count }} Produkte</span>
+      <span>Sortieren nach: Bestseller</span>
+    </div>
+    {% paginate collection.products by 24 %}
+      <div class="sf-products-grid">
+        {% for product in collection.products %}
+          {% render 'product-card-spice', product: product %}
+        {% endfor %}
+      </div>
+      <div style="margin-top: 32px;">{{ paginate | default_pagination }}</div>
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:general.collection",
+  "settings": []
+}
+{% endschema %}

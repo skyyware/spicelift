@@ -1,0 +1,120 @@
+{% assign accent = product.metafields.custom.accent_color.value | default: '#f0703c' %}
+{% assign subtitle = product.metafields.custom.subtitle.value | default: product.type %}
+{% assign usage = product.metafields.custom.usage.value | default: 'Bio Küche' %}
+{% assign flavor = product.metafields.custom.flavor.value | default: 'Würzig, klar, vielseitig' %}
+{% assign pairing = product.metafields.custom.pairing.value | default: 'Passt zu Gemüse, Dips und schnellen Feierabendgerichten.' %}
+{% assign story = product.metafields.custom.story.value | default: 'In kleinen Chargen gedacht, sauber strukturiert und im Shop so erzählt, dass aus Produktinformationen eine Kaufentscheidung wird.' %}
+
+<section class="sf-product-page" style="--spice-accent: {{ accent }}">
+  <div class="sf-page">
+    <div class="sf-product-layout">
+      <div class="sf-product-visual">
+        <span class="sf-bio-badge">Bio</span>
+        {% if product.featured_image %}
+          {% render 'image', image: product.featured_image, width: 900, height: 900, crop: 'center' %}
+        {% else %}
+          <div class="sf-jar" aria-hidden="true">
+            <div class="sf-jar__label">{{ product.title | remove: 'Bio ' }}</div>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="sf-product-summary">
+        <p class="sf-eyebrow">{{ usage }}</p>
+        <h1>{{ product.title }}</h1>
+        <p class="sf-copy">{{ subtitle }}</p>
+        <p class="sf-rating">★★★★★ <span style="color:var(--sf-muted); letter-spacing:0;">4,94 / 5</span></p>
+
+        <div class="sf-chip-row">
+          <span class="sf-chip">{{ flavor }}</span>
+          <span class="sf-chip">Nachfüllbar</span>
+          <span class="sf-chip">Ohne Zusätze</span>
+        </div>
+
+        <div>
+          <p class="sf-eyebrow">Verpackungsart</p>
+          {% form 'product', product, class: 'sf-product-form' %}
+            {% assign current_variant = product.selected_or_first_available_variant %}
+            <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-input>
+            <div class="sf-variant-grid" role="list">
+              {% for variant in product.variants %}
+                <button
+                  class="sf-variant-card"
+                  type="button"
+                  data-variant-id="{{ variant.id }}"
+                  data-price="{{ variant.price | money_without_trailing_zeros }}"
+                  aria-pressed="{% if variant == current_variant %}true{% else %}false{% endif %}"
+                >
+                  <span class="sf-variant-dot"></span>
+                  <strong>{{ variant.title }}</strong>
+                  <span>{{ variant.price | money_without_trailing_zeros }}</span>
+                </button>
+              {% endfor %}
+            </div>
+
+            <p class="sf-price" data-product-price>{{ current_variant.price | money_without_trailing_zeros }}</p>
+            <p>{{ current_variant.sku }}</p>
+            <div class="sf-quantity">
+              <label for="Quantity-{{ section.id }}">Anzahl</label>
+              <input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1">
+            </div>
+
+            <button class="sf-button" type="submit">In den Warenkorb</button>
+            {{ form | payment_button }}
+          {% endform %}
+        </div>
+
+        <div class="sf-trust-grid">
+          <div class="sf-trust-card"><strong>100% Bio</strong>Sortiment und Story sichtbar am Produkt.</div>
+          <div class="sf-trust-card"><strong>Nachfülllogik</strong>Wiederkaufsignal statt versteckter Variante.</div>
+          <div class="sf-trust-card"><strong>Ab 40 EUR</strong>Cart-Threshold bewusst nutzbar.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sf-story">
+      <div class="sf-story-card">
+        <p class="sf-eyebrow">Geschmack</p>
+        <h3>{{ flavor }}</h3>
+        <p>{{ product.description | strip_html | truncate: 210 }}</p>
+      </div>
+      <div class="sf-story-card">
+        <p class="sf-eyebrow">Anwendung</p>
+        <h3>Gekocht, nicht nur gesucht</h3>
+        <p>{{ pairing }}</p>
+      </div>
+      <div class="sf-story-card">
+        <p class="sf-eyebrow">Shopify-Modul</p>
+        <h3>Recipe-to-Cart ready</h3>
+        <p>{{ story }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const root = document.currentScript.closest('.shopify-section');
+    if (!root) return;
+    const hidden = root.querySelector('[data-variant-input]');
+    const price = root.querySelector('[data-product-price]');
+    root.querySelectorAll('[data-variant-id]').forEach((button) => {
+      button.addEventListener('click', () => {
+        root.querySelectorAll('[data-variant-id]').forEach((item) => item.setAttribute('aria-pressed', 'false'));
+        button.setAttribute('aria-pressed', 'true');
+        hidden.value = button.dataset.variantId;
+        price.textContent = button.dataset.price;
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "t:general.product",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

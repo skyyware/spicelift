@@ -1,0 +1,136 @@
+{% assign spice_collection = collections['gewuerzmischungen'] %}
+{% assign set_collection = collections['gewuerzsets'] %}
+{% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
+{% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
+
+<section class="sf-hero full-width">
+  <div class="sf-page sf-hero__inner">
+    <p class="sf-eyebrow">Bio Gewürze aus unserer Manufaktur</p>
+    <h1 class="sf-heading">Mehr Geschmack. Weniger Reibung im Shop.</h1>
+    <p class="sf-copy">
+      Eine Shopify-native Zukunftsversion für Rimoco: Produktseiten, Rezept-Content,
+      Nachfülllogik und Cross-Selling arbeiten gemeinsam an einer ruhigeren, stärkeren Kaufentscheidung.
+    </p>
+    <div class="sf-hero__actions">
+      <a class="sf-button" href="{{ spice_collection_url }}">Favoriten entdecken</a>
+      <a class="sf-button sf-button--secondary" href="#recipe-to-cart">Rezeptstrecke ansehen</a>
+    </div>
+    <div class="sf-hero__panel">
+      <strong>Conversion Sprint</strong>
+      <p>1 Woche Audit, priorisierter Backlog, dann PDP/Recipe/Cart-Verbesserungen mit messbarem Vorher/Nachher.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sf-category-strip full-width">
+  <div class="sf-page sf-category-list">
+    <a href="{{ spice_collection_url }}"><span class="sf-category-dot" style="--dot:#f0703c">G</span>Gewürzmischungen</a>
+    <a href="{{ spice_collection_url }}"><span class="sf-category-dot" style="--dot:#23231f">P</span>Pfeffer</a>
+    <a href="{{ spice_collection_url }}"><span class="sf-category-dot" style="--dot:#8fa1a0">K</span>Kräuter</a>
+    <a href="{{ spice_collection_url }}"><span class="sf-category-dot" style="--dot:#9b2953">C</span>Chili</a>
+    <a href="{{ spice_collection_url }}"><span class="sf-category-dot" style="--dot:#4da9be">S</span>Salze</a>
+    <a href="{{ spice_collection_url }}"><span class="sf-category-dot" style="--dot:#f3b000">C</span>Curry</a>
+    <a href="{{ set_collection_url }}"><span class="sf-category-dot" style="--dot:#c7b594">Z</span>Zubehör</a>
+    <a href="{{ set_collection_url }}"><span class="sf-category-dot" style="--dot:#3a9b61">B</span>B2B</a>
+  </div>
+</section>
+
+<section class="sf-section" id="favorites">
+  <div class="sf-page">
+    <p class="sf-eyebrow">Unsere Gewürzlieblinge</p>
+    <h2 class="sf-heading">Kaufpfade nach Anlass statt bloßer Produktlisten.</h2>
+    <div class="sf-chip-row">
+      <a class="sf-chip" href="{{ spice_collection_url }}">Zum Grillen</a>
+      <a class="sf-chip" href="{{ spice_collection_url }}">Für Salate</a>
+      <a class="sf-chip" href="{{ spice_collection_url }}">Für Dips</a>
+      <a class="sf-chip" href="{{ set_collection_url }}">Geschenke</a>
+    </div>
+    <div class="sf-grid sf-grid--4" style="margin-top: 28px;">
+      {% if spice_collection.products.size > 0 %}
+        {% for product in spice_collection.products limit: 4 %}
+          {% render 'product-card-spice', product: product %}
+        {% endfor %}
+      {% else %}
+        <p>Demo-Produkte werden nach dem Store-Seeding angezeigt.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="sf-section sf-recipe full-width" id="recipe-to-cart">
+  <div class="sf-page sf-grid sf-grid--2">
+    <div>
+      <p class="sf-eyebrow" style="color:#d8f0be">Recipe-to-Cart</p>
+      <h2 class="sf-heading">Rezepte, die direkt einkaufbar werden.</h2>
+      <p class="sf-copy">
+        Rimocos Rezept-Content wird zur Commerce-Strecke: Zutaten, passende Gewürze,
+        Varianten und Zubehör landen als gepflegte Shopify Metaobjects in wiederverwendbaren Sections.
+      </p>
+      <div class="sf-steps">
+        <div class="sf-step"><span>1</span><p>Rezept auswählen: Bagel Bowl, Grillabend, Dip-Platte oder Geschenkbox.</p></div>
+        <div class="sf-step"><span>2</span><p>Benötigte Gewürze inklusive Nachfülloptionen und Zubehör prüfen.</p></div>
+        <div class="sf-step"><span>3</span><p>Alle Produkte mit einem klaren Warenkorb-Hebel hinzufügen.</p></div>
+      </div>
+    </div>
+    <div class="sf-recipe__panel">
+      <p class="sf-eyebrow" style="color:#d8f0be">Beispiel-Rezept</p>
+      <h3>Knusprige Bagel Bowl</h3>
+      <p>Frischkäse, Gurke, gerösteter Sesam, Mohn, Zitrone und Bio Bagel Gewürz.</p>
+      <div class="sf-grid sf-grid--2" style="margin-top: 22px;">
+        {% assign bagel = all_products['bio-bagel-gewuerz'] %}
+        {% assign avocado = all_products['bio-avocado-gewuerz'] %}
+        {% if bagel != blank %}{% render 'product-card-spice', product: bagel %}{% endif %}
+        {% if avocado != blank %}{% render 'product-card-spice', product: avocado %}{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sf-section" id="audit">
+  <div class="sf-page sf-grid sf-grid--3">
+    <div class="sf-card" style="padding:24px;">
+      <p class="sf-eyebrow">PDP</p>
+      <h3>Varianten führen</h3>
+      <p>Dose, Nachfüllpack und Großpackung werden als Entscheidungshilfe dargestellt, nicht als reine Dropdown-Liste.</p>
+    </div>
+    <div class="sf-card" style="padding:24px;">
+      <p class="sf-eyebrow">Apps</p>
+      <h3>Footprint kontrollieren</h3>
+      <p>Reviews, Upsell, Suche und Newsletter werden nach Nutzen, Kosten, LCP und Wartbarkeit bewertet.</p>
+    </div>
+    <div class="sf-card" style="padding:24px;">
+      <p class="sf-eyebrow">Analytics</p>
+      <h3>Backlog messen</h3>
+      <p>Variant Switch, Add-to-Cart, Recipe Cart, Filter Usage und Attach Rate werden als Sprint-Signale getrackt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sf-section full-width" id="b2b" style="background: var(--sf-cream);">
+  <div class="sf-page sf-grid sf-grid--2">
+    <div>
+      <p class="sf-eyebrow">B2B und Geschenke</p>
+      <h2 class="sf-heading">Premium-Food-Commerce mit wiederverwendbaren Modulen.</h2>
+      <p class="sf-copy">Firmengeschenke, Private Label, Wiederverkäufer und saisonale Geschenksets erhalten eigene Landingpages, ohne dass das Theme zerfasert.</p>
+    </div>
+    <div class="sf-grid sf-grid--2">
+      {% if set_collection.products.size > 0 %}
+        {% for product in set_collection.products limit: 2 %}
+          {% render 'product-card-spice', product: product %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Spiceflow Home",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Spiceflow Home"
+    }
+  ]
+}
+{% endschema %}
