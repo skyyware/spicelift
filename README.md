@@ -119,6 +119,16 @@ The latest pass adds high-impact, low-risk commerce improvements that map direct
 - Guided Selling: the homepage Aroma Finder recommends products by cooking occasion, not by internal category structure.
 - Recipe-to-Cart: the featured recipe adds a useful two-product basket through Shopify cart APIs.
 - PDP Decision Logic: each product answers usage, size and pairing questions near the purchase flow.
-- Collection Kaufpfade: curated paths for first purchase, refill, gift and occasion activate the product grid filters.
+- Collection Kaufpfade: curated paths for first purchase, refill and occasion activate product-grid filters; the gift path routes to the dedicated set collection when that is the stronger buying path.
 - Cart AOV Layer: the cart explains the shipping threshold and points users toward refill or set additions.
 - Quick Add: product cards add items without a full page transition while keeping the standard Shopify form fallback.
+
+## Device QA
+
+Final QA was run against the live theme `Spicelift Premium Store` (`#160055492834`) on 2026-06-09.
+
+- Viewports: 320x740, 390x844, 430x932, 768x1024, 1024x768, 1440x1000 and 1920x1080.
+- Routes: home, spice collection, set collection, product detail page and cart.
+- Checks: no page-level horizontal overflow, no broken images, no unwanted client/demo wording, one-line desktop navigation and hidden Shopify preview chrome.
+- Interaction proof: Aroma Finder quick add, Recipe-to-Cart bundle, collection refill filter, gift path to set collection and mobile PDP sticky add-to-cart.
+- Final screenshots and matrix data: `/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-device-qa-final-clean`.

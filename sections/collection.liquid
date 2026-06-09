@@ -1,3 +1,5 @@
+{% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
+
 <section class="sf-collection-hero full-width">
   <div class="sf-page">
     <nav class="sf-breadcrumb sf-breadcrumb--hero" aria-label="Breadcrumb">
@@ -24,7 +26,11 @@
     <strong>Refill</strong>
     <small>Nachfüllpack und Vorrat ohne erneute Suche.</small>
   </a>
-  <a class="sf-path-card" href="#ProductGrid" data-path-filter="set">
+  <a
+    class="sf-path-card"
+    href="{% if collection.handle == 'gewuerzsets' %}#ProductGrid{% else %}{{ set_collection_url }}{% endif %}"
+    {% if collection.handle == 'gewuerzsets' %}data-path-filter="all"{% endif %}
+  >
     <span>03</span>
     <strong>Geschenk</strong>
     <small>Kuratierte Sets für Gastgeber und Kundschaft.</small>
@@ -119,10 +125,15 @@
     });
 
     section.querySelectorAll('[data-path-filter]').forEach((link) => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (event) => {
         const filter = link.dataset.pathFilter;
         const button = section.querySelector(`[data-filter="${filter}"]`) || section.querySelector('[data-filter="all"]');
-        if (button) button.click();
+        if (!button) return;
+
+        event.preventDefault();
+        button.click();
+        const productGrid = section.querySelector('#ProductGrid');
+        if (productGrid) productGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   })();

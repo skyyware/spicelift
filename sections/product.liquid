@@ -5,6 +5,7 @@
 {% assign pairing = product.metafields.custom.pairing.value | default: 'Passt zu Gemüse, Dips und schnellen Feierabendgerichten.' %}
 {% assign product_asset = 'spice-product-' | append: product.handle | append: '.jpg' %}
 {% assign current_variant = product.selected_or_first_available_variant %}
+{% assign product_form_id = 'ProductForm-' | append: section.id %}
 {% assign primary_collection = collections['gewuerzmischungen'] %}
 {% if product.type contains 'Set' or product.tags contains 'set' %}
   {% assign primary_collection = collections['gewuerzsets'] %}
@@ -62,7 +63,7 @@
 
         <div>
           <p class="sf-eyebrow">Wähle deine Größe</p>
-          {% form 'product', product, class: 'sf-product-form' %}
+          {% form 'product', product, id: product_form_id, class: 'sf-product-form' %}
             <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-input>
             <div class="sf-variant-grid" role="list">
               {% for variant in product.variants %}
@@ -198,7 +199,7 @@
       <strong>{{ product.title }}</strong><br>
       <span data-mobile-product-price>{{ current_variant.price | money_without_trailing_zeros }}</span>
     </div>
-    <a class="sf-button" href="#ProductInfo-{{ section.id }}">Kaufen</a>
+    <button class="sf-button" type="submit" form="{{ product_form_id }}">In den Warenkorb</button>
   </div>
 </section>
 
