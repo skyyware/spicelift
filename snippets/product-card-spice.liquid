@@ -12,7 +12,14 @@
   <a class="sf-product-card__image" href="{{ product.url }}" aria-label="{{ product.title }}">
     <span class="sf-bio-badge">Bio</span>
     {% if product.featured_image %}
-      {% render 'image', image: product.featured_image, width: 720, height: 720, crop: 'center' %}
+      {% render 'image',
+        image: product.featured_image,
+        width: 720,
+        height: 720,
+        crop: 'center',
+        loading: 'lazy',
+        sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw'
+      %}
     {% else %}
       <img src="{{ product_asset | asset_url }}" width="720" height="720" loading="lazy" alt="{{ product.title | escape }}">
     {% endif %}
@@ -32,7 +39,7 @@
         {% form 'product', product %}
           <input type="hidden" name="id" value="{{ current_variant.id }}">
           <input type="hidden" name="quantity" value="1">
-          <button class="sf-quick-add" type="submit">Hinzufügen</button>
+          <button class="sf-quick-add" type="submit" aria-label="{{ product.title }} in den Warenkorb legen">Hinzufügen</button>
         {% endform %}
       {% else %}
         <span class="sf-quick-add">Ausverkauft</span>

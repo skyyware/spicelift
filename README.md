@@ -10,6 +10,8 @@ The project is a real Online Store 2.0 theme, not a static mockup. It shows how 
 - Product detail pages with visible variant logic, refill options and use-case copy
 - Collections that guide by usage, nutrition and aroma instead of only showing a grid
 - Recipe-to-cart concept for turning content into a direct purchase path
+- Breadcrumb navigation, structured data and social sharing metadata for clearer product signals
+- Responsive image loading strategy with an explicit priority image for the first viewport
 - Storefront modules that can be maintained in Shopify without coupling the shop to a custom app
 - 2k Grok Imagine asset pipeline for high-value product and editorial imagery
 
@@ -82,13 +84,24 @@ shopify theme push \
 
 ## Architecture Notes
 
-- `assets/spiceflow.css` contains the custom design system.
-- `sections/home-spiceflow.liquid` is the landing surface.
+- `assets/spicelift-store.css` contains the custom design system.
+- `sections/home-spicelift.liquid` is the landing surface.
 - `sections/product.liquid` implements the conversion-focused PDP.
 - `sections/collection.liquid` implements the guided product grid.
 - `snippets/product-card-spice.liquid` keeps product tiles reusable.
+- `snippets/image.liquid` centralizes responsive image loading behavior.
 - `scripts/seed-store.mjs` keeps store content reproducible.
 - `scripts/generate-grok-assets.mjs` keeps generated visual assets reproducible and documented.
 - `scripts/update-store-seo-media.mjs` keeps Shopify Admin product and collection data aligned with the theme.
 
 The theme deliberately avoids theme-app coupling. The first improvement pass is built with Shopify-native primitives before adding app complexity.
+
+## Best-Practice Pass
+
+The current theme pass follows current Shopify and Google guidance plus durable e-commerce UX principles:
+
+- Use Shopify-native Online Store 2.0 primitives first: sections, snippets, JSON templates, metafields and reproducible admin scripts.
+- Treat performance as a storefront budget: the hero asset is a real high-priority image, product media is responsive and lazy by default, and app complexity is intentionally avoided.
+- Keep product signals machine-readable: Shopify product structured data, BreadcrumbList JSON-LD, Organization JSON-LD, canonical URLs and OpenGraph/Twitter media.
+- Preserve accessibility in the interaction layer: visible focus states, semantic breadcrumbs, aria-pressed filter controls and explicit quick-add labels.
+- Reduce commerce friction: product-page buying guidance, collection filter feedback, cart assurance and a visible shipping threshold.

@@ -19,7 +19,7 @@
 
     {% # Load and preload the critical CSS %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'spiceflow.css' | asset_url | stylesheet_tag }}
+    {{ 'spicelift-store.css' | asset_url | stylesheet_tag }}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}
@@ -27,7 +27,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="spiceflow-store">
+  <body class="spicelift-store">
     {% sections 'header-group' %}
 
     {{ content_for_layout }}

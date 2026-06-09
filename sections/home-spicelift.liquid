@@ -6,6 +6,15 @@
 {% assign avocado = all_products['bio-avocado-gewuerz'] %}
 
 <section class="sf-hero full-width">
+  <img
+    class="sf-hero__image"
+    src="{{ 'spice-hero-premium.jpg' | asset_url }}"
+    width="2000"
+    height="1400"
+    loading="eager"
+    fetchpriority="high"
+    alt=""
+  >
   <div class="sf-page sf-hero__inner">
     <p class="sf-eyebrow">Bio Gewürze aus der Manufaktur</p>
     <h1 class="sf-heading">Gewürze, die jedes Gericht auf den Punkt bringen.</h1>
@@ -28,19 +37,19 @@
 <section class="sf-category-strip full-width" aria-label="Kategorien">
   <div class="sf-page sf-category-list">
     <a class="sf-category-card" href="{{ spice_collection_url }}">
-      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-bagel-gewuerz.jpg' | asset_url }}" alt="" width="144" height="144" loading="eager"></span>
+      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-bagel-gewuerz.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>Gewürzmischungen<span>Für Alltag, Grillen, Dips und Bowls</span></strong>
     </a>
     <a class="sf-category-card" href="{{ set_collection_url }}">
-      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-grillabend-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="eager"></span>
+      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-grillabend-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>Geschenksets<span>Für Küche, Kundschaft und Gastgeber</span></strong>
     </a>
     <a class="sf-category-card" href="#recipe-to-cart">
-      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-avocado-gewuerz.jpg' | asset_url }}" alt="" width="144" height="144" loading="eager"></span>
+      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-avocado-gewuerz.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>Rezepte<span>Vom Anlass direkt zum Warenkorb</span></strong>
     </a>
     <a class="sf-category-card" href="#b2b">
-      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-brunch-bagel-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="eager"></span>
+      <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-brunch-bagel-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>B2B<span>Firmengeschenke und Private Label</span></strong>
     </a>
   </div>
@@ -160,11 +169,11 @@
 
 {% schema %}
 {
-  "name": "Spiceflow Home",
+  "name": "Spicelift Home",
   "settings": [],
   "presets": [
     {
-      "name": "Spiceflow Home"
+      "name": "Spicelift Home"
     }
   ]
 }

@@ -1,5 +1,10 @@
 <section class="sf-collection-hero full-width">
   <div class="sf-page">
+    <nav class="sf-breadcrumb sf-breadcrumb--hero" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Start</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ collection.title }}</span>
+    </nav>
     <p class="sf-eyebrow">Kuratierte Auswahl</p>
     <h1 class="sf-heading sf-heading--medium">{{ collection.title }}</h1>
     <p class="sf-copy">
@@ -14,19 +19,19 @@
     <div class="sf-filter-group">
       <h3>Kochanlass</h3>
       <div class="sf-chip-row">
-        <button class="sf-chip sf-chip--button is-active" type="button" data-filter="all">Alle</button>
-        <button class="sf-chip sf-chip--button" type="button" data-filter="grillen">Grillen</button>
-        <button class="sf-chip sf-chip--button" type="button" data-filter="dip">Dips & Saucen</button>
-        <button class="sf-chip sf-chip--button" type="button" data-filter="brunch">Brunch</button>
-        <button class="sf-chip sf-chip--button" type="button" data-filter="gemuese">Gemüse</button>
+        <button class="sf-chip sf-chip--button is-active" type="button" data-filter="all" aria-pressed="true">Alle</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="grillen" aria-pressed="false">Grillen</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="dip" aria-pressed="false">Dips & Saucen</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="brunch" aria-pressed="false">Brunch</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="gemuese" aria-pressed="false">Gemüse</button>
       </div>
     </div>
     <div class="sf-filter-group">
       <h3>Ernährung</h3>
       <div class="sf-chip-row">
-        <button class="sf-chip sf-chip--button" type="button" data-filter="bio">Bio</button>
-        <button class="sf-chip sf-chip--button" type="button" data-filter="nachfullbar">Nachfüllbar</button>
-        <button class="sf-chip sf-chip--button" type="button" data-filter="set">Sets</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="bio" aria-pressed="false">Bio</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="nachfullbar" aria-pressed="false">Nachfüllbar</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="set" aria-pressed="false">Sets</button>
       </div>
     </div>
     <div class="sf-filter-group">
@@ -42,7 +47,7 @@
 
   <div>
     <div class="sf-section-intro" style="margin-bottom: 22px;">
-      <p class="sf-copy">{{ collection.products_count }} Produkte für Küche, Geschenk und Vorrat.</p>
+      <p class="sf-copy" data-filter-summary>{{ collection.products_count }} Produkte für Küche, Geschenk und Vorrat.</p>
       <span class="sf-chip">Sortiert nach Bestseller</span>
     </div>
 
@@ -70,16 +75,47 @@
       button.addEventListener('click', () => {
         const filter = button.dataset.filter;
         let visible = 0;
-        buttons.forEach((item) => item.classList.toggle('is-active', item === button));
+        buttons.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
         cards.forEach((card) => {
           const match = filter === 'all' || card.dataset.productTags.includes(filter);
           card.hidden = !match;
           if (match) visible += 1;
         });
         if (empty) empty.hidden = visible > 0;
+        const summary = section.querySelector('[data-filter-summary]');
+        if (summary) {
+          summary.textContent = filter === 'all'
+            ? `${cards.length} Produkte für Küche, Geschenk und Vorrat.`
+            : `${visible} passende Produkte in dieser Auswahl.`;
+        }
       });
     });
   })();
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Start",
+        "item": {{ request.origin | append: routes.root_url | json }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ collection.title | json }},
+        "item": {{ request.origin | append: collection.url | json }}
+      }
+    ]
+  }
 </script>
 
 {% schema %}

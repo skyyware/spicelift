@@ -17,6 +17,23 @@ html:has(dialog[scroll-lock][open], details[scroll-lock][open]) {
   overflow: hidden;
 }
 
+html,
+body.spicelift-store {
+  overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+  html,
+  body.spicelift-store {
+    overflow-x: clip;
+  }
+}
+
+#web-pixels-manager-sandbox-container {
+  max-width: 0 !important;
+  overflow: hidden !important;
+}
+
 img,
 picture,
 video,
@@ -114,4 +131,27 @@ body {
 /* Child elements that use the full-width utility class span the entire viewport. */
 .shopify-section > .full-width {
   grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .sf-header__inner > *,
+  .sf-nav {
+    min-width: 0;
+  }
+
+  .sf-nav {
+    width: 100%;
+    max-width: 100%;
+    scrollbar-width: none;
+    overflow-x: visible;
+    flex-wrap: wrap;
+  }
+
+  .sf-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sf-product-thumbs {
+    grid-template-columns: 1fr;
+  }
 }
