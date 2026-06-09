@@ -64,11 +64,11 @@
             <span>Zwischensumme</span>
             <strong>{{ cart.total_price | money_without_trailing_zeros }}</strong>
           </div>
-          <label for="Cart-note">Hinweis zur Bestellung</label>
-          <textarea id="Cart-note" name="note" placeholder="z. B. Geschenknotiz oder Lieferhinweis">{{ cart.note }}</textarea>
+          <label for="Order-note">Hinweis zur Bestellung</label>
+          <textarea id="Order-note" name="note" placeholder="z. B. Geschenknotiz oder Lieferhinweis">{{ cart.note }}</textarea>
           <button class="sf-button sf-button--ghost" type="submit">Warenkorb aktualisieren</button>
           <button class="sf-button" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
-          <p>Versand und Steuern werden im Checkout berechnet.</p>
+          <p>Versand und Steuern werden im Bezahlvorgang berechnet.</p>
         </aside>
       </form>
     {% else %}

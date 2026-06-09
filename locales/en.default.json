@@ -14,16 +14,16 @@
     "comment_form_title": "Add a comment"
   },
   "cart": {
-    "checkout": "Checkout",
-    "title": "Cart",
-    "update": "Update",
-    "remove": "Remove"
+    "checkout": "Zur Kasse",
+    "title": "Warenkorb",
+    "update": "Aktualisieren",
+    "remove": "Entfernen"
   },
   "customers": {
     "login": {
       "email": "Email",
-      "password": "Password",
-      "submit": "Sign in",
+      "password": "Passwort",
+      "submit": "Einloggen",
       "title": "Login"
     }
   },
@@ -38,9 +38,9 @@
     "use_at_checkout": "Use this gift card at checkout"
   },
   "password": {
-    "title": "This shop is private",
-    "password": "Password",
-    "enter": "Enter"
+    "title": "Dieser Shop ist geschützt",
+    "password": "Passwort",
+    "enter": "Öffnen"
   },
   "search": {
     "title": "Search",

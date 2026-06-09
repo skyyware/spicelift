@@ -56,7 +56,7 @@ draw.text((78, 314), "klarer machen.", font=headline, fill="#ffffff")
 draw.text((82, 415), "Premium Bio-Gewürze, kuratierte Sets,", font=copy, fill="#e8dcc9")
 draw.text((82, 452), "Rezepte und Nachfüllpacks für jeden Tag.", font=copy, fill="#e8dcc9")
 
-chips = ["Bio", "Nachfüllpacks", "Recipe-to-Cart", "B2B-Geschenke"]
+chips = ["Bio", "Nachfüllpacks", "Rezepte", "B2B-Geschenke"]
 x = 82
 for chip in chips:
     text_w = draw.textbbox((0, 0), chip, font=small)[2]
