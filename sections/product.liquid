@@ -82,7 +82,7 @@
       <div class="sf-story-card">
         <p class="sf-eyebrow">Geschmack</p>
         <h3>{{ flavor }}</h3>
-        <p>Eine klare Aromabeschreibung hilft beim schnellen Vergleich und reduziert Unsicherheit vor dem Warenkorb.</p>
+        <p>Ein klarer Geschmack, der beim Kochen sofort Orientierung gibt.</p>
       </div>
       <div class="sf-story-card">
         <p class="sf-eyebrow">Anwendung</p>
@@ -92,9 +92,35 @@
       <div class="sf-story-card">
         <p class="sf-eyebrow">Empfehlung</p>
         <h3>Mehr aus dem Produkt machen</h3>
-        <p>Kombiniere Dose und Nachfüllpack oder wähle ein Set, wenn du mehrere Anlässe abdecken möchtest.</p>
+        <p>Kombiniere Dose und Nachfüllpack oder wähle ein Set für mehrere Kochanlässe.</p>
       </div>
     </div>
+
+    {% assign related_collection = collections['gewuerzmischungen'] %}
+    {% if product.type == 'Gewürzmischung' %}
+      {% assign related_collection = collections['gewuerzsets'] %}
+    {% endif %}
+    {% if related_collection.products.size > 0 %}
+      <section class="sf-related-products">
+        <div class="sf-section-intro">
+          <div>
+            <p class="sf-eyebrow">Passt dazu</p>
+            <h2 class="sf-heading sf-heading--medium">Mehr aus dem Gericht machen.</h2>
+          </div>
+          <a class="sf-button sf-button--ghost" href="{{ related_collection.url }}">Alle ansehen</a>
+        </div>
+        <div class="sf-grid sf-grid--3">
+          {% assign shown = 0 %}
+          {% for related_product in related_collection.products %}
+            {% unless related_product.id == product.id %}
+              {% render 'product-card-spice', product: related_product %}
+              {% assign shown = shown | plus: 1 %}
+            {% endunless %}
+            {% if shown >= 3 %}{% break %}{% endif %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
   </div>
 
   <div class="sf-mobile-buy" aria-label="Mobiler Kaufbereich">

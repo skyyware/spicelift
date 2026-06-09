@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Skeleton",
-    "theme_version": "0.1.0",
-    "theme_author": "Shopify",
+    "theme_name": "Spicelift Premium Store",
+    "theme_version": "1.0.0",
+    "theme_author": "Skyyware",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
@@ -77,6 +77,27 @@
         "unit": "px",
         "label": "t:labels.input_corner_radius",
         "default": 4
+      }
+    ]
+  },
+  {
+    "name": "Brand & SEO",
+    "settings": [
+      {
+        "type": "text",
+        "id": "homepage_meta_title",
+        "label": "Homepage SEO title",
+        "default": "Spicelift | Premium Bio-Gewürze, Sets und Rezepte"
+      },
+      {
+        "type": "textarea",
+        "id": "homepage_meta_description",
+        "label": "Homepage meta description",
+        "default": "Spicelift verbindet Bio-Gewürze, kuratierte Sets, Rezeptideen und Nachfüllpacks in einem klaren, schnellen Einkaufserlebnis."
+      },
+      {
+        "type": "paragraph",
+        "content": "The theme uses spicelift-social-share.jpg as OpenGraph fallback when a page has no featured image. Shopify Admin can additionally set Online Store > Preferences > Social sharing image."
       }
     ]
   }

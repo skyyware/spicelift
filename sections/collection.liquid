@@ -3,29 +3,30 @@
     <p class="sf-eyebrow">Kuratierte Auswahl</p>
     <h1 class="sf-heading sf-heading--medium">{{ collection.title }}</h1>
     <p class="sf-copy">
-      {{ collection.description | strip_html | default: 'Finde Gewürze nach Kochanlass, Aroma und gewünschter Größe. So wird aus einer Produktliste eine schnelle Kaufentscheidung.' }}
+      {{ collection.description | strip_html | default: 'Finde Gewürze nach Kochanlass, Aroma und gewünschter Größe.' }}
     </p>
   </div>
 </section>
 
 <section class="sf-page sf-collection-grid">
-  <aside class="sf-card sf-filter-panel">
+  <aside class="sf-card sf-filter-panel" data-filter-panel>
     <p class="sf-eyebrow">Orientierung</p>
     <div class="sf-filter-group">
       <h3>Kochanlass</h3>
       <div class="sf-chip-row">
-        <span class="sf-chip">Grillen</span>
-        <span class="sf-chip">Dips & Saucen</span>
-        <span class="sf-chip">Brunch</span>
-        <span class="sf-chip">Gemüse</span>
+        <button class="sf-chip sf-chip--button is-active" type="button" data-filter="all">Alle</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="grillen">Grillen</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="dip">Dips & Saucen</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="brunch">Brunch</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="gemuese">Gemüse</button>
       </div>
     </div>
     <div class="sf-filter-group">
       <h3>Ernährung</h3>
       <div class="sf-chip-row">
-        <span class="sf-chip">Bio</span>
-        <span class="sf-chip">Ohne Zusätze</span>
-        <span class="sf-chip">Nachfüllbar</span>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="bio">Bio</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="nachfullbar">Nachfüllbar</button>
+        <button class="sf-chip sf-chip--button" type="button" data-filter="set">Sets</button>
       </div>
     </div>
     <div class="sf-filter-group">
@@ -46,15 +47,40 @@
     </div>
 
     {% paginate collection.products by 24 %}
-      <div class="sf-products-grid">
+      <div class="sf-products-grid" data-products-grid>
         {% for product in collection.products %}
           {% render 'product-card-spice', product: product %}
         {% endfor %}
       </div>
+      <p class="sf-empty-filter" data-empty-filter hidden>Keine Produkte für diesen Filter in dieser Collection.</p>
       <div style="margin-top: 32px;">{{ paginate | default_pagination }}</div>
     {% endpaginate %}
   </div>
 </section>
+
+<script>
+  (() => {
+    const section = document.currentScript.closest('.shopify-section');
+    if (!section) return;
+    const buttons = Array.from(section.querySelectorAll('[data-filter]'));
+    const cards = Array.from(section.querySelectorAll('[data-product-tags]'));
+    const empty = section.querySelector('[data-empty-filter]');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        let visible = 0;
+        buttons.forEach((item) => item.classList.toggle('is-active', item === button));
+        cards.forEach((card) => {
+          const match = filter === 'all' || card.dataset.productTags.includes(filter);
+          card.hidden = !match;
+          if (match) visible += 1;
+        });
+        if (empty) empty.hidden = visible > 0;
+      });
+    });
+  })();
+</script>
 
 {% schema %}
 {

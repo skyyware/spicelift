@@ -1,4 +1,4 @@
-# Contributing to Skeleton Theme
+# Contributing to Spicelift Premium Store
 
 ## How to contribute
 

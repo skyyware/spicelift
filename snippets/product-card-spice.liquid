@@ -4,7 +4,11 @@
 {% assign product_asset = 'spice-product-' | append: product.handle | append: '.jpg' %}
 {% assign current_variant = product.selected_or_first_available_variant %}
 
-<article class="sf-product-card" style="--spice-accent: {{ accent }}">
+<article
+  class="sf-product-card"
+  style="--spice-accent: {{ accent }}"
+  data-product-tags="{{ product.tags | join: ' ' | handleize }}"
+>
   <a class="sf-product-card__image" href="{{ product.url }}" aria-label="{{ product.title }}">
     <span class="sf-bio-badge">Bio</span>
     {% if product.featured_image %}

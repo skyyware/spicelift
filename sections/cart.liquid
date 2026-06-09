@@ -1,33 +1,89 @@
-{% comment %}
-  This section is used in the cart template to render /cart page with an
-  overview of the items in customer's cart.
+{% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
+{% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
+{% assign shipping_threshold = 4000 %}
+{% assign remaining = shipping_threshold | minus: cart.total_price %}
+{% assign progress = cart.total_price | times: 100 | divided_by: shipping_threshold %}
+{% if progress > 100 %}{% assign progress = 100 %}{% endif %}
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
-{% endcomment %}
+<section class="sf-cart-page">
+  <div class="sf-page">
+    <div class="sf-section-intro">
+      <div>
+        <p class="sf-eyebrow">Warenkorb</p>
+        <h1 class="sf-heading sf-heading--medium">{{ 'cart.title' | t }}</h1>
+      </div>
+      <a class="sf-button sf-button--ghost" href="{{ spice_collection_url }}">Weiter einkaufen</a>
+    </div>
 
-<h1>{{ 'cart.title' | t }}</h1>
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" class="sf-cart-layout">
+        <div class="sf-cart-items">
+          <div class="sf-shipping-progress">
+            <div>
+              <strong>
+                {% if remaining > 0 %}
+                  Noch {{ remaining | money_without_trailing_zeros }} bis zum kostenlosen Versand.
+                {% else %}
+                  Kostenloser Versand ist erreicht.
+                {% endif %}
+              </strong>
+              <span>Nachfüllpack oder Set ergänzen und Versandkosten sparen.</span>
+            </div>
+            <div class="sf-progress-track" aria-hidden="true">
+              <span style="width: {{ progress }}%;"></span>
+            </div>
+          </div>
 
-<form action="{{ routes.cart_url }}" method="post">
-  <table>
-    {% for item in cart.items %}
-      <tr>
-        <td>
-          {% render 'image', image: item.image, url: item.url %}
-        </td>
-        <td>
-          <p>{{ item.product.title }}</p>
-          {{ 'cart.remove' | t | link_to: item.url_to_remove }}
-        </td>
-        <td>
-          <input type="text" name="updates[]" value="{{ item.quantity }}">
-          <input type="submit" value="{{ 'cart.update' | t }}">
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
+          {% for item in cart.items %}
+            {% assign product_asset = 'spice-product-' | append: item.product.handle | append: '.jpg' %}
+            <article class="sf-cart-item">
+              <a class="sf-cart-item__image" href="{{ item.url }}">
+                {% if item.image %}
+                  {% render 'image', image: item.image, width: 280, height: 280, crop: 'center' %}
+                {% else %}
+                  <img src="{{ product_asset | asset_url }}" width="280" height="280" loading="lazy" alt="{{ item.product.title | escape }}">
+                {% endif %}
+              </a>
+              <div class="sf-cart-item__body">
+                <h2><a href="{{ item.url }}">{{ item.product.title }}</a></h2>
+                <p>{{ item.variant.title }}</p>
+                <a href="{{ item.url_to_remove }}">Entfernen</a>
+              </div>
+              <div class="sf-cart-item__controls">
+                <label for="Quantity-{{ item.index | plus: 1 }}">Anzahl</label>
+                <input id="Quantity-{{ item.index | plus: 1 }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+                <strong>{{ item.final_line_price | money_without_trailing_zeros }}</strong>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
 
-  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
-</form>
+        <aside class="sf-cart-summary">
+          <h2>Bestellübersicht</h2>
+          <div class="sf-summary-row">
+            <span>Zwischensumme</span>
+            <strong>{{ cart.total_price | money_without_trailing_zeros }}</strong>
+          </div>
+          <label for="Cart-note">Hinweis zur Bestellung</label>
+          <textarea id="Cart-note" name="note" placeholder="z. B. Geschenknotiz oder Lieferhinweis">{{ cart.note }}</textarea>
+          <button class="sf-button sf-button--ghost" type="submit">Warenkorb aktualisieren</button>
+          <button class="sf-button" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+          <p>Versand und Steuern werden im Checkout berechnet.</p>
+        </aside>
+      </form>
+    {% else %}
+      <div class="sf-empty-cart">
+        <p class="sf-eyebrow">Noch leer</p>
+        <h2>Starte mit einem Gewürz oder einem kuratierten Set.</h2>
+        <p>Finde passende Gewürze nach Gericht, Aroma oder Geschenkidee.</p>
+        <div class="sf-hero__actions">
+          <a class="sf-button" href="{{ spice_collection_url }}">Gewürze entdecken</a>
+          <a class="sf-button sf-button--ghost" href="{{ set_collection_url }}">Sets ansehen</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
 
 {% schema %}
 {

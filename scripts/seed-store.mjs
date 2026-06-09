@@ -15,9 +15,9 @@ const products = [
     usage: 'Frühstück & Bowls',
     flavor: 'Nussig, herzhaft, rund',
     pairing: 'Passt zu Frischkäse, Avocado, Ei, Salatbowls und geröstetem Gemüse.',
-    story: 'Die PDP führt direkt vom Brunch-Anlass zur passenden Nachfülloption und zu Rezepten mit Bundle-Potenzial.',
+    story: 'Für Brunch, Bowls und Brote mit nussigem Crunch und herzhafter Tiefe.',
     description:
-      'Eine Bio-Gewürzmischung für Bagels, Bowls, Stullen und Dips. Der Fokus liegt auf klarer Anwendung, schneller Orientierung und einem hochwertigen Wiederkaufpfad.',
+      'Eine Bio-Gewürzmischung für Bagels, Bowls, Stullen und Dips. Sesam, Zwiebel und Gewürze bringen herzhaften Crunch auf den Tisch.',
     tags: ['bio', 'brunch', 'bagel', 'nachfüllbar'],
     variants: [
       { name: 'Gewürzdose 80g', price: '6.90', sku: 'SP-BAGEL-080' },
@@ -34,9 +34,9 @@ const products = [
     usage: 'Salate & Dips',
     flavor: 'Frisch, zitronig, leicht scharf',
     pairing: 'Passt zu Avocado, Tomaten, Gurke, Joghurt-Dips, Ofenkartoffeln und Grillgemüse.',
-    story: 'Ein Produktmodul mit schnellen Cross-Sells: Öl, Salz, Bagel-Gewürz und Brunch-Set.',
+    story: 'Frische Würze für Avocado, Salate und Dips mit Kräutern, Chili und Zitrusnoten.',
     description:
-      'Bio-Gewürzmischung für Avocado-Gerichte, Dips und leichte Küche. Der Shop zeigt Anwendungsideen und Varianten ohne Suchaufwand.',
+      'Bio-Gewürzmischung für Avocado-Gerichte, Dips und leichte Küche. Passt zu Tomaten, Gurke, Joghurt und geröstetem Gemüse.',
     tags: ['bio', 'avocado', 'salat', 'dip'],
     variants: [
       { name: 'Gewürzdose 70g', price: '6.90', sku: 'SP-AVO-070' },
@@ -53,9 +53,9 @@ const products = [
     usage: 'Grillen & Ofengemüse',
     flavor: 'Kräutrig, buttrig, elegant',
     pairing: 'Passt zu Kräuterbutter, Grillgemüse, Kartoffeln, Pilzen, Fisch und Fleischalternativen.',
-    story: 'Die Aromalogik verbindet Produkt, Rezept und Warenkorb-Schwelle in einem einfachen Kaufpfad.',
+    story: 'Kräutrig, buttrig und elegant für Grillgemüse, Kartoffeln und schnelle Kräuterbutter.',
     description:
-      'Bio-Gewürzmischung für schnelle Kräuterbutter, Grillabende und Gemüsegerichte. Ideal für Rezeptstrecken und saisonale Bundles.',
+      'Bio-Gewürzmischung für schnelle Kräuterbutter, Grillabende und Gemüsegerichte. Fein abgestimmt für Ofengemüse, Pilze und Kartoffeln.',
     tags: ['bio', 'grillen', 'kraeuterbutter', 'gemuese'],
     variants: [
       { name: 'Gewürzdose 80g', price: '7.50', sku: 'SP-CDP-080' },
@@ -72,9 +72,9 @@ const products = [
     usage: 'Alltagsküche',
     flavor: 'Herzhaft, klar, gemüsig',
     pairing: 'Passt zu Suppen, Saucen, Reisgerichten, Couscous, Gemüsepfannen und Meal Prep.',
-    story: 'Ein wiederkehrendes Bedarfprodukt braucht Nachfülllogik, Abo-Option und sichtbare Vorratsgrößen.',
+    story: 'Eine klare Bio-Basis für Suppen, Saucen, Risotto und schnelle Alltagsküche.',
     description:
-      'Bio-Gemüsebrühe als Basisprodukt für tägliche Küche. Im Store wird der Wiederkauf sichtbar und technisch einfach wartbar.',
+      'Bio-Gemüsebrühe für Suppen, Saucen, Reisgerichte, Couscous und Gemüsepfannen. Herzhaft, klar und vielseitig.',
     tags: ['bio', 'basis', 'bruehe', 'meal-prep'],
     variants: [
       { name: 'Glas 160g', price: '7.90', sku: 'SP-BRUEHE-160' },
@@ -91,9 +91,9 @@ const products = [
     usage: 'Geschenk & Grillen',
     flavor: 'Rauchig, kräutrig, würzig',
     pairing: 'Passt zu Grillgemüse, Kartoffeln, Dips, Brot, Marinaden und sommerlichen Geschenkideen.',
-    story: 'Set-PDPs reduzieren Entscheidungslast und können saisonal mit Landingpages und Cross-Sells arbeiten.',
+    story: 'Ein kuratiertes Set für Grillgemüse, Dips, Kräuterbutter und Marinaden.',
     description:
-      'Ein kuratiertes Bio-Gewürzset für Grillabende. Die Darstellung priorisiert Geschenkfähigkeit, Anwendung und schnellen Warenkorb.',
+      'Ein kuratiertes Bio-Gewürzset für Grillabende. Ideal als Geschenk oder als aromatischer Start in die Sommerküche.',
     tags: ['bio', 'set', 'grillen', 'geschenk'],
     variants: [
       { name: '3er Set', price: '19.90', sku: 'SP-GRILL-3' },
@@ -109,9 +109,9 @@ const products = [
     usage: 'Brunch & Geschenk',
     flavor: 'Frisch, nussig, leicht scharf',
     pairing: 'Passt zu Brunch-Tischen, Frühstücksboxen, Corporate Gifts und Rezept-Content.',
-    story: 'Recipe-to-Cart verbindet Content und Commerce: ein Brunch-Rezept kann direkt ein Set verkaufen.',
+    story: 'Alles für Bagel, Avocado, Ei, Dip und Bowls in einem Geschenkset.',
     description:
-      'Bio-Gewürzset für Brunch und Bagel-Rezepte. Ideal als Geschenk und als Einstieg in einen höheren Warenkorbwert.',
+      'Bio-Gewürzset für Brunch und Bagel-Rezepte. Ideal als Geschenk oder für ein entspanntes Frühstück am Wochenende.',
     tags: ['bio', 'set', 'brunch', 'bagel'],
     variants: [
       { name: '3er Set', price: '18.90', sku: 'SP-BRUNCH-3' },
@@ -132,7 +132,7 @@ const collections = [
     title: 'Gewürzsets',
     handle: 'gewuerzsets',
     description:
-      'Sets für Geschenke, Brunch, Grillabende und saisonale Kampagnen. Die Collection zeigt, wie Shopify Bundles, Landingpages und Upsells sauber zusammenfinden.',
+      'Sets für Geschenke, Brunch, Grillabende und saisonale Küche. Kuratiert für einfache Auswahl und besondere Anlässe.',
     products: ['bio-grillabend-set', 'bio-brunch-bagel-set'],
   },
 ];

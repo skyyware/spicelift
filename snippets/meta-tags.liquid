@@ -3,12 +3,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 {%- liquid
+  assign homepage_title = settings.homepage_meta_title | default: 'Spicelift | Premium Bio-Gewürze, Sets und Rezepte'
+  assign homepage_description = settings.homepage_meta_description | default: 'Spicelift verbindet Bio-Gewürze, kuratierte Sets, Rezeptideen und Nachfüllpacks in einem klaren, schnellen Einkaufserlebnis.'
   assign og_title = page_title | default: shop.name
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = page_description | default: shop.description | default: shop.name
+  assign fallback_og_image = 'spicelift-social-share.jpg' | asset_url
 
-  if request.page_type == 'product'
+  if request.page_type == 'index'
+    assign og_title = homepage_title
+    assign og_description = homepage_description
+  elsif request.page_type == 'product'
     assign og_type = 'product'
   elsif request.page_type == 'article'
     assign og_type = 'article'
@@ -55,6 +61,23 @@
     property="og:image:height"
     content="{{ page_image.height }}"
   >
+{%- else -%}
+  <meta
+    property="og:image"
+    content="https:{{ fallback_og_image }}"
+  >
+  <meta
+    property="og:image:secure_url"
+    content="https:{{ fallback_og_image }}"
+  >
+  <meta
+    property="og:image:width"
+    content="1200"
+  >
+  <meta
+    property="og:image:height"
+    content="630"
+  >
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}
@@ -84,12 +107,20 @@
   name="twitter:description"
   content="{{ og_description | escape }}"
 >
+<meta
+  name="twitter:image"
+  content="{% if page_image %}https:{{ page_image | image_url }}{% else %}https:{{ fallback_og_image }}{% endif %}"
+>
+<meta
+  name="theme-color"
+  content="#244f35"
+>
 
 <title>
-  {{ page_title }}
+  {{ og_title }}
   {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
   {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- unless og_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
 </title>
 
 <link
@@ -97,9 +128,26 @@
   href="{{ canonical_url }}"
 >
 
-{% if page_description %}
+{% if og_description %}
   <meta
     name="description"
-    content="{{ page_description | escape }}"
+    content="{{ og_description | escape }}"
   >
 {% endif %}
+
+{%- if request.page_type == 'index' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "url": {{ request.origin | json }},
+      "description": {{ og_description | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ request.origin }}{{ routes.search_url }}?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+{%- endif -%}

@@ -1,6 +1,6 @@
 # Spicelift Shopify Theme
 
-Premium Shopify theme for the demo dev store `Spicelift`.
+Premium Shopify theme for the development store `Spicelift`.
 
 The project is a real Online Store 2.0 theme, not a static mockup. It shows how a premium organic spice shop can combine product variants, refill logic, recipe-led commerce, gift sets and B2B paths into a clearer buying experience.
 
@@ -28,9 +28,9 @@ The project is a real Online Store 2.0 theme, not a static mockup. It shows how 
 shopify theme dev --store spicelift --path /Volumes/web/spicelift
 ```
 
-## Seed Demo Store
+## Seed Store Content
 
-The seed script creates products, variants, metafields and collections in the `Spicelift` dev store.
+The seed script creates products, variants, metafields and collections in the `Spicelift` development store.
 
 ```bash
 node /Volumes/web/spicelift/scripts/seed-store.mjs
@@ -54,6 +54,23 @@ node scripts/generate-grok-assets.mjs
 
 The generator uses `grok-imagine-image-quality` at `2k`, stores final JPGs in `assets/`, and writes `assets/grok-assets-manifest.json`.
 
+The product prompts ask Grok to render sparse native labels directly in the packshot:
+`SPICELIFT`, product name and at most `GEWÜRZ` or `SET`.
+
+```bash
+python3 scripts/create-social-share.py
+```
+
+This creates the OpenGraph fallback image `assets/spicelift-social-share.jpg`.
+
+## Update Store SEO And Media
+
+After pushing image changes to GitHub, update Shopify product SEO, collection SEO, vendor names and product media:
+
+```bash
+node scripts/update-store-seo-media.mjs
+```
+
 ## Push Theme
 
 ```bash
@@ -72,5 +89,6 @@ shopify theme push \
 - `snippets/product-card-spice.liquid` keeps product tiles reusable.
 - `scripts/seed-store.mjs` keeps store content reproducible.
 - `scripts/generate-grok-assets.mjs` keeps generated visual assets reproducible and documented.
+- `scripts/update-store-seo-media.mjs` keeps Shopify Admin product and collection data aligned with the theme.
 
 The theme deliberately avoids theme-app coupling. The first improvement pass is built with Shopify-native primitives before adding app complexity.
