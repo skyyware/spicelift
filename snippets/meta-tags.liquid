@@ -14,6 +14,9 @@
   if request.page_type == 'index'
     assign og_title = homepage_title
     assign og_description = homepage_description
+  elsif request.page_type == 'cart'
+    assign og_title = 'Warenkorb'
+    assign og_description = 'Warenkorb von Spicelift mit Gewürzen, Sets und Nachfüllpacks.'
   elsif request.page_type == 'product'
     assign og_type = 'product'
   elsif request.page_type == 'article'

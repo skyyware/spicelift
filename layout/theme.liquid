@@ -20,6 +20,7 @@
     {% # Load and preload the critical CSS %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'spicelift-store.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'spicelift-store.js' | asset_url }}" defer="defer"></script>
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}

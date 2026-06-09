@@ -10,6 +10,9 @@ The project is a real Online Store 2.0 theme, not a static mockup. It shows how 
 - Product detail pages with visible variant logic, refill options and use-case copy
 - Collections that guide by usage, nutrition and aroma instead of only showing a grid
 - Recipe-to-cart concept for turning content into a direct purchase path
+- Aroma Finder guided selling for occasion-led product discovery
+- Ajax Quick Add on product cards with Shopify form fallback
+- Contextual cart upgrade logic for shipping threshold, refill and set recommendations
 - Breadcrumb navigation, structured data and social sharing metadata for clearer product signals
 - Responsive image loading strategy with an explicit priority image for the first viewport
 - Storefront modules that can be maintained in Shopify without coupling the shop to a custom app
@@ -85,6 +88,7 @@ shopify theme push \
 ## Architecture Notes
 
 - `assets/spicelift-store.css` contains the custom design system.
+- `assets/spicelift-store.js` contains progressive enhancement for product-card quick add.
 - `sections/home-spicelift.liquid` is the landing surface.
 - `sections/product.liquid` implements the conversion-focused PDP.
 - `sections/collection.liquid` implements the guided product grid.
@@ -105,3 +109,16 @@ The current theme pass follows current Shopify and Google guidance plus durable 
 - Keep product signals machine-readable: Shopify product structured data, BreadcrumbList JSON-LD, Organization JSON-LD, canonical URLs and OpenGraph/Twitter media.
 - Preserve accessibility in the interaction layer: visible focus states, semantic breadcrumbs, aria-pressed filter controls and explicit quick-add labels.
 - Reduce commerce friction: product-page buying guidance, collection filter feedback, cart assurance and a visible shipping threshold.
+- Use guided selling where it has real value: the Aroma Finder turns cooking occasions into product recommendations without forcing users through a generic search path.
+- Keep Ajax behavior progressive: Quick Add improves speed and perceived quality, but the underlying Shopify product form remains the fallback.
+
+## Award-Layer Pass
+
+The latest pass adds high-impact, low-risk commerce improvements that map directly to a premium Shopify maintenance project:
+
+- Guided Selling: the homepage Aroma Finder recommends products by cooking occasion, not by internal category structure.
+- Recipe-to-Cart: the featured recipe adds a useful two-product basket through Shopify cart APIs.
+- PDP Decision Logic: each product answers usage, size and pairing questions near the purchase flow.
+- Collection Kaufpfade: curated paths for first purchase, refill, gift and occasion activate the product grid filters.
+- Cart AOV Layer: the cart explains the shipping threshold and points users toward refill or set additions.
+- Quick Add: product cards add items without a full page transition while keeping the standard Shopify form fallback.

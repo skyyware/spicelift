@@ -4,6 +4,10 @@
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
 {% assign bagel = all_products['bio-bagel-gewuerz'] %}
 {% assign avocado = all_products['bio-avocado-gewuerz'] %}
+{% assign cafe = all_products['bio-cafe-de-paris-gewuerz'] %}
+{% assign bruehe = all_products['bio-gemuesebruehe'] %}
+{% assign grill_set = all_products['bio-grillabend-set'] %}
+{% assign brunch_set = all_products['bio-brunch-bagel-set'] %}
 
 <section class="sf-hero full-width">
   <img
@@ -55,6 +59,95 @@
   </div>
 </section>
 
+<section class="sf-section sf-finder-section" id="aroma-finder">
+  <div class="sf-page sf-finder">
+    <div class="sf-finder__copy">
+      <p class="sf-eyebrow">Aroma-Finder</p>
+      <h2 class="sf-heading sf-heading--medium">Nicht suchen. Passend würzen.</h2>
+      <p class="sf-copy">
+        Der schnellste Weg zum richtigen Produkt ist nicht die Produktliste, sondern der Kochanlass.
+        Eine einfache Beratungsschicht senkt Auswahlstress und führt direkt zu Dose, Refill oder Set.
+      </p>
+      <div class="sf-finder__metrics" aria-label="Commerce-Hebel">
+        <span><strong>1</strong> Anlass</span>
+        <span><strong>2</strong> Empfehlungen</span>
+        <span><strong>0</strong> Suchweg</span>
+      </div>
+    </div>
+
+    <div class="sf-finder__panel" data-finder>
+      <div class="sf-finder__choices" role="tablist" aria-label="Kochanlass auswählen">
+        <button class="sf-finder-choice is-active" type="button" role="tab" aria-selected="true" data-finder-target="brunch">
+          <span>Brunch</span>
+          <small>Bagel, Avocado, Ei</small>
+        </button>
+        <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="grill">
+          <span>Grillen</span>
+          <small>Gemüse, Dip, Butter</small>
+        </button>
+        <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="alltag">
+          <span>Alltag</span>
+          <small>Suppe, Risotto, Meal Prep</small>
+        </button>
+        <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="geschenk">
+          <span>Geschenk</span>
+          <small>Kuratierte Sets</small>
+        </button>
+      </div>
+
+      <div class="sf-finder-results">
+        <div class="sf-finder-result is-active" data-finder-result="brunch">
+          <div>
+            <p class="sf-eyebrow">Empfehlung</p>
+            <h3>Frisch, nussig, sofort verständlich.</h3>
+            <p>Bagel-Gewürz und Avocado-Gewürz bilden einen einfachen Brunch-Pfad mit hoher Wiederkauflogik.</p>
+          </div>
+          <div class="sf-finder-products">
+            {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
+            {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
+          </div>
+        </div>
+
+        <div class="sf-finder-result" data-finder-result="grill" hidden>
+          <div>
+            <p class="sf-eyebrow">Empfehlung</p>
+            <h3>Kräuterbutter, Grillgemüse, Geschenk.</h3>
+            <p>Café de Paris plus Grillabend-Set macht aus einzelnen Produkten einen Anlasskorb.</p>
+          </div>
+          <div class="sf-finder-products">
+            {% if cafe != blank %}{% render 'product-card-spice', product: cafe, compact: true %}{% endif %}
+            {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
+          </div>
+        </div>
+
+        <div class="sf-finder-result" data-finder-result="alltag" hidden>
+          <div>
+            <p class="sf-eyebrow">Empfehlung</p>
+            <h3>Basis für die schnelle Küche.</h3>
+            <p>Gemüsebrühe und Avocado-Gewürz lösen zwei wiederkehrende Fälle: Basis und frisches Finish.</p>
+          </div>
+          <div class="sf-finder-products">
+            {% if bruehe != blank %}{% render 'product-card-spice', product: bruehe, compact: true %}{% endif %}
+            {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
+          </div>
+        </div>
+
+        <div class="sf-finder-result" data-finder-result="geschenk" hidden>
+          <div>
+            <p class="sf-eyebrow">Empfehlung</p>
+            <h3>Auswahl ohne Geschenkrisiko.</h3>
+            <p>Kuratierte Sets funktionieren für Gastgeber, Kundengeschenke und saisonale Kampagnen.</p>
+          </div>
+          <div class="sf-finder-products">
+            {% if brunch_set != blank %}{% render 'product-card-spice', product: brunch_set, compact: true %}{% endif %}
+            {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sf-section" id="favorites">
   <div class="sf-page">
     <div class="sf-section-intro">
@@ -91,24 +184,35 @@
     </div>
 
     <div class="sf-recipe-stack">
-      <div class="sf-recipe-step">
-        <span>1</span>
+      <div class="sf-recipe-step is-current">
+        <span>01</span>
         <div>
-          <h3>Gericht auswählen</h3>
-          <p>Rezepte werden nach Anlass, Ernährung und Zubereitung geführt.</p>
+          <h3>Rezept als Warenkorb denken</h3>
+          <p>Das Rezept erklärt nicht nur, es führt direkt zu den passenden Produkten.</p>
         </div>
       </div>
       <div class="sf-recipe-step">
-        <span>2</span>
+        <span>02</span>
         <div>
-          <h3>Gewürze direkt sehen</h3>
-          <p>Dose, Nachfüllpack oder Set werden ohne Suchweg angeboten.</p>
+          <h3>Dose und Refill sichtbar machen</h3>
+          <p>Für Erstkauf und Wiederkauf entsteht ein klarer nächster Schritt.</p>
         </div>
       </div>
       <div class="sf-grid sf-grid--2">
         {% if bagel != blank %}{% render 'product-card-spice', product: bagel %}{% endif %}
         {% if avocado != blank %}{% render 'product-card-spice', product: avocado %}{% endif %}
       </div>
+      {% if bagel != blank and avocado != blank %}
+        <button
+          class="sf-button sf-bundle-button"
+          type="button"
+          data-bundle-add
+          data-items='[{"id":{{ bagel.selected_or_first_available_variant.id | json }},"quantity":1},{"id":{{ avocado.selected_or_first_available_variant.id | json }},"quantity":1}]'
+        >
+          Rezeptkorb hinzufügen
+        </button>
+        <p class="sf-bundle-note" data-bundle-note>Fügt Bagel-Gewürz und Avocado-Gewürz in den Warenkorb.</p>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -166,6 +270,55 @@
     <a class="sf-button sf-button--light" href="{{ routes.root_url }}">Anfrage vorbereiten</a>
   </div>
 </section>
+
+<script>
+  (() => {
+    document.querySelectorAll('[data-finder]').forEach((finder) => {
+      const choices = Array.from(finder.querySelectorAll('[data-finder-target]'));
+      const results = Array.from(finder.querySelectorAll('[data-finder-result]'));
+      choices.forEach((choice) => {
+        choice.addEventListener('click', () => {
+          const target = choice.dataset.finderTarget;
+          choices.forEach((item) => {
+            const active = item === choice;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          results.forEach((result) => {
+            const active = result.dataset.finderResult === target;
+            result.hidden = !active;
+            result.classList.toggle('is-active', active);
+          });
+        });
+      });
+    });
+
+    document.querySelectorAll('[data-bundle-add]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const note = button.parentElement.querySelector('[data-bundle-note]');
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Wird hinzugefügt ...';
+        try {
+          const items = JSON.parse(button.dataset.items || '[]');
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ items }),
+          });
+          if (!response.ok) throw new Error('Cart add failed');
+          button.textContent = 'Im Warenkorb';
+          if (note) note.textContent = 'Rezeptkorb hinzugefügt. Du wirst zum Warenkorb weitergeleitet.';
+          window.setTimeout(() => { window.location.href = '/cart'; }, 650);
+        } catch (error) {
+          button.disabled = false;
+          button.textContent = originalText;
+          if (note) note.textContent = 'Der Rezeptkorb konnte nicht hinzugefügt werden. Bitte Produkte einzeln wählen.';
+        }
+      });
+    });
+  })();
+</script>
 
 {% schema %}
 {

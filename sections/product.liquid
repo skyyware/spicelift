@@ -66,6 +66,21 @@
             <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-input>
             <div class="sf-variant-grid" role="list">
               {% for variant in product.variants %}
+                {% assign variant_label = 'Zum Kennenlernen' %}
+                {% assign variant_hint = 'Für den ersten Kauf und die schnelle Küche.' %}
+                {% assign variant_title_downcase = variant.title | downcase %}
+                {% if variant_title_downcase contains 'nachfüll' or variant_title_downcase contains '250' or variant_title_downcase contains '500' %}
+                  {% assign variant_label = 'Beste Wahl' %}
+                  {% assign variant_hint = 'Für Wiederkauf, Vorrat und weniger Verpackungswechsel.' %}
+                {% endif %}
+                {% if variant_title_downcase contains 'gastro' or variant_title_downcase contains '1kg' or variant_title_downcase contains 'vorrat' %}
+                  {% assign variant_label = 'Vorrat' %}
+                  {% assign variant_hint = 'Für Vielkocher, Teams und B2B-Anwendungen.' %}
+                {% endif %}
+                {% if product.type contains 'Set' or product.title contains 'Set' %}
+                  {% assign variant_label = 'Geschenkpfad' %}
+                  {% assign variant_hint = 'Für Gastgeber, Kundengeschenke und kuratierte Anlässe.' %}
+                {% endif %}
                 <button
                   class="sf-variant-card"
                   type="button"
@@ -74,8 +89,11 @@
                   aria-pressed="{% if variant == current_variant %}true{% else %}false{% endif %}"
                 >
                   <span class="sf-variant-dot"></span>
-                  <strong>{{ variant.title }}</strong>
-                  <span>{{ variant.price | money_without_trailing_zeros }}</span>
+                  <span>
+                    <strong>{{ variant.title }}</strong>
+                    <small>{{ variant_label }} · {{ variant_hint }}</small>
+                  </span>
+                  <strong>{{ variant.price | money_without_trailing_zeros }}</strong>
                 </button>
               {% endfor %}
             </div>
@@ -105,6 +123,30 @@
         </div>
       </div>
     </div>
+
+    <section class="sf-pdp-blueprint" aria-labelledby="pdp-blueprint-heading">
+      <div>
+        <p class="sf-eyebrow">Kaufentscheidung</p>
+        <h2 id="pdp-blueprint-heading" class="sf-heading sf-heading--medium">Jedes Produkt beantwortet drei Fragen.</h2>
+      </div>
+      <div class="sf-blueprint-steps">
+        <article>
+          <span>01</span>
+          <h3>Wofür passt es?</h3>
+          <p>{{ pairing }}</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Welche Größe ist sinnvoll?</h3>
+          <p>Dose für Einstieg, Refill für Wiederkauf, Vorrat für Vielkocher und Teams.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Was ergänzt es?</h3>
+          <p>Passende Sets und Pairings erhöhen Warenkorbwert, ohne künstlich zu wirken.</p>
+        </article>
+      </div>
+    </section>
 
     <div class="sf-story">
       <div class="sf-story-card">

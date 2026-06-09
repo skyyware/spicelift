@@ -3,6 +3,8 @@
 {% assign shipping_threshold = 4000 %}
 {% assign remaining = shipping_threshold | minus: cart.total_price %}
 {% assign progress = cart.total_price | times: 100 | divided_by: shipping_threshold %}
+{% assign bagel = all_products['bio-bagel-gewuerz'] %}
+{% assign grill_set = all_products['bio-grillabend-set'] %}
 {% if progress > 100 %}{% assign progress = 100 %}{% endif %}
 
 <section class="sf-cart-page">
@@ -73,6 +75,21 @@
             <span>Sicherer Shopify Checkout</span>
             <span>Versandkostenfrei ab 40 €</span>
             <span>Gewürze, Sets und Nachfüllpacks kombinierbar</span>
+          </div>
+
+          <div class="sf-cart-upgrade">
+            <p class="sf-eyebrow">Sinnvolle Ergänzung</p>
+            {% if remaining > 0 %}
+              <strong>Versandziel erreichen</strong>
+              <span>Ein Nachfüllpack oder Set bringt den Warenkorb näher an kostenlosen Versand.</span>
+            {% else %}
+              <strong>Bereit zum Abschließen</strong>
+              <span>Dein Warenkorb erreicht den Versandvorteil. Jetzt sauber abschließen.</span>
+            {% endif %}
+            <div class="sf-cart-upgrade__links">
+              {% if bagel != blank %}<a href="{{ bagel.url }}">Nachfüllprodukt ansehen</a>{% endif %}
+              {% if grill_set != blank %}<a href="{{ grill_set.url }}">Set ergänzen</a>{% endif %}
+            </div>
           </div>
         </aside>
       </form>

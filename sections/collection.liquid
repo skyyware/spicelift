@@ -13,12 +13,35 @@
   </div>
 </section>
 
+<section class="sf-page sf-collection-paths" aria-label="Kaufpfade">
+  <a class="sf-path-card" href="#ProductGrid" data-path-filter="all">
+    <span>01</span>
+    <strong>Erstkauf</strong>
+    <small>Beliebte Dosen und Sets zum Kennenlernen.</small>
+  </a>
+  <a class="sf-path-card" href="#ProductGrid" data-path-filter="nachfullbar">
+    <span>02</span>
+    <strong>Refill</strong>
+    <small>Nachfüllpack und Vorrat ohne erneute Suche.</small>
+  </a>
+  <a class="sf-path-card" href="#ProductGrid" data-path-filter="set">
+    <span>03</span>
+    <strong>Geschenk</strong>
+    <small>Kuratierte Sets für Gastgeber und Kundschaft.</small>
+  </a>
+  <a class="sf-path-card" href="#ProductGrid" data-path-filter="grillen">
+    <span>04</span>
+    <strong>Anlass</strong>
+    <small>Direkt von Gericht oder Saison zur passenden Würze.</small>
+  </a>
+</section>
+
 <section class="sf-page sf-collection-grid">
   <aside class="sf-card sf-filter-panel" data-filter-panel>
     <p class="sf-eyebrow">Orientierung</p>
     <div class="sf-filter-group">
       <h3>Kochanlass</h3>
-      <div class="sf-chip-row">
+      <div class="sf-chip-row" id="ProductGrid">
         <button class="sf-chip sf-chip--button is-active" type="button" data-filter="all" aria-pressed="true">Alle</button>
         <button class="sf-chip sf-chip--button" type="button" data-filter="grillen" aria-pressed="false">Grillen</button>
         <button class="sf-chip sf-chip--button" type="button" data-filter="dip" aria-pressed="false">Dips & Saucen</button>
@@ -92,6 +115,14 @@
             ? `${cards.length} Produkte für Küche, Geschenk und Vorrat.`
             : `${visible} passende Produkte in dieser Auswahl.`;
         }
+      });
+    });
+
+    section.querySelectorAll('[data-path-filter]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const filter = link.dataset.pathFilter;
+        const button = section.querySelector(`[data-filter="${filter}"]`) || section.querySelector('[data-filter="all"]');
+        if (button) button.click();
       });
     });
   })();
