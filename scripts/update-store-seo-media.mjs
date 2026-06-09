@@ -126,7 +126,7 @@ function productByHandle(handle) {
         nodes {
           id
           handle
-          media(first: 1) { nodes { id } }
+          media(first: 20) { nodes { id alt } }
         }
       }
     }`,
@@ -153,10 +153,12 @@ for (const definition of products) {
     console.warn(`missing product ${definition.handle}`);
     continue;
   }
-  const media = forceMedia || product.media.nodes.length === 0
+  const premiumAlt = `${definition.title} von Spicelift - ${premiumAltSuffix}`;
+  const existingPremiumMedia = product.media.nodes.find((node) => node.alt === premiumAlt);
+  const media = (forceMedia && !existingPremiumMedia) || product.media.nodes.length === 0
     ? [{
         originalSource: `${rawBase}/${definition.image}`,
-        alt: `${definition.title} von Spicelift - ${premiumAltSuffix}`,
+        alt: premiumAlt,
         mediaContentType: 'IMAGE',
       }]
     : [];
@@ -188,9 +190,8 @@ for (const definition of products) {
     },
   );
   reportErrors('productUpdate', data.productUpdate.userErrors);
-  if (media.length) {
-    const preferredMedia = data.productUpdate.product.media.nodes
-      .find((node) => node.alt === `${definition.title} von Spicelift - ${premiumAltSuffix}`);
+  if (forceMedia || media.length) {
+    const preferredMedia = data.productUpdate.product.media.nodes.find((node) => node.alt === premiumAlt);
     if (preferredMedia) {
       const reorder = execute(
         `mutation ReorderProductMedia($id: ID!, $moves: [MoveInput!]!) {
@@ -201,7 +202,7 @@ for (const definition of products) {
         }`,
         {
           id: product.id,
-          moves: [{ id: preferredMedia.id, newPosition: 0 }],
+          moves: [{ id: preferredMedia.id, newPosition: '0' }],
         },
       );
       reportErrors('productReorderMedia', reorder.productReorderMedia.mediaUserErrors);
