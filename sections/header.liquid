@@ -8,6 +8,11 @@
 
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
+{% assign b2b_page = pages['b2b-corporate-gifts'] %}
+{% assign b2b_url = routes.root_url | append: '#b2b' %}
+{% if b2b_page != blank %}
+  {% assign b2b_url = b2b_page.url %}
+{% endif %}
 
 <header class="sf-header">
   <div class="sf-page sf-header__inner">
@@ -24,7 +29,7 @@
       <a href="{{ set_collection_url }}">Gewürzsets</a>
       <a href="/#recipe-to-cart">Rezepte</a>
       <a href="/#gifts">Geschenke</a>
-      <a href="/#b2b">B2B</a>
+      <a href="{{ b2b_url }}">B2B</a>
     </nav>
 
     <div class="sf-header__actions">

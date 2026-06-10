@@ -17,6 +17,7 @@ The project is a real Online Store 2.0 theme, not a static mockup. It shows how 
 - Responsive image loading strategy with an explicit priority image for the first viewport
 - Storefront modules that can be maintained in Shopify without coupling the shop to a custom app
 - 2k Grok Imagine asset pipeline for high-value product and editorial imagery
+- Shopify-native commerce data layer with smart collections, Metaobjects and a B2B page route
 
 ## Stack
 
@@ -76,6 +77,22 @@ After pushing image changes to GitHub, update Shopify product SEO, collection SE
 node scripts/update-store-seo-media.mjs
 ```
 
+## Sync Commerce Data Layer
+
+The commerce data sync keeps Shopify-native buying paths aligned with the theme:
+
+```bash
+node scripts/sync-commerce-data.mjs
+```
+
+It maintains smart collections and the B2B page through Shopify Admin GraphQL via the CLI. Metaobject definitions and entries are owned by the direct Shopify connector/Admin API app and are documented in `docs/commerce-data-layer.md`.
+
+Only opt into CLI Metaobject writes when the active API app can read and write those definitions:
+
+```bash
+SHOPIFY_SYNC_METAOBJECTS=1 node scripts/sync-commerce-data.mjs
+```
+
 ## Push Theme
 
 ```bash
@@ -97,6 +114,10 @@ shopify theme push \
 - `scripts/seed-store.mjs` keeps store content reproducible.
 - `scripts/generate-grok-assets.mjs` keeps generated visual assets reproducible and documented.
 - `scripts/update-store-seo-media.mjs` keeps Shopify Admin product and collection data aligned with the theme.
+- `scripts/sync-commerce-data.mjs` keeps smart collections and the B2B page reproducible.
+- `docs/commerce-data-layer.md` documents the Shopify data model and Admin API ownership boundary.
+- `docs/agent-development-guide.md` documents the operating guide for future agents and humans.
+- `docs/dossier-notes.md` translates the build into application material.
 
 The theme deliberately avoids theme-app coupling. The first improvement pass is built with Shopify-native primitives before adding app complexity.
 
@@ -123,12 +144,24 @@ The latest pass adds high-impact, low-risk commerce improvements that map direct
 - Cart AOV Layer: the cart explains the shipping threshold and points users toward refill or set additions.
 - Quick Add: product cards add items without a full page transition while keeping the standard Shopify form fallback.
 
+## Commerce Data Layer Pass
+
+The 2026-06-10 pass moved the strongest buying paths into Shopify-native data:
+
+- Smart collections for brunch, grilling, dips, gifts and refill/stock-up.
+- `spicelift_use_case` Metaobjects for the Aroma Finder.
+- `spicelift_recipe` Metaobject for the featured recipe-to-cart block.
+- Dedicated `page.b2b` route for corporate gifts, gastro/team stock-up and private label qualification.
+- Header and footer links that resolve to the B2B page when it exists.
+- A documented Admin API boundary: Metaobjects are managed by the direct Shopify connector, while the CLI script maintains smart collections and pages.
+
 ## Device QA
 
-Final QA was run against the live theme `Spicelift Premium Store` (`#160055492834`) on 2026-06-09.
+Final QA was run against the live theme `Spicelift Premium Store` (`#160055492834`) on 2026-06-10 after the commerce data layer pass.
 
-- Viewports: 320x740, 390x844, 430x932, 768x1024, 1024x768, 1440x1000 and 1920x1080.
-- Routes: home, spice collection, set collection, product detail page and cart.
+- Viewports: 320x740, 390x844, 430x932, 768x1024 and 1440x1000.
+- Routes: home, brunch collection, grill collection, gift collection, B2B page, product detail page and cart.
 - Checks: no page-level horizontal overflow, no broken images, no unwanted client/demo wording, one-line desktop navigation and hidden Shopify preview chrome.
-- Interaction proof: Aroma Finder quick add, Recipe-to-Cart bundle, collection refill filter, gift path to set collection and mobile PDP sticky add-to-cart.
-- Final screenshots and matrix data: `/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-device-qa-final-clean`.
+- Interaction proof: Aroma Finder starts with Brunch, switches to Grillen, Recipe-to-Cart redirects to cart and contains Bagel/Avocado products.
+- Relevant network check: no own theme asset failures; the remaining 404 is a Shopify CDN `ShopifySans--regular.woff` request outside the theme.
+- Final screenshots and matrix data: `/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-commerce-data-qa-2026-06-10`.

@@ -941,6 +941,20 @@ body.spicelift-store {
   margin-top: 4px;
 }
 
+.sf-inline-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 14px;
+  color: var(--sf-green);
+  font-weight: 850;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.sf-inline-link:hover {
+  color: var(--sf-clay);
+}
+
 .sf-b2b-band {
   background: var(--sf-white);
 }
@@ -961,6 +975,79 @@ body.spicelift-store {
 
 .sf-b2b-panel .sf-copy {
   color: rgba(255, 255, 255, 0.76);
+}
+
+.sf-b2b-panel .sf-button--light {
+  border-color: #fff;
+  background: #fff;
+  color: var(--sf-green);
+}
+
+.sf-b2b-panel .sf-button--light:hover {
+  background: #f6f1e6;
+  border-color: #f6f1e6;
+  color: var(--sf-ink);
+}
+
+.sf-b2b-page {
+  padding: 56px 0 96px;
+}
+
+.sf-b2b-hero {
+  display: grid;
+  gap: 22px;
+  max-width: 920px;
+  padding: clamp(34px, 6vw, 72px);
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background:
+    linear-gradient(115deg, rgba(247, 244, 236, 0.96), rgba(255, 255, 255, 0.92)),
+    var(--sf-cream);
+}
+
+.sf-b2b-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 34px 0;
+}
+
+.sf-b2b-card {
+  min-height: 230px;
+  padding: 24px;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: var(--sf-white);
+  box-shadow: var(--sf-shadow);
+}
+
+.sf-b2b-card span {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+  border-radius: 50%;
+  background: var(--sf-green);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.sf-b2b-card h2,
+.sf-b2b-card p {
+  margin: 0;
+}
+
+.sf-b2b-card p {
+  margin-top: 12px;
+  color: var(--sf-muted);
+}
+
+.sf-b2b-next {
+  align-items: start;
+  margin: 48px 0;
 }
 
 .sf-product-page {
@@ -1620,6 +1707,10 @@ body.spicelift-store {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sf-b2b-grid {
+    grid-template-columns: 1fr;
+  }
+
   .sf-product-layout,
   .sf-usecase-grid,
   .sf-editorial-grid,
@@ -1664,6 +1755,15 @@ body.spicelift-store {
 
   .sf-header__inner > * {
     min-width: 0;
+  }
+
+  .sf-b2b-page {
+    padding: 34px 0 72px;
+  }
+
+  .sf-b2b-hero,
+  .sf-b2b-card {
+    padding: 22px;
   }
 
   .sf-logo {

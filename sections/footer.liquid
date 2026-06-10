@@ -3,6 +3,10 @@
 {% assign recipe_url = routes.root_url | append: '#recipe-to-cart' %}
 {% assign gifts_url = routes.root_url | append: '#gifts' %}
 {% assign b2b_url = routes.root_url | append: '#b2b' %}
+{% assign b2b_page = pages['b2b-corporate-gifts'] %}
+{% if b2b_page != blank %}
+  {% assign b2b_url = b2b_page.url %}
+{% endif %}
 
 <footer class="sf-footer">
   <div class="sf-page sf-footer__grid">

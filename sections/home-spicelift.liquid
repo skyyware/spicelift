@@ -1,7 +1,24 @@
 {% assign spice_collection = collections['gewuerzmischungen'] %}
 {% assign set_collection = collections['gewuerzsets'] %}
+{% assign brunch_collection = collections['brunch-fruehstueck'] %}
+{% assign grill_collection = collections['grillen-sommer'] %}
+{% assign dip_collection = collections['dips-saucen'] %}
+{% assign refill_collection = collections['nachfuellpacks-vorrat'] %}
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
+{% assign b2b_page = pages['b2b-corporate-gifts'] %}
+{% assign b2b_url = routes.root_url | append: '#b2b' %}
+{% if b2b_page != blank %}
+  {% assign b2b_url = b2b_page.url %}
+{% endif %}
+{% assign use_case_handles = 'brunch,grill,alltag,geschenk' | split: ',' %}
+{% assign has_use_cases = false %}
+{% for use_case_handle in use_case_handles %}
+  {% if shop.metaobjects.spicelift_use_case[use_case_handle] != blank %}
+    {% assign has_use_cases = true %}
+  {% endif %}
+{% endfor %}
+{% assign featured_recipe = shop.metaobjects.spicelift_recipe['knusprige-bagel-bowl'] %}
 {% assign bagel = all_products['bio-bagel-gewuerz'] %}
 {% assign avocado = all_products['bio-avocado-gewuerz'] %}
 {% assign cafe = all_products['bio-cafe-de-paris-gewuerz'] %}
@@ -48,11 +65,11 @@
       <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-grillabend-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>Geschenksets<span>Für Küche, Kundschaft und Gastgeber</span></strong>
     </a>
-    <a class="sf-category-card" href="#recipe-to-cart">
+    <a class="sf-category-card" href="{% if brunch_collection != blank %}{{ brunch_collection.url }}{% else %}#recipe-to-cart{% endif %}">
       <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-avocado-gewuerz.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
-      <strong>Rezepte<span>Vom Anlass direkt zum Warenkorb</span></strong>
+      <strong>Brunch<span>Vom Anlass direkt zum Warenkorb</span></strong>
     </a>
-    <a class="sf-category-card" href="#b2b">
+    <a class="sf-category-card" href="{{ b2b_url }}">
       <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-brunch-bagel-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>B2B<span>Firmengeschenke und Private Label</span></strong>
     </a>
@@ -75,76 +92,135 @@
       </div>
     </div>
 
-    <div class="sf-finder__panel" data-finder>
-      <div class="sf-finder__choices" role="tablist" aria-label="Kochanlass auswählen">
-        <button class="sf-finder-choice is-active" type="button" role="tab" aria-selected="true" data-finder-target="brunch">
-          <span>Brunch</span>
-          <small>Bagel, Avocado, Ei</small>
-        </button>
-        <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="grill">
-          <span>Grillen</span>
-          <small>Gemüse, Dip, Butter</small>
-        </button>
-        <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="alltag">
-          <span>Alltag</span>
-          <small>Suppe, Risotto, Meal Prep</small>
-        </button>
-        <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="geschenk">
-          <span>Geschenk</span>
-          <small>Kuratierte Sets</small>
-        </button>
-      </div>
-
-      <div class="sf-finder-results">
-        <div class="sf-finder-result is-active" data-finder-result="brunch">
-          <div>
-            <p class="sf-eyebrow">Empfehlung</p>
-            <h3>Frisch, nussig, sofort verständlich.</h3>
-            <p>Bagel-Gewürz und Avocado-Gewürz bilden einen einfachen Brunch-Pfad mit hoher Wiederkauflogik.</p>
-          </div>
-          <div class="sf-finder-products">
-            {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
-            {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
-          </div>
+    {% if has_use_cases %}
+      <div class="sf-finder__panel" data-finder>
+        <div class="sf-finder__choices" role="tablist" aria-label="Kochanlass auswählen">
+          {% assign active_assigned = false %}
+          {% for use_case_handle in use_case_handles %}
+            {% assign use_case = shop.metaobjects.spicelift_use_case[use_case_handle] %}
+            {% if use_case != blank %}
+              {% assign is_active = false %}
+              {% unless active_assigned %}
+                {% assign is_active = true %}
+                {% assign active_assigned = true %}
+              {% endunless %}
+              <button
+                class="sf-finder-choice{% if is_active %} is-active{% endif %}"
+                type="button"
+                role="tab"
+                aria-selected="{% if is_active %}true{% else %}false{% endif %}"
+                data-finder-target="{{ use_case_handle }}"
+              >
+                <span>{{ use_case.title.value }}</span>
+                <small>{{ use_case.subtitle.value }}</small>
+              </button>
+            {% endif %}
+          {% endfor %}
         </div>
 
-        <div class="sf-finder-result" data-finder-result="grill" hidden>
-          <div>
-            <p class="sf-eyebrow">Empfehlung</p>
-            <h3>Kräuterbutter, Grillgemüse, Geschenk.</h3>
-            <p>Café de Paris plus Grillabend-Set macht aus einzelnen Produkten einen Anlasskorb.</p>
-          </div>
-          <div class="sf-finder-products">
-            {% if cafe != blank %}{% render 'product-card-spice', product: cafe, compact: true %}{% endif %}
-            {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
-          </div>
-        </div>
-
-        <div class="sf-finder-result" data-finder-result="alltag" hidden>
-          <div>
-            <p class="sf-eyebrow">Empfehlung</p>
-            <h3>Basis für die schnelle Küche.</h3>
-            <p>Gemüsebrühe und Avocado-Gewürz lösen zwei wiederkehrende Fälle: Basis und frisches Finish.</p>
-          </div>
-          <div class="sf-finder-products">
-            {% if bruehe != blank %}{% render 'product-card-spice', product: bruehe, compact: true %}{% endif %}
-            {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
-          </div>
-        </div>
-
-        <div class="sf-finder-result" data-finder-result="geschenk" hidden>
-          <div>
-            <p class="sf-eyebrow">Empfehlung</p>
-            <h3>Auswahl ohne Geschenkrisiko.</h3>
-            <p>Kuratierte Sets funktionieren für Gastgeber, Kundengeschenke und saisonale Kampagnen.</p>
-          </div>
-          <div class="sf-finder-products">
-            {% if brunch_set != blank %}{% render 'product-card-spice', product: brunch_set, compact: true %}{% endif %}
-            {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
-          </div>
+        <div class="sf-finder-results">
+          {% assign active_assigned = false %}
+          {% for use_case_handle in use_case_handles %}
+            {% assign use_case = shop.metaobjects.spicelift_use_case[use_case_handle] %}
+            {% if use_case != blank %}
+              {% assign is_active = false %}
+              {% unless active_assigned %}
+                {% assign is_active = true %}
+                {% assign active_assigned = true %}
+              {% endunless %}
+              {% assign case_products = use_case.products.value %}
+              {% assign case_collection = use_case.collection.value %}
+              <div class="sf-finder-result{% if is_active %} is-active{% endif %}" data-finder-result="{{ use_case_handle }}"{% unless is_active %} hidden{% endunless %}>
+                <div>
+                  <p class="sf-eyebrow">Empfehlung · {{ use_case.metric.value }}</p>
+                  <h3>{{ use_case.heading.value }}</h3>
+                  <p>{{ use_case.summary.value }}</p>
+                  {% if case_collection != blank %}
+                    <a class="sf-inline-link" href="{{ case_collection.url }}">Diesen Kaufpfad ansehen</a>
+                  {% endif %}
+                </div>
+                <div class="sf-finder-products">
+                  {% for case_product in case_products limit: 2 %}
+                    {% render 'product-card-spice', product: case_product, compact: true %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
-    </div>
+    {% else %}
+      <div class="sf-finder__panel" data-finder>
+        <div class="sf-finder__choices" role="tablist" aria-label="Kochanlass auswählen">
+          <button class="sf-finder-choice is-active" type="button" role="tab" aria-selected="true" data-finder-target="brunch">
+            <span>Brunch</span>
+            <small>Bagel, Avocado, Ei</small>
+          </button>
+          <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="grill">
+            <span>Grillen</span>
+            <small>Gemüse, Dip, Butter</small>
+          </button>
+          <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="alltag">
+            <span>Alltag</span>
+            <small>Suppe, Risotto, Meal Prep</small>
+          </button>
+          <button class="sf-finder-choice" type="button" role="tab" aria-selected="false" data-finder-target="geschenk">
+            <span>Geschenk</span>
+            <small>Kuratierte Sets</small>
+          </button>
+        </div>
+
+        <div class="sf-finder-results">
+          <div class="sf-finder-result is-active" data-finder-result="brunch">
+            <div>
+              <p class="sf-eyebrow">Empfehlung</p>
+              <h3>Frisch, nussig, sofort verständlich.</h3>
+              <p>Bagel-Gewürz und Avocado-Gewürz bilden einen einfachen Brunch-Pfad mit hoher Wiederkauflogik.</p>
+            </div>
+            <div class="sf-finder-products">
+              {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
+              {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
+            </div>
+          </div>
+
+          <div class="sf-finder-result" data-finder-result="grill" hidden>
+            <div>
+              <p class="sf-eyebrow">Empfehlung</p>
+              <h3>Kräuterbutter, Grillgemüse, Geschenk.</h3>
+              <p>Café de Paris plus Grillabend-Set macht aus einzelnen Produkten einen Anlasskorb.</p>
+            </div>
+            <div class="sf-finder-products">
+              {% if cafe != blank %}{% render 'product-card-spice', product: cafe, compact: true %}{% endif %}
+              {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
+            </div>
+          </div>
+
+          <div class="sf-finder-result" data-finder-result="alltag" hidden>
+            <div>
+              <p class="sf-eyebrow">Empfehlung</p>
+              <h3>Basis für die schnelle Küche.</h3>
+              <p>Gemüsebrühe und Avocado-Gewürz lösen zwei wiederkehrende Fälle: Basis und frisches Finish.</p>
+            </div>
+            <div class="sf-finder-products">
+              {% if bruehe != blank %}{% render 'product-card-spice', product: bruehe, compact: true %}{% endif %}
+              {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
+            </div>
+          </div>
+
+          <div class="sf-finder-result" data-finder-result="geschenk" hidden>
+            <div>
+              <p class="sf-eyebrow">Empfehlung</p>
+              <h3>Auswahl ohne Geschenkrisiko.</h3>
+              <p>Kuratierte Sets funktionieren für Gastgeber, Kundengeschenke und saisonale Kampagnen.</p>
+            </div>
+            <div class="sf-finder-products">
+              {% if brunch_set != blank %}{% render 'product-card-spice', product: brunch_set, compact: true %}{% endif %}
+              {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
   </div>
 </section>
 
@@ -156,9 +232,9 @@
         <h2 class="sf-heading sf-heading--medium">Schneller vom Kochanlass zum richtigen Aroma.</h2>
       </div>
       <div class="sf-chip-row" aria-label="Kochanlässe">
-        <a class="sf-chip" href="{{ spice_collection_url }}">Zum Grillen</a>
-        <a class="sf-chip" href="{{ spice_collection_url }}">Für Salate</a>
-        <a class="sf-chip" href="{{ spice_collection_url }}">Für Dips</a>
+        <a class="sf-chip" href="{% if grill_collection != blank %}{{ grill_collection.url }}{% else %}{{ spice_collection_url }}{% endif %}">Zum Grillen</a>
+        <a class="sf-chip" href="{% if dip_collection != blank %}{{ dip_collection.url }}{% else %}{{ spice_collection_url }}{% endif %}">Für Dips</a>
+        <a class="sf-chip" href="{% if refill_collection != blank %}{{ refill_collection.url }}{% else %}{{ spice_collection_url }}{% endif %}">Nachfüllpacks</a>
         <a class="sf-chip" href="{{ set_collection_url }}">Als Geschenk</a>
       </div>
     </div>
@@ -176,33 +252,74 @@
 </section>
 
 <section class="sf-section sf-usecase full-width" id="recipe-to-cart">
+  {% assign recipe_products = blank %}
+  {% assign recipe_steps = blank %}
+  {% if featured_recipe != blank %}
+    {% assign recipe_products = featured_recipe.products.value %}
+    {% assign recipe_steps = featured_recipe.steps.value %}
+  {% endif %}
   <div class="sf-page sf-usecase-grid">
     <div class="sf-recipe-card">
-      <p class="sf-eyebrow">Rezept des Tages</p>
-      <h2>Knusprige Bagel Bowl mit Avocado-Dip.</h2>
-      <p class="sf-copy">Ein schneller Brunch-Favorit mit zwei Gewürzen, die Bagel, Avocado und Dip zusammenbringen.</p>
+      <p class="sf-eyebrow">{% if featured_recipe != blank %}{{ featured_recipe.occasion.value }}{% else %}Rezept des Tages{% endif %}</p>
+      <h2>{% if featured_recipe != blank %}{{ featured_recipe.title.value }}{% else %}Knusprige Bagel Bowl mit Avocado-Dip.{% endif %}</h2>
+      <p class="sf-copy">{% if featured_recipe != blank %}{{ featured_recipe.summary.value }}{% else %}Ein schneller Brunch-Favorit mit zwei Gewürzen, die Bagel, Avocado und Dip zusammenbringen.{% endif %}</p>
     </div>
 
     <div class="sf-recipe-stack">
-      <div class="sf-recipe-step is-current">
-        <span>01</span>
-        <div>
-          <h3>Rezept als Warenkorb denken</h3>
-          <p>Das Rezept erklärt nicht nur, es führt direkt zu den passenden Produkten.</p>
+      {% if recipe_steps != blank %}
+        {% for step in recipe_steps %}
+          <div class="sf-recipe-step{% if forloop.first %} is-current{% endif %}">
+            <span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <div>
+              <h3>{{ step | split: ':' | first }}</h3>
+              <p>{{ step | split: ':' | last }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="sf-recipe-step is-current">
+          <span>01</span>
+          <div>
+            <h3>Rezept als Warenkorb denken</h3>
+            <p>Das Rezept erklärt nicht nur, es führt direkt zu den passenden Produkten.</p>
+          </div>
         </div>
-      </div>
-      <div class="sf-recipe-step">
-        <span>02</span>
-        <div>
-          <h3>Dose und Refill sichtbar machen</h3>
-          <p>Für Erstkauf und Wiederkauf entsteht ein klarer nächster Schritt.</p>
+        <div class="sf-recipe-step">
+          <span>02</span>
+          <div>
+            <h3>Dose und Refill sichtbar machen</h3>
+            <p>Für Erstkauf und Wiederkauf entsteht ein klarer nächster Schritt.</p>
+          </div>
         </div>
-      </div>
+      {% endif %}
       <div class="sf-grid sf-grid--2">
-        {% if bagel != blank %}{% render 'product-card-spice', product: bagel %}{% endif %}
-        {% if avocado != blank %}{% render 'product-card-spice', product: avocado %}{% endif %}
+        {% if recipe_products != blank %}
+          {% for recipe_product in recipe_products limit: 2 %}
+            {% render 'product-card-spice', product: recipe_product %}
+          {% endfor %}
+        {% else %}
+          {% if bagel != blank %}{% render 'product-card-spice', product: bagel %}{% endif %}
+          {% if avocado != blank %}{% render 'product-card-spice', product: avocado %}{% endif %}
+        {% endif %}
       </div>
-      {% if bagel != blank and avocado != blank %}
+      {% if recipe_products != blank %}
+        {% capture recipe_items_json %}
+          [
+            {% for recipe_product in recipe_products %}
+              {"id":{{ recipe_product.selected_or_first_available_variant.id | json }},"quantity":1}{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        {% endcapture %}
+        <button
+          class="sf-button sf-bundle-button"
+          type="button"
+          data-bundle-add
+          data-items='{{ recipe_items_json | strip_newlines | strip }}'
+        >
+          {{ featured_recipe.cta_label.value | default: 'Rezeptkorb hinzufügen' }}
+        </button>
+        <p class="sf-bundle-note" data-bundle-note>Fügt die im Rezept verknüpften Produkte in den Warenkorb.</p>
+      {% elsif bagel != blank and avocado != blank %}
         <button
           class="sf-button sf-bundle-button"
           type="button"
@@ -267,7 +384,7 @@
         Personalisierung und Lieferzeit lassen sich direkt anfragen.
       </p>
     </div>
-    <a class="sf-button sf-button--light" href="{{ routes.root_url }}">Anfrage vorbereiten</a>
+    <a class="sf-button sf-button--light" href="{{ b2b_url }}">B2B-Pfad ansehen</a>
   </div>
 </section>
 
