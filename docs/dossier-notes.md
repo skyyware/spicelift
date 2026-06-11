@@ -21,6 +21,8 @@ The shop demonstrates:
 
 ## Prospect-Relevant Opportunities
 
+See also `docs/rimoco-opportunity-map.md` for the prioritized roadmap behind these points.
+
 ### 1. Occasion-Led Navigation
 
 Customers do not primarily think in internal product categories. They think in situations: brunch, grilling, dips, gifts, stock-up. Smart collections and guided-selling tiles turn those situations into direct shopping paths.
