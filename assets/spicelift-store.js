@@ -95,6 +95,7 @@
 
     if (button) {
       button.disabled = true;
+      button.classList.remove('is-added');
       button.textContent = 'Wird hinzugefügt';
     }
 
@@ -111,15 +112,18 @@
 
       await updateCartCount();
 
-      if (button) button.textContent = 'Im Warenkorb';
+      if (button) {
+        button.classList.add('is-added');
+        button.textContent = 'Hinzugefügt';
+      }
       if (status) status.textContent = 'Zum Warenkorb hinzugefügt.';
 
       window.setTimeout(() => {
         if (button) {
           button.disabled = false;
-          button.textContent = initialText;
+          button.textContent = 'Im Warenkorb';
         }
-        if (status) status.textContent = '';
+        if (status) status.textContent = 'Produkt ist im Warenkorb.';
       }, 1600);
     } catch (error) {
       if (button) {

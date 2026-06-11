@@ -1,4 +1,4 @@
-<div class="sf-topbar">
+<div class="sf-topbar full-width">
   <div class="sf-page sf-topbar__inner">
     <span>Bio Gewürze aus der Manufaktur</span>
     <span class="sf-topbar__rating">★★★★★ 4,94 von 5</span>
@@ -24,7 +24,7 @@
   {% assign gift_finder_url = gift_finder_page.url %}
 {% endif %}
 
-<header class="sf-header">
+<header class="sf-header full-width">
   <div class="sf-page sf-header__inner">
     <a class="sf-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
       <span class="sf-logo__mark" aria-hidden="true">S</span>
@@ -46,7 +46,14 @@
       <form class="sf-search" action="{{ routes.search_url }}" method="get" role="search">
         <label class="visually-hidden" for="Search-{{ section.id }}">Suche</label>
         <input id="Search-{{ section.id }}" type="search" name="q" placeholder="Wonach suchst du?">
-        <button type="submit" aria-label="Suche starten">⌕</button>
+        <button type="submit">Suchen</button>
+        <div class="sf-search-suggestions-popover" aria-label="Beliebte Suchpfade">
+          <a href="{{ routes.search_url }}?type=product&q=bagel">Bagel</a>
+          <a href="{{ routes.search_url }}?type=product&q=avocado">Avocado</a>
+          <a href="{{ routes.search_url }}?type=product&q=grillen">Grillen</a>
+          <a href="{{ routes.search_url }}?type=product&q=geschenk">Geschenk</a>
+          <a href="{{ routes.search_url }}?type=product&q=nachf%C3%BCllpack">Nachfüllpack</a>
+        </div>
       </form>
 
       <a class="sf-cart" href="{{ routes.cart_url }}">
@@ -59,6 +66,12 @@
       <label class="visually-hidden" for="MobileSearch-{{ section.id }}">Suche</label>
       <input id="MobileSearch-{{ section.id }}" type="search" name="q" placeholder="Gericht, Aroma, Set">
       <button type="submit">Suchen</button>
+      <div class="sf-search-suggestions-popover" aria-label="Beliebte Suchpfade">
+        <a href="{{ routes.search_url }}?type=product&q=bagel">Bagel</a>
+        <a href="{{ routes.search_url }}?type=product&q=avocado">Avocado</a>
+        <a href="{{ routes.search_url }}?type=product&q=grillen">Grillen</a>
+        <a href="{{ routes.search_url }}?type=product&q=geschenk">Geschenk</a>
+      </div>
     </form>
   </div>
 </header>

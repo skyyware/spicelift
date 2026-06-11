@@ -139,7 +139,11 @@ Check for:
 
 Latest QA artifact:
 
-`/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-commerce-data-qa-2026-06-10`
+`/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-live-polish-final-qa-v2-2026-06-11`
+
+Additional focused screenshot:
+
+`/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-live-polish-final-qa-2026-06-11/desktop-1440-cart-final-button.png`
 
 Known harmless noise:
 

@@ -58,6 +58,18 @@ The store should feel premium, useful and quiet. Every section must help the cus
 - Empty cart recovery links for recipe, gift and refill intent.
 - BreadcrumbList JSON-LD for the new editorial/decision pages.
 
+2026-06-11 live review polish added:
+
+- Full-bleed topbar, Aroma Finder, gifts and footer surfaces.
+- Header search suggestions for dish, occasion, gift and refill intent.
+- CSS logo mark aligned with the generated product-label identity.
+- Finder layout with narrower copy column, wider recommendation surface and hidden compact product-card titles.
+- Stable product-card meta rhythm so price and actions align across uneven descriptions.
+- Quick-add states that visibly move from adding to added to in-cart.
+- PDP refill advisor as a full-width stacked decision surface.
+- Breadcrumbs hidden from the visual UI while structured data remains in place.
+- Cart summary and empty-cart buttons cleaned up for better contrast and spacing.
+
 ## QA Gate
 
 Before shipping a design pass:

@@ -3,6 +3,10 @@
 {% assign usage = product.metafields.custom.usage.value | default: 'Bio Küche' %}
 {% assign flavor = product.metafields.custom.flavor.value | default: 'Würzig, klar, vielseitig' %}
 {% assign pairing = product.metafields.custom.pairing.value | default: 'Passt zu Gemüse, Dips und schnellen Feierabendgerichten.' %}
+{% assign pairing_clean = pairing %}
+{% if pairing contains 'Passt zu ' %}
+  {% assign pairing_clean = pairing | remove_first: 'Passt zu ' %}
+{% endif %}
 {% assign product_asset = 'spice-product-' | append: product.handle | append: '.jpg' %}
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign product_form_id = 'ProductForm-' | append: section.id %}
@@ -56,7 +60,7 @@
         </div>
         <div class="sf-product-thumbs" aria-label="Produktvorteile">
           <div class="sf-product-thumb"><strong>Aroma</strong><br>{{ flavor }}</div>
-          <div class="sf-product-thumb"><strong>Anwendung</strong><br>{{ pairing | truncate: 84 }}</div>
+          <div class="sf-product-thumb"><strong>Anwendung</strong><br>{{ pairing_clean | truncate: 84 }}</div>
           <div class="sf-product-thumb"><strong>Kaufpfad</strong><br>Dose, Refill und Vorratsgröße.</div>
         </div>
       </div>
@@ -79,7 +83,7 @@
           </div>
           <div>
             <span>Passt zu</span>
-            <strong>{{ pairing }}</strong>
+            <strong>{{ pairing_clean }}</strong>
           </div>
           <div>
             <span>Kaufpfad</span>
@@ -127,7 +131,7 @@
 
             <p class="sf-price" data-product-price>{{ current_variant.price | money_without_trailing_zeros }}</p>
             {% if current_variant.sku != blank %}
-              <p style="margin:0;color:var(--sf-muted);">Artikelnummer {{ current_variant.sku }}</p>
+              <p class="sf-product-sku">Artikelnummer {{ current_variant.sku }}</p>
             {% endif %}
             <div class="sf-buy-guidance" aria-label="Kaufhinweise">
               <span>Lieferung in 2-4 Werktagen</span>
@@ -148,37 +152,39 @@
           <div class="sf-trust-card"><strong>Schnelle Küche</strong>Ein Gewürz, viele Gerichte.</div>
           <div class="sf-trust-card"><strong>Refill-Logik</strong>Wiederkauf ohne Suchweg.</div>
         </div>
-
-        <section class="sf-refill-advisor" aria-labelledby="refill-advisor-heading">
-          <p class="sf-eyebrow">Kaufpfad-Kompass</p>
-          <h2 id="refill-advisor-heading">Dose, Refill oder Vorrat?</h2>
-          <div class="sf-refill-advisor__grid">
-            <article>
-              <span>Erstkauf</span>
-              <strong>Dose wählen</strong>
-              <p>Für Kennenlernen, Geschenkfähigkeit und klare Dosierung in der Küche.</p>
-            </article>
-            <article>
-              <span>Wiederkauf</span>
-              <strong>Refill wählen</strong>
-              <p>Wenn die Dose vorhanden ist und weniger Verpackungswechsel gewünscht ist.</p>
-            </article>
-            <article>
-              <span>Vorrat</span>
-              <strong>Großpackung wählen</strong>
-              <p>Für Teams, Gastro, Vielkocher und wiederkehrende Produktion.</p>
-            </article>
-          </div>
-          <div class="sf-refill-advisor__actions">
-            {% if refill_collection != blank %}
-              <a class="sf-inline-link" href="{{ refill_collection.url }}">Nachfüll- und Vorratspfad ansehen</a>
-            {% endif %}
-            <a class="sf-inline-link" href="{{ recipes_url }}">Rezeptideen zum Produkt</a>
-            <a class="sf-inline-link" href="{{ gift_finder_url }}">Als Geschenk einordnen</a>
-          </div>
-        </section>
       </div>
     </div>
+
+    <section class="sf-refill-advisor" aria-labelledby="refill-advisor-heading">
+      <div class="sf-refill-advisor__intro">
+        <p class="sf-eyebrow">Kaufpfad-Kompass</p>
+        <h2 id="refill-advisor-heading">Dose, Refill oder Vorrat?</h2>
+      </div>
+      <div class="sf-refill-advisor__grid">
+        <article>
+          <span>Erstkauf</span>
+          <strong>Dose wählen</strong>
+          <p>Für Kennenlernen, Geschenkfähigkeit und klare Dosierung in der Küche.</p>
+        </article>
+        <article>
+          <span>Wiederkauf</span>
+          <strong>Refill wählen</strong>
+          <p>Wenn die Dose vorhanden ist und weniger Verpackungswechsel gewünscht ist.</p>
+        </article>
+        <article>
+          <span>Vorrat</span>
+          <strong>Großpackung wählen</strong>
+          <p>Für Teams, Gastro, Vielkocher und wiederkehrende Produktion.</p>
+        </article>
+      </div>
+      <div class="sf-refill-advisor__actions">
+        {% if refill_collection != blank %}
+          <a class="sf-inline-link" href="{{ refill_collection.url }}">Nachfüll- und Vorratspfad ansehen</a>
+        {% endif %}
+        <a class="sf-inline-link" href="{{ recipes_url }}">Rezeptideen zum Produkt</a>
+        <a class="sf-inline-link" href="{{ gift_finder_url }}">Als Geschenk einordnen</a>
+      </div>
+    </section>
 
     <section class="sf-pdp-blueprint" aria-labelledby="pdp-blueprint-heading">
       <div>
@@ -213,7 +219,7 @@
       <div class="sf-story-card">
         <p class="sf-eyebrow">Anwendung</p>
         <h3>Passt zu</h3>
-        <p>{{ pairing }}</p>
+        <p>{{ pairing_clean }}</p>
       </div>
       <div class="sf-story-card">
         <p class="sf-eyebrow">Empfehlung</p>

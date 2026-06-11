@@ -31,7 +31,6 @@
     <p>{{ subtitle }}</p>
     <div class="sf-chip-row">
       <span class="sf-chip">{{ usage }}</span>
-      {% unless compact %}<span class="sf-chip">Nachfüllbar</span>{% endunless %}
     </div>
     <div class="sf-product-card__meta">
       <span class="sf-price">ab {{ product.price_min | money_without_trailing_zeros }}</span>

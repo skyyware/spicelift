@@ -1,0 +1,27 @@
+{
+  "name": "spicelift",
+  "version": "1.0.0",
+  "description": "Premium Shopify theme for the development store `Spicelift`.",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "qa:storefront": "node scripts/qa-storefront.mjs",
+    "theme:check": "shopify theme check",
+    "test": "npm run theme:check && npm run qa:storefront"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyyware/spicelift.git"
+  },
+  "keywords": [],
+  "author": "Skyyware",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/skyyware/spicelift/issues"
+  },
+  "homepage": "https://github.com/skyyware/spicelift#readme",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

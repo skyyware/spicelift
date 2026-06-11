@@ -8,7 +8,7 @@
   {% assign b2b_url = b2b_page.url %}
 {% endif %}
 
-<footer class="sf-footer">
+<footer class="sf-footer full-width">
   <div class="sf-page sf-footer__grid">
     <div>
       <a class="sf-logo" href="{{ routes.root_url }}">
@@ -37,9 +37,11 @@
     </div>
     <div>
       <h3>Service</h3>
-      <p>Versandkostenfrei ab 40 €</p>
-      <p>Bio-Qualität</p>
-      <p>Sichere Zahlung</p>
+      <ul class="sf-footer-service" aria-label="Serviceversprechen">
+        <li>Versandkostenfrei ab 40 €</li>
+        <li>Bio-Qualität</li>
+        <li>Sichere Zahlung</li>
+      </ul>
     </div>
   </div>
 </footer>

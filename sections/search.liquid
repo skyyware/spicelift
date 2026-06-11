@@ -8,46 +8,17 @@
       <span aria-current="page">Suche</span>
     </nav>
 
-    <div class="sf-search-hero">
-      <p class="sf-eyebrow">Shop Discovery</p>
-      <h1 class="sf-heading sf-heading--medium">Finde die richtige Würze über Gericht, Aroma oder Anlass.</h1>
-      <p class="sf-copy">
-        Suche nach Zutaten, Rezeptideen, Geschenkpfaden oder Vorratsgrößen. Gute Suche ist hier kein
-        Notausgang, sondern ein schneller Kaufpfad.
-      </p>
-
-      <form class="sf-search-form" action="{{ routes.search_url }}" method="get" role="search">
-        <label class="visually-hidden" for="SearchPage-{{ section.id }}">Suchbegriff</label>
-        <input
-          id="SearchPage-{{ section.id }}"
-          type="search"
-          name="q"
-          value="{{ search.terms | escape }}"
-          placeholder="z. B. Bagel, Avocado, Grillen oder Geschenk"
-          autocomplete="off"
-        >
-        <input type="hidden" name="type" value="product">
-        <button class="sf-button" type="submit">Suchen</button>
-      </form>
-
-      <div class="sf-search-suggestions" aria-label="Beliebte Suchpfade">
-        {% for term in suggestion_terms %}
-          <a class="sf-chip" href="{{ routes.search_url }}?type=product&q={{ term | url_encode }}">{{ term | capitalize }}</a>
-        {% endfor %}
-      </div>
-    </div>
-
     {% if search.performed %}
       <div class="sf-search-summary">
         <div>
           <p class="sf-eyebrow">Suchergebnis</p>
-          <h2>
+          <h1>
             {% if search.results_count == 0 %}
               Keine Treffer für “{{ search.terms | escape }}”
             {% else %}
               {{ search.results_count }} Treffer für “{{ search.terms | escape }}”
             {% endif %}
-          </h2>
+          </h1>
         </div>
         <a class="sf-button sf-button--ghost" href="{{ routes.collections_url }}/gewuerzmischungen">Sortiment ansehen</a>
       </div>
@@ -102,6 +73,13 @@
         {% endpaginate %}
       {% endif %}
     {% else %}
+      <div class="sf-search-summary">
+        <div>
+          <p class="sf-eyebrow">Shop Discovery</p>
+          <h1>Wähle einen schnellen Einstieg.</h1>
+        </div>
+      </div>
+
       <div class="sf-search-intent-grid" aria-label="Suchpfade">
         <a href="{{ routes.search_url }}?type=product&q=brunch">
           <span>01</span>
@@ -120,6 +98,35 @@
         </a>
       </div>
     {% endif %}
+
+    <div class="sf-search-hero sf-search-hero--bottom">
+      <p class="sf-eyebrow">Suche nach Anlass</p>
+      <h2 class="sf-heading sf-heading--medium">Finde die richtige Würze über Gericht, Aroma oder Anlass.</h2>
+      <p class="sf-copy">
+        Suche nach Zutaten, Rezeptideen, Geschenkpfaden oder Vorratsgrößen. Gute Suche ist hier kein
+        Notausgang, sondern ein schneller Kaufpfad.
+      </p>
+
+      <form class="sf-search-form" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="SearchPage-{{ section.id }}">Suchbegriff</label>
+        <input
+          id="SearchPage-{{ section.id }}"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="z. B. Bagel, Avocado, Grillen oder Geschenk"
+          autocomplete="off"
+        >
+        <input type="hidden" name="type" value="product">
+        <button class="sf-button" type="submit">Suchen</button>
+      </form>
+
+      <div class="sf-search-suggestions" aria-label="Beliebte Suchpfade">
+        {% for term in suggestion_terms %}
+          <a class="sf-chip" href="{{ routes.search_url }}?type=product&q={{ term | url_encode }}">{{ term | capitalize }}</a>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </section>
 

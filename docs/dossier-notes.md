@@ -139,6 +139,18 @@ Evidence in shop:
 - Empty cart intent paths in `sections/cart.liquid`
 - Breadcrumb JSON-LD in `sections/page-recipes.liquid` and `sections/page-gift-finder.liquid`
 
+### 12. Live Design Polish
+
+The final live-review pass focuses on the details a merchant or design lead notices immediately: full-width commercial bands, logo consistency, search suggestions, stable product-card actions, no breadcrumb clutter, cleaner cart spacing and clearer button states. This is not feature work; it is trust work.
+
+Evidence in shop:
+
+- Header search with typed suggestions and no icon-only affordance in `sections/header.liquid`
+- Full-bleed topbar, finder, gift and footer surfaces in `sections/header.liquid`, `sections/home-spicelift.liquid` and `sections/footer.liquid`
+- PDP refill advisor moved into a full-width decision surface in `sections/product.liquid`
+- Quick-add feedback states in `assets/spicelift-store.js`
+- Final responsive polish and cart button fixes in `assets/spicelift-store.css`
+
 ## Short Dossier Language
 
 Suggested concise wording:
@@ -152,6 +164,8 @@ Suggested concise wording:
 > Im zweiten Optimierungspass habe ich die Flächen gebaut, die am stärksten auf die Ausschreibung einzahlen: Recipe Hub, Geschenkfinder, Refill-/Vorratsentscheidung auf der PDP und Weiterführung im Warenkorb. Damit deckt die Arbeitsprobe Theme-Entwicklung, Landingpages, Cross-/Upselling, Conversion, UX und laufende Wartbarkeit ab.
 
 > Im anschließenden Qualitäts-Pass habe ich offensichtliche Premium-Brüche entfernt: einheitliche deutsche Storefront-Sprache, mobile Suche, kompaktere PDP-Entscheidungshilfe, bessere leere Warenkorbführung und strukturierte Breadcrumb-Daten. Das zeigt, dass ich nicht nur Features baue, sondern die Store-Erfahrung als Gesamtsystem prüfe.
+
+> In der finalen Live-Review habe ich die Details geschärft, die aus einem guten Store einen glaubwürdigen Premium-Store machen: volle Breiten für kommerzielle Flächen, konsistente Logo-Optik, Suchvorschläge, klare Quick-Add-Zustände, stabile Produktkarten, ruhigere PDP- und Cart-Layouts und Button-Kontraste ohne Unsicherheit.
 
 ## Screenshot Checklist
 
