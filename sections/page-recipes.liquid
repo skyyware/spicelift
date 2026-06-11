@@ -175,9 +175,30 @@
   </div>
 </section>
 
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Start",
+        "item": {{ shop.url | append: routes.root_url | json }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ page.title | json }},
+        "item": {{ canonical_url | json }}
+      }
+    ]
+  }
+</script>
+
 {% schema %}
 {
-  "name": "Spicelift Recipe Hub",
+  "name": "Spicelift Rezepte",
   "settings": []
 }
 {% endschema %}

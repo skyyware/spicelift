@@ -125,6 +125,13 @@
           <a class="sf-button" href="{{ spice_collection_url }}">Gewürze entdecken</a>
           <a class="sf-button sf-button--ghost" href="{{ set_collection_url }}">Sets ansehen</a>
         </div>
+        <div class="sf-cart-empty-paths" aria-label="Schnelle Einstiegspfade">
+          <a href="{{ recipes_url }}">Nach Rezept kaufen</a>
+          <a href="{{ gift_finder_url }}">Geschenk finden</a>
+          {% if refill_collection != blank %}
+            <a href="{{ refill_collection.url }}">Vorrat planen</a>
+          {% endif %}
+        </div>
       </div>
     {% endif %}
   </div>

@@ -108,7 +108,7 @@ const products = [
     subtitle: 'Alles für Bagel, Avocado, Ei, Dip und Bowls in einem Geschenkpfad.',
     usage: 'Brunch & Geschenk',
     flavor: 'Frisch, nussig, leicht scharf',
-    pairing: 'Passt zu Brunch-Tischen, Frühstücksboxen, Corporate Gifts und Rezept-Content.',
+    pairing: 'Passt zu Brunch-Tischen, Frühstücksboxen, Firmengeschenken und Rezept-Content.',
     story: 'Alles für Bagel, Avocado, Ei, Dip und Bowls in einem Geschenkset.',
     description:
       'Bio-Gewürzset für Brunch und Bagel-Rezepte. Ideal als Geschenk oder für ein entspanntes Frühstück am Wochenende.',

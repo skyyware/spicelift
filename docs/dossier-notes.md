@@ -1,6 +1,6 @@
 # Dossier Notes
 
-Last updated: 2026-06-10
+Last updated: 2026-06-11
 
 These notes translate the Spicelift shop into application material for a Shopify freelance project. Keep this concise and evidence-based.
 
@@ -15,7 +15,7 @@ The shop demonstrates:
 - Guided search/discovery for dish, occasion, aroma and gift intent.
 - Product pages that answer taste, fit, size and pairing before the buy button.
 - Dedicated Recipe Hub with cart-ready dish paths.
-- Gift Finder for host, team and corporate-gift intent.
+- Geschenkfinder for host, team and corporate-gift intent.
 - Refill and reorder guidance across PDP and cart.
 - Conversion-oriented UX without loud growth-hack patterns.
 - Maintainable Admin data structures.
@@ -117,15 +117,27 @@ Evidence in shop:
 - `sections/page-recipes.liquid`
 - Cart API bundle interaction
 
-### 10. Gift Finder
+### 10. Geschenkfinder
 
-Gift buying should be guided by recipient, budget and occasion rather than generic set categories. The Gift Finder separates host, team and client-gift intent and points larger needs toward B2B.
+Gift buying should be guided by recipient, budget and occasion rather than generic set categories. The Geschenkfinder separates host, team and client-gift intent and points larger needs toward B2B.
 
 Evidence in shop:
 
 - `/pages/gift-finder`
 - `sections/page-gift-finder.liquid`
 - Links into gift collections and B2B logic
+
+### 11. World-Class Baseline
+
+Premium perception breaks when obvious details do not line up. The latest pass removes those breaks before adding more complexity: German storefront titles, mobile search, compact PDP decision support, clearer product-card typography, empty-cart recovery and BreadcrumbList structured data.
+
+Evidence in shop:
+
+- German page titles for `/pages/recipes`, `/pages/gift-finder` and `/pages/b2b-corporate-gifts`
+- Mobile search in `sections/header.liquid`
+- Compact mobile refill advisor in `assets/spicelift-store.css`
+- Empty cart intent paths in `sections/cart.liquid`
+- Breadcrumb JSON-LD in `sections/page-recipes.liquid` and `sections/page-gift-finder.liquid`
 
 ## Short Dossier Language
 
@@ -137,7 +149,9 @@ Suggested concise wording:
 
 > Zusätzlich habe ich die Qualitätssicherung als Teil der Umsetzung behandelt: Ein Playwright-QA-Skript prüft Viewports, zentrale Routen, horizontale Überläufe, kaputte Bilder, relevante Netzwerkfehler und Kerninteraktionen wie Aroma-Finder und Recipe-to-Cart.
 
-> Im zweiten Optimierungspass habe ich die Flächen gebaut, die am stärksten auf die Ausschreibung einzahlen: Recipe Hub, Gift Finder, Refill-/Vorratsentscheidung auf der PDP und Weiterführung im Warenkorb. Damit deckt die Arbeitsprobe Theme-Entwicklung, Landingpages, Cross-/Upselling, Conversion, UX und laufende Wartbarkeit ab.
+> Im zweiten Optimierungspass habe ich die Flächen gebaut, die am stärksten auf die Ausschreibung einzahlen: Recipe Hub, Geschenkfinder, Refill-/Vorratsentscheidung auf der PDP und Weiterführung im Warenkorb. Damit deckt die Arbeitsprobe Theme-Entwicklung, Landingpages, Cross-/Upselling, Conversion, UX und laufende Wartbarkeit ab.
+
+> Im anschließenden Qualitäts-Pass habe ich offensichtliche Premium-Brüche entfernt: einheitliche deutsche Storefront-Sprache, mobile Suche, kompaktere PDP-Entscheidungshilfe, bessere leere Warenkorbführung und strukturierte Breadcrumb-Daten. Das zeigt, dass ich nicht nur Features baue, sondern die Store-Erfahrung als Gesamtsystem prüfe.
 
 ## Screenshot Checklist
 
@@ -147,7 +161,7 @@ Use screenshots that show concrete value:
 - Aroma Finder after selecting one use case.
 - Recipe-to-cart block.
 - Recipe Hub with multiple cart-ready dish paths.
-- Gift Finder recommendation state.
+- Geschenkfinder recommendation state.
 - Product detail page with variants and usage guidance.
 - Refill advisor on product detail page.
 - B2B/corporate gifts page.

@@ -19,6 +19,7 @@ The store should feel premium, useful and quiet. Every section must help the cus
 | Images | Product images must show real product value. No blurry decoration. First viewport image is prioritized; below-fold images are lazy. |
 | Mobile | Every fixed-format UI element needs stable dimensions. Horizontal scrolling is only acceptable for nav chips and must be intentional. |
 | Color | Green is the brand anchor, but pages must not become one-note. Clay, sage, gold and cream create hierarchy. |
+| Language | Storefront UI must use one customer-facing language per flow. German shop pages use German titles, labels and CTAs. |
 
 ## Commerce Rules
 
@@ -43,10 +44,19 @@ The store should feel premium, useful and quiet. Every section must help the cus
 2026-06-11 recipe/gift/refill pass added:
 
 - Recipe Hub with structured recipe-to-cart flows and multiple cart-ready dish paths.
-- Gift Finder that segments host, team and client-gift buying intent.
+- Geschenkfinder that segments host, team and client-gift buying intent.
 - PDP refill advisor that explains dose, refill and larger pack decisions.
 - Cart next-action surface for recipe and gift continuation.
 - Store sync support for `recipes` and `gift-finder` pages.
+
+2026-06-11 world-class baseline pass added:
+
+- German storefront titles for Recipe Hub, Geschenkfinder and B2B page.
+- Mobile header search with intent-led wording.
+- Tighter compact product-card typography and link affordances.
+- Compact mobile refill advisor layout near the PDP buy flow.
+- Empty cart recovery links for recipe, gift and refill intent.
+- BreadcrumbList JSON-LD for the new editorial/decision pages.
 
 ## QA Gate
 
@@ -73,7 +83,7 @@ Then inspect at least these screenshots manually:
 - Mobile search
 - Product page mobile
 - Recipe Hub mobile
-- Gift Finder mobile
+- Geschenkfinder mobile
 - B2B mobile
 - B2B form desktop
 

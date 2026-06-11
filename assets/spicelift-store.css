@@ -305,6 +305,10 @@ body.spicelift-store {
   width: min(260px, 28vw);
 }
 
+.sf-mobile-search {
+  display: none;
+}
+
 .sf-search input {
   width: 100%;
   height: 42px;
@@ -329,6 +333,28 @@ body.spicelift-store {
   background: transparent;
   color: var(--sf-muted);
   cursor: pointer;
+}
+
+.sf-mobile-search input,
+.sf-mobile-search button {
+  min-height: 42px;
+  border: 1px solid var(--sf-line);
+  border-radius: 999px;
+  font: inherit;
+}
+
+.sf-mobile-search input {
+  min-width: 0;
+  background: #fff;
+  color: var(--sf-ink);
+  padding: 0 16px;
+}
+
+.sf-mobile-search button {
+  background: var(--sf-ink);
+  color: #fff;
+  font-weight: 850;
+  padding: 0 18px;
 }
 
 .sf-cart {
@@ -723,7 +749,7 @@ body.spicelift-store {
 }
 
 .sf-product-card--compact h3 {
-  font-size: 1.18rem;
+  font-size: 1.08rem;
   hyphens: auto;
   overflow-wrap: anywhere;
 }
@@ -750,6 +776,16 @@ body.spicelift-store {
   line-height: 1.1;
 }
 
+.sf-product-card h3 a {
+  text-decoration: none;
+}
+
+.sf-product-card h3 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
 .sf-product-card p {
   margin: 0;
   color: var(--sf-muted);
@@ -767,6 +803,11 @@ body.spicelift-store {
   justify-content: space-between;
   gap: 12px;
   margin-top: 8px;
+}
+
+.sf-product-card__meta form {
+  flex: 0 0 auto;
+  margin: 0;
 }
 
 .sf-price {
@@ -1891,8 +1932,7 @@ body.spicelift-store {
 }
 
 .sf-gift-finder__copy {
-  position: sticky;
-  top: 126px;
+  align-self: start;
 }
 
 .sf-gift-finder__surface {
@@ -2217,6 +2257,31 @@ body.spicelift-store {
   padding: clamp(28px, 5vw, 56px);
 }
 
+.sf-cart-empty-paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.sf-cart-empty-paths a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid var(--sf-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--sf-green);
+  font-size: 0.86rem;
+  font-weight: 850;
+  padding: 0 13px;
+  text-decoration: none;
+}
+
+.sf-cart-empty-paths a:hover {
+  border-color: var(--sf-green);
+}
+
 .sf-footer {
   background: var(--sf-ink);
   color: #fff;
@@ -2282,6 +2347,15 @@ body.spicelift-store {
 
   .sf-search {
     display: none;
+  }
+
+  .sf-mobile-search {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    order: 4;
+    padding-bottom: 18px;
   }
 
   .sf-category-list,
@@ -2450,6 +2524,10 @@ body.spicelift-store {
     white-space: nowrap;
   }
 
+  .sf-mobile-search {
+    padding-bottom: 12px;
+  }
+
   @media (max-width: 420px) {
     .sf-page,
     .sf-narrow {
@@ -2541,6 +2619,34 @@ body.spicelift-store {
   .sf-gift-hero__panel span,
   .sf-gift-choice {
     min-height: auto;
+  }
+
+  .sf-refill-advisor {
+    gap: 12px;
+  }
+
+  .sf-refill-advisor h2 {
+    font-size: clamp(1.76rem, 9vw, 2.35rem);
+  }
+
+  .sf-refill-advisor__grid article {
+    grid-template-columns: minmax(86px, 0.4fr) minmax(0, 0.6fr);
+    align-items: start;
+    gap: 4px 12px;
+    padding: 13px;
+  }
+
+  .sf-refill-advisor__grid strong {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .sf-refill-advisor__grid p {
+    grid-column: 1 / -1;
+  }
+
+  .sf-refill-advisor__actions {
+    gap: 8px;
   }
 
   .sf-cart-summary {

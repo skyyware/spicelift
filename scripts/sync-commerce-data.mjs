@@ -449,7 +449,7 @@ if (syncMetaobjects) {
 }
 
 upsertPage({
-  title: 'B2B & Corporate Gifts',
+  title: 'B2B & Firmengeschenke',
   handle: 'b2b-corporate-gifts',
   body:
     '<p>Spicelift zeigt, wie ein Gewürzshop Geschäftskunden, Geschenksets und Wiederverkäufer klar führen kann: Anlass, Menge, Personalisierung und Lieferfähigkeit stehen vor einer Anfrage.</p>',
@@ -466,7 +466,7 @@ upsertPage({
 });
 
 upsertPage({
-  title: 'Recipes',
+  title: 'Rezepte',
   handle: 'recipes',
   body:
     '<p>Spicelift zeigt, wie Rezept-Content in Shopify direkt mit Produkten, Varianten und Warenkorb-Logik verbunden werden kann.</p>',
@@ -483,7 +483,7 @@ upsertPage({
 });
 
 upsertPage({
-  title: 'Gift Finder',
+  title: 'Geschenkfinder',
   handle: 'gift-finder',
   body:
     '<p>Spicelift zeigt, wie Geschenk-Sortimente nach Anlass, Budget und Zielgruppe geführt werden können.</p>',
@@ -494,7 +494,7 @@ upsertPage({
       namespace: 'custom',
       key: 'lead',
       type: 'multi_line_text_field',
-      value: 'Ein Gift Finder reduziert Auswahlstress und trennt D2C-Geschenke früh von B2B- oder Corporate-Gift-Anfragen.',
+      value: 'Ein Geschenkfinder reduziert Auswahlstress und trennt D2C-Geschenke früh von B2B- oder Firmengeschenk-Anfragen.',
     },
   ],
 });

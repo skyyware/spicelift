@@ -206,12 +206,25 @@ This supports the user's AI-driven development positioning without making the pi
 The implemented follow-up pass is built around "from inspiration to basket":
 
 1. Recipe Hub with structured recipe-to-cart flows.
-2. Gift Finder landing page with host, team and client-gift logic.
+2. Geschenkfinder landing page with host, team and client-gift logic.
 3. PDP refill advisor for dose, refill and larger pack decisions.
 4. Cart next actions that continue toward recipes and gifts.
 5. QA coverage for new pages and interactions.
 
 This aligns tightly with the original ad: theme development, new features, landing pages, cross-sell/upsell, UX, conversion and maintainable operations.
+
+## World-Class Baseline Pass
+
+The next quality layer removes details that make an otherwise good shop feel unfinished:
+
+- Customer-facing language is consistent in the storefront.
+- Mobile visitors can search directly from the header.
+- Product-card typography is tighter in compact recommendation contexts.
+- Refill/dose/stock-up guidance stays useful on mobile without overloading the PDP.
+- Empty cart state routes shoppers toward recipe, gift and refill intent.
+- Recipe Hub and Geschenkfinder pages expose BreadcrumbList structured data.
+
+These are deliberately low-risk, high-impact changes: they do not require new apps, but they improve perceived quality, search/discovery, accessibility and conversion continuity.
 
 ## Dossier Framing
 

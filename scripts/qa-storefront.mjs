@@ -81,14 +81,28 @@ async function getPageMetrics(page) {
 async function hydrateLazyImages(page) {
   await page.evaluate(async () => {
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const images = Array.from(document.images);
+    for (const image of images) {
+      image.loading = 'eager';
+    }
     const step = Math.max(320, Math.floor(window.innerHeight * 0.78));
     const max = document.documentElement.scrollHeight - window.innerHeight;
     for (let y = 0; y <= max; y += step) {
       window.scrollTo(0, y);
-      await delay(80);
+      await delay(120);
     }
     window.scrollTo(0, max);
-    await delay(160);
+    await Promise.allSettled(
+      images.map(async (image) => {
+        if (image.complete && image.naturalWidth > 0) return;
+        try {
+          await image.decode();
+        } catch {
+          await delay(80);
+        }
+      })
+    );
+    await delay(220);
     window.scrollTo(0, 0);
     await delay(120);
   });

@@ -19,7 +19,7 @@ The project is a real Online Store 2.0 theme, not a static mockup. It shows how 
 - 2k Grok Imagine asset pipeline for high-value product and editorial imagery
 - Shopify-native commerce data layer with smart collections, Metaobjects and a B2B page route
 - Premium search/discovery route, PDP decision support and B2B inquiry path
-- Dedicated Recipe Hub, Gift Finder and refill/reorder decision surfaces
+- Dedicated Recipe Hub, Geschenkfinder and refill/reorder decision surfaces
 
 ## Stack
 
@@ -197,9 +197,22 @@ Final QA was run against the live theme `Spicelift Premium Store` (`#16005549283
 The 2026-06-11 follow-up pass turns the Rimoco opportunity map into visible storefront surfaces:
 
 - Recipe Hub: multiple cart-ready dish paths show how editorial content can become measurable commerce.
-- Gift Finder: host, team and client-gift intents are separated before the customer sees products.
+- Geschenkfinder: host, team and client-gift intents are separated before the customer sees products.
 - Refill Advisor: product pages explain dose, refill and larger-pack decisions near the purchase flow.
 - Cart Next Actions: checkout-adjacent links continue naturally toward recipes, gifts and refill logic.
-- Store Sync: `recipes` and `gift-finder` pages are created and maintained through the CLI sync script.
+- Store Sync: `recipes` and `gift-finder` pages are created and maintained through the CLI sync script with German storefront titles.
 - Relevant network check: no own theme asset failures; the remaining 404 is a Shopify CDN `ShopifySans--regular.woff` request outside the theme.
-- Final screenshots and matrix data: `/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-commerce-data-qa-2026-06-10`.
+- Final screenshots and matrix data: `/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-world-class-final-qa-v2-2026-06-11`.
+- Final mobile header target check: `/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-world-class-final-mobile-header-2026-06-11.png`.
+
+## World-Class Baseline Pass
+
+The 2026-06-11 world-class baseline pass removes obvious premium breaks before adding more features:
+
+- Language consistency: visible page titles and labels use German storefront language (`Rezepte`, `Geschenkfinder`, `B2B & Firmengeschenke`).
+- Mobile search: header search is available on small screens with intent-led placeholder language for dish, aroma and gift discovery.
+- Compact PDP support: refill/dose/stock-up guidance remains readable on mobile without dominating the buy flow.
+- Product cards: compact cards use tighter typography and clearer link affordances.
+- Empty cart recovery: the empty cart now offers recipe, gift and refill paths instead of only category browsing.
+- Structured data: Recipe Hub and Geschenkfinder pages expose BreadcrumbList JSON-LD.
+- QA target: every future pass must verify home, search, product, cart, Recipe Hub and Geschenkfinder on desktop and mobile.

@@ -54,6 +54,12 @@
         <span class="sf-cart__count">{{ cart.item_count }}</span>
       </a>
     </div>
+
+    <form class="sf-mobile-search" action="{{ routes.search_url }}" method="get" role="search">
+      <label class="visually-hidden" for="MobileSearch-{{ section.id }}">Suche</label>
+      <input id="MobileSearch-{{ section.id }}" type="search" name="q" placeholder="Gericht, Aroma, Set">
+      <button type="submit">Suchen</button>
+    </form>
   </div>
 </header>
 
