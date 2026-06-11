@@ -15,7 +15,7 @@
   </div>
 </section>
 
-<section class="sf-page sf-collection-paths" aria-label="Kaufpfade">
+<section class="sf-page sf-collection-paths" aria-label="Sortimentseinstiege">
   <a class="sf-path-card" href="#ProductGrid" data-path-filter="all">
     <span>01</span>
     <strong>Erstkauf</strong>
@@ -24,7 +24,7 @@
   <a class="sf-path-card" href="#ProductGrid" data-path-filter="nachfullbar">
     <span>02</span>
     <strong>Refill</strong>
-    <small>Nachfüllpack und Vorrat ohne erneute Suche.</small>
+    <small>Nachfüllung und Vorrat für wiederkehrende Küche.</small>
   </a>
   <a
     class="sf-path-card"
@@ -75,11 +75,6 @@
   </aside>
 
   <div>
-    <div class="sf-section-intro" style="margin-bottom: 22px;">
-      <p class="sf-copy" data-filter-summary>{{ collection.products_count }} Produkte für Küche, Geschenk und Vorrat.</p>
-      <span class="sf-chip">Sortiert nach Bestseller</span>
-    </div>
-
     {% paginate collection.products by 24 %}
       <div class="sf-products-grid" data-products-grid>
         {% for product in collection.products %}

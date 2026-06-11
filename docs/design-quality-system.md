@@ -20,6 +20,7 @@ The store should feel premium, useful and quiet. Every section must help the cus
 | Mobile | Every fixed-format UI element needs stable dimensions. Horizontal scrolling is only acceptable for nav chips and must be intentional. |
 | Color | Green is the brand anchor, but pages must not become one-note. Clay, sage, gold and cream create hierarchy. |
 | Language | Storefront UI must use one customer-facing language per flow. German shop pages use German titles, labels and CTAs. |
+| Links | Links, buttons and chips are never underlined in the visual UI. Use icon cues, spacing, color and state changes instead. |
 
 ## Commerce Rules
 
@@ -70,6 +71,17 @@ The store should feel premium, useful and quiet. Every section must help the cus
 - Breadcrumbs hidden from the visual UI while structured data remains in place.
 - Cart summary and empty-cart buttons cleaned up for better contrast and spacing.
 
+2026-06-11 real-store polish added:
+
+- Text-only wordmark in header and footer; product-label iconography remains in imagery, not navigation chrome.
+- Top navigation reduced to four customer categories.
+- Search and cart use compact icons while preserving accessible labels.
+- Header suggestions only include queries that resolve to actual shop results.
+- Gift, B2B, search and recipe copy now reads like a real shop instead of an implementation demo.
+- PDP next actions are buttons, not underlined links.
+- Cart assurance uses aligned check rows and only shows shipping encouragement before the threshold is reached.
+- The visible Aroma Finder copy is theme-owned because connector-created Metaobjects cannot currently be updated by the Shopify CLI.
+
 ## QA Gate
 
 Before shipping a design pass:
@@ -86,6 +98,7 @@ The QA script must report:
 - `failureCount: 0`
 - `relevantNetworkFailureCount: 0`
 - `cartContainsRecipeProducts: true`
+- No screenshots may show Shopify's password page. A password-page screenshot is a blocked QA run, not a visual pass.
 
 Then inspect at least these screenshots manually:
 

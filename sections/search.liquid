@@ -1,4 +1,4 @@
-{% assign suggestion_terms = 'bagel,avocado,grillen,dip,geschenk,nachfüllpack' | split: ',' %}
+{% assign suggestion_terms = 'bagel,avocado,grillen,dip,geschenk,brunch' | split: ',' %}
 
 <section class="sf-search-page">
   <div class="sf-page">
@@ -25,11 +25,10 @@
 
       {% if search.results_count == 0 %}
         <div class="sf-search-empty">
-          <p class="sf-eyebrow">Besserer Einstieg</p>
           <h2>Versuche einen Kochanlass statt eines Produktnamens.</h2>
           <p>
             Viele Gewürzkäufe starten nicht mit einer exakten SKU, sondern mit “Brunch”, “Grillen”,
-            “Dip” oder “Geschenk”. Diese Pfade führen schneller zur passenden Auswahl.
+            “Dip” oder “Geschenk”. Diese Einstiege führen schneller zur passenden Auswahl.
           </p>
           <div class="sf-search-suggestions">
             {% for term in suggestion_terms limit: 4 %}
@@ -103,8 +102,8 @@
       <p class="sf-eyebrow">Suche nach Anlass</p>
       <h2 class="sf-heading sf-heading--medium">Finde die richtige Würze über Gericht, Aroma oder Anlass.</h2>
       <p class="sf-copy">
-        Suche nach Zutaten, Rezeptideen, Geschenkpfaden oder Vorratsgrößen. Gute Suche ist hier kein
-        Notausgang, sondern ein schneller Kaufpfad.
+        Suche nach Zutaten, Rezeptideen, Geschenkideen oder Vorratsgrößen. Gute Suche ist hier kein
+        Notausgang, sondern ein schneller Einstieg ins Sortiment.
       </p>
 
       <form class="sf-search-form" action="{{ routes.search_url }}" method="get" role="search">
@@ -121,7 +120,7 @@
         <button class="sf-button" type="submit">Suchen</button>
       </form>
 
-      <div class="sf-search-suggestions" aria-label="Beliebte Suchpfade">
+      <div class="sf-search-suggestions" aria-label="Beliebte Suchen">
         {% for term in suggestion_terms %}
           <a class="sf-chip" href="{{ routes.search_url }}?type=product&q={{ term | url_encode }}">{{ term | capitalize }}</a>
         {% endfor %}

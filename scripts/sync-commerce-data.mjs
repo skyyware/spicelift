@@ -46,7 +46,7 @@ const smartCollections = [
   {
     title: 'Dips & Saucen',
     handle: 'dips-saucen',
-    description: 'Schnelle Würzpfade für Avocado-Dip, Joghurt, Kräuterbutter, Saucen und frische Bowls.',
+    description: 'Schnelle Würze für Avocado-Dip, Joghurt, Kräuterbutter, Saucen und frische Bowls.',
     seoTitle: 'Bio Gewürze für Dips & Saucen | Spicelift',
     seoDescription: 'Bio Gewürze für Avocado-Dip, Kräuterbutter, Joghurt, Saucen und schnelle Küche.',
     rules: [
@@ -85,7 +85,7 @@ const useCases = [
     title: 'Brunch',
     subtitle: 'Bagel, Avocado, Ei',
     heading: 'Frisch, nussig, sofort verständlich.',
-    summary: 'Bagel-Gewürz und Avocado-Gewürz bilden einen einfachen Brunch-Pfad mit hoher Wiederkauflogik.',
+    summary: 'Bagel-Gewürz und Avocado-Gewürz bilden eine einfache Brunch-Auswahl mit hoher Wiederkauflogik.',
     metric: '2 Empfehlungen',
     collection: 'brunch-fruehstueck',
     products: ['bio-bagel-gewuerz', 'bio-avocado-gewuerz'],
@@ -116,7 +116,7 @@ const useCases = [
     subtitle: 'Kuratierte Sets',
     heading: 'Auswahl ohne Geschenkrisiko.',
     summary: 'Kuratierte Sets funktionieren für Gastgeber, Kundengeschenke und saisonale Kampagnen.',
-    metric: '2 Setpfade',
+    metric: '2 Sets',
     collection: 'geschenkideen',
     products: ['bio-brunch-bagel-set', 'bio-grillabend-set'],
   },
@@ -131,7 +131,7 @@ const recipes = [
     ctaLabel: 'Rezeptkorb hinzufügen',
     products: ['bio-bagel-gewuerz', 'bio-avocado-gewuerz'],
     steps: [
-      'Rezept als Warenkorb denken: Content erklärt und führt direkt zu passenden Produkten.',
+      'Rezept als Warenkorb denken: Der Inhalt erklärt und führt direkt zu passenden Produkten.',
       'Dose und Refill sichtbar machen: Erstkauf und Wiederkauf bekommen je einen klaren Einstieg.',
     ],
   },
@@ -460,7 +460,7 @@ upsertPage({
       namespace: 'custom',
       key: 'lead',
       type: 'multi_line_text_field',
-      value: 'Firmengeschenke, Gastro, Wiederverkauf und Private Label brauchen klare Einstiegspfade statt generischer Kontaktseiten.',
+      value: 'Firmengeschenke, Gastro, Wiederverkauf und Private Label brauchen klare Anforderungen statt generischer Kontaktseiten.',
     },
   ],
 });
@@ -477,7 +477,7 @@ upsertPage({
       namespace: 'custom',
       key: 'lead',
       type: 'multi_line_text_field',
-      value: 'Recipe-to-Cart verbindet Inspiration mit konkreten Produkten und macht Content als Kaufpfad messbar.',
+      value: 'Rezepte verbinden Inspiration mit konkreten Produkten und machen Einkauf einfacher.',
     },
   ],
 });

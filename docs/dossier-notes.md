@@ -24,7 +24,7 @@ The shop demonstrates:
 
 ## Prospect-Relevant Opportunities
 
-See also `docs/rimoco-opportunity-map.md` for the prioritized roadmap behind these points.
+See also `docs/prospect-opportunity-map.md` for the prioritized roadmap behind these points.
 
 ### 1. Occasion-Led Navigation
 
@@ -145,7 +145,7 @@ The final live-review pass focuses on the details a merchant or design lead noti
 
 Evidence in shop:
 
-- Header search with typed suggestions and no icon-only affordance in `sections/header.liquid`
+- Header search with compact icon action, typed suggestions and accessible labels in `sections/header.liquid`
 - Full-bleed topbar, finder, gift and footer surfaces in `sections/header.liquid`, `sections/home-spicelift.liquid` and `sections/footer.liquid`
 - PDP refill advisor moved into a full-width decision surface in `sections/product.liquid`
 - Quick-add feedback states in `assets/spicelift-store.js`
@@ -155,7 +155,7 @@ Evidence in shop:
 
 Suggested concise wording:
 
-> Für die Bewerbung habe ich eine lauffähige Shopify-Arbeitsprobe aufgebaut: ein Premium-Gewürzshop unter der Demo-Marke Spicelift. Der Fokus liegt nicht auf einem reinen Theme-Mockup, sondern auf Shopify-nativen Kaufpfaden: anlassbasierte Collections, ein Aroma-Finder, Recipe-to-Cart, Refill-/Vorratslogik, hochwertige Produktbilder, SEO-/Sharing-Basics und ein erster B2B-/Corporate-Gifts-Pfad.
+> Für die Bewerbung habe ich eine lauffähige Shopify-Arbeitsprobe aufgebaut: einen Premium-Gewürzshop unter der Marke Spicelift. Der Fokus liegt nicht auf einem reinen Theme-Mockup, sondern auf Shopify-nativer Orientierung: anlassbasierte Collections, ein Aroma-Finder, Recipe-to-Cart, Refill-/Vorratslogik, hochwertige Produktbilder, SEO-/Sharing-Basics und ein erster Business-/Corporate-Gifts-Einstieg.
 
 > Die Umsetzung zeigt, wie ich technische Shopify-Entwicklung mit Produktdenken verbinde: Liquid, Sections, JSON Templates, Admin GraphQL, Produkte, Varianten, Collections, Metafields, Metaobjects und progressive Cart-Interaktionen greifen zusammen, ohne den Shop unnötig durch Apps oder Sonderlogik aufzublähen.
 
@@ -166,6 +166,8 @@ Suggested concise wording:
 > Im anschließenden Qualitäts-Pass habe ich offensichtliche Premium-Brüche entfernt: einheitliche deutsche Storefront-Sprache, mobile Suche, kompaktere PDP-Entscheidungshilfe, bessere leere Warenkorbführung und strukturierte Breadcrumb-Daten. Das zeigt, dass ich nicht nur Features baue, sondern die Store-Erfahrung als Gesamtsystem prüfe.
 
 > In der finalen Live-Review habe ich die Details geschärft, die aus einem guten Store einen glaubwürdigen Premium-Store machen: volle Breiten für kommerzielle Flächen, konsistente Logo-Optik, Suchvorschläge, klare Quick-Add-Zustände, stabile Produktkarten, ruhigere PDP- und Cart-Layouts und Button-Kontraste ohne Unsicherheit.
+
+> Im Real-Store-Polish habe ich die letzten Demo-Signale entfernt: reduzierte Top-Navigation, reines Textlogo, echte Icon-Actions für Suche und Warenkorb, keine unterstrichenen Links, realistischere Geschenk-/Business-Texte, sauberere Cart-Assurance und Store-Daten, die nicht mehr durch alte Metaobject-Copy überschrieben werden.
 
 ## Screenshot Checklist
 

@@ -8,15 +8,10 @@
 
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
-{% assign b2b_page = pages['b2b-corporate-gifts'] %}
 {% assign recipes_page = pages['recipes'] %}
 {% assign gift_finder_page = pages['gift-finder'] %}
-{% assign b2b_url = routes.root_url | append: '#b2b' %}
 {% assign recipes_url = routes.root_url | append: '#recipe-to-cart' %}
 {% assign gift_finder_url = routes.root_url | append: '#gifts' %}
-{% if b2b_page != blank %}
-  {% assign b2b_url = b2b_page.url %}
-{% endif %}
 {% if recipes_page != blank %}
   {% assign recipes_url = recipes_page.url %}
 {% endif %}
@@ -27,7 +22,6 @@
 <header class="sf-header full-width">
   <div class="sf-page sf-header__inner">
     <a class="sf-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
-      <span class="sf-logo__mark" aria-hidden="true">S</span>
       <span class="sf-logo__text">
         <span class="sf-logo__wordmark">SPICELIFT</span>
         <span class="sf-logo__tagline">Bio Gewürzmanufaktur</span>
@@ -39,25 +33,29 @@
       <a href="{{ set_collection_url }}">Gewürzsets</a>
       <a href="{{ recipes_url }}">Rezepte</a>
       <a href="{{ gift_finder_url }}">Geschenke</a>
-      <a href="{{ b2b_url }}">B2B</a>
     </nav>
 
     <div class="sf-header__actions">
       <form class="sf-search" action="{{ routes.search_url }}" method="get" role="search">
         <label class="visually-hidden" for="Search-{{ section.id }}">Suche</label>
         <input id="Search-{{ section.id }}" type="search" name="q" placeholder="Wonach suchst du?">
-        <button type="submit">Suchen</button>
-        <div class="sf-search-suggestions-popover" aria-label="Beliebte Suchpfade">
+        <button type="submit" aria-label="Suche starten">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+            <path d="M10.8 5.2a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2Zm0-2a7.6 7.6 0 1 1-4.6 13.6l-3 3a1 1 0 0 1-1.4-1.4l3-3A7.6 7.6 0 0 1 10.8 3.2Z" fill="currentColor"/>
+          </svg>
+        </button>
+        <div class="sf-search-suggestions-popover" aria-label="Beliebte Suchen">
           <a href="{{ routes.search_url }}?type=product&q=bagel">Bagel</a>
           <a href="{{ routes.search_url }}?type=product&q=avocado">Avocado</a>
           <a href="{{ routes.search_url }}?type=product&q=grillen">Grillen</a>
           <a href="{{ routes.search_url }}?type=product&q=geschenk">Geschenk</a>
-          <a href="{{ routes.search_url }}?type=product&q=nachf%C3%BCllpack">Nachfüllpack</a>
         </div>
       </form>
 
-      <a class="sf-cart" href="{{ routes.cart_url }}">
-        Warenkorb
+      <a class="sf-cart" href="{{ routes.cart_url }}" aria-label="Warenkorb mit {{ cart.item_count }} Artikeln">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="21" height="21">
+          <path d="M7.2 8.4V7a4.8 4.8 0 0 1 9.6 0v1.4h1.1a2 2 0 0 1 2 1.8l.8 9.1a2 2 0 0 1-2 2.2H5.3a2 2 0 0 1-2-2.2l.8-9.1a2 2 0 0 1 2-1.8h1.1Zm2 0h5.6V7a2.8 2.8 0 0 0-5.6 0v1.4Zm-3.1 2-.8 9.1h13.4l-.8-9.1H6.1Z" fill="currentColor"/>
+        </svg>
         <span class="sf-cart__count">{{ cart.item_count }}</span>
       </a>
     </div>
@@ -65,8 +63,12 @@
     <form class="sf-mobile-search" action="{{ routes.search_url }}" method="get" role="search">
       <label class="visually-hidden" for="MobileSearch-{{ section.id }}">Suche</label>
       <input id="MobileSearch-{{ section.id }}" type="search" name="q" placeholder="Gericht, Aroma, Set">
-      <button type="submit">Suchen</button>
-      <div class="sf-search-suggestions-popover" aria-label="Beliebte Suchpfade">
+      <button type="submit" aria-label="Suche starten">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+          <path d="M10.8 5.2a5.6 5.6 0 1 0 0 11.2 5.6 5.6 0 0 0 0-11.2Zm0-2a7.6 7.6 0 1 1-4.6 13.6l-3 3a1 1 0 0 1-1.4-1.4l3-3A7.6 7.6 0 0 1 10.8 3.2Z" fill="currentColor"/>
+        </svg>
+      </button>
+      <div class="sf-search-suggestions-popover" aria-label="Beliebte Suchen">
         <a href="{{ routes.search_url }}?type=product&q=bagel">Bagel</a>
         <a href="{{ routes.search_url }}?type=product&q=avocado">Avocado</a>
         <a href="{{ routes.search_url }}?type=product&q=grillen">Grillen</a>

@@ -59,9 +59,9 @@
           {% endif %}
         </div>
         <div class="sf-product-thumbs" aria-label="Produktvorteile">
-          <div class="sf-product-thumb"><strong>Aroma</strong><br>{{ flavor }}</div>
-          <div class="sf-product-thumb"><strong>Anwendung</strong><br>{{ pairing_clean | truncate: 84 }}</div>
-          <div class="sf-product-thumb"><strong>Kaufpfad</strong><br>Dose, Refill und Vorratsgröße.</div>
+          <div class="sf-product-thumb"><strong>Aroma</strong><span>{{ flavor }}</span></div>
+          <div class="sf-product-thumb"><strong>Anwendung</strong><span>{{ pairing_clean | truncate: 84 }}</span></div>
+          <div class="sf-product-thumb"><strong>Größe</strong><span>Dose, Refill und Vorratsgröße.</span></div>
         </div>
       </div>
 
@@ -86,7 +86,7 @@
             <strong>{{ pairing_clean }}</strong>
           </div>
           <div>
-            <span>Kaufpfad</span>
+            <span>Größe</span>
             <strong>Dose zum Start, Refill für Wiederkauf, Vorrat für Teams und Vielkocher.</strong>
           </div>
         </div>
@@ -106,10 +106,10 @@
                 {% endif %}
                 {% if variant_title_downcase contains 'gastro' or variant_title_downcase contains '1kg' or variant_title_downcase contains 'vorrat' %}
                   {% assign variant_label = 'Vorrat' %}
-                  {% assign variant_hint = 'Für Vielkocher, Teams und B2B-Anwendungen.' %}
+                  {% assign variant_hint = 'Für Vielkocher, Teams und größere Küchen.' %}
                 {% endif %}
                 {% if product.type contains 'Set' or product.title contains 'Set' %}
-                  {% assign variant_label = 'Geschenkpfad' %}
+                  {% assign variant_label = 'Geschenkempfehlung' %}
                   {% assign variant_hint = 'Für Gastgeber, Kundengeschenke und kuratierte Anlässe.' %}
                 {% endif %}
                 <button
@@ -157,7 +157,7 @@
 
     <section class="sf-refill-advisor" aria-labelledby="refill-advisor-heading">
       <div class="sf-refill-advisor__intro">
-        <p class="sf-eyebrow">Kaufpfad-Kompass</p>
+        <p class="sf-eyebrow">Größenberatung</p>
         <h2 id="refill-advisor-heading">Dose, Refill oder Vorrat?</h2>
       </div>
       <div class="sf-refill-advisor__grid">
@@ -179,10 +179,10 @@
       </div>
       <div class="sf-refill-advisor__actions">
         {% if refill_collection != blank %}
-          <a class="sf-inline-link" href="{{ refill_collection.url }}">Nachfüll- und Vorratspfad ansehen</a>
+          <a class="sf-button sf-button--ghost" href="{{ refill_collection.url }}">Refill & Vorrat ansehen</a>
         {% endif %}
-        <a class="sf-inline-link" href="{{ recipes_url }}">Rezeptideen zum Produkt</a>
-        <a class="sf-inline-link" href="{{ gift_finder_url }}">Als Geschenk einordnen</a>
+        <a class="sf-button sf-button--ghost" href="{{ recipes_url }}">Rezeptideen ansehen</a>
+        <a class="sf-button sf-button--ghost" href="{{ gift_finder_url }}">Geschenk prüfen</a>
       </div>
     </section>
 

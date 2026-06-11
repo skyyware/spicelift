@@ -116,6 +116,8 @@ node scripts/qa-storefront.mjs
 
 Set `QA_OUTPUT_DIR=/path/to/folder` to store artifacts outside `.qa-artifacts/`.
 
+Password-protected stores need a current `SHOPIFY_STORE_PASSWORD`. If the password is wrong, both the live storefront and `preview_theme_id` links render Shopify's password page, even when Admin API and theme push access work. Correct the storefront password in Shopify Admin or temporarily disable storefront protection before treating screenshot QA as final.
+
 ## Architecture Notes
 
 - `assets/spicelift-store.css` contains the custom design system.
@@ -158,7 +160,7 @@ The latest pass adds high-impact, low-risk commerce improvements that map direct
 - Guided Selling: the homepage Aroma Finder recommends products by cooking occasion, not by internal category structure.
 - Recipe-to-Cart: the featured recipe adds a useful two-product basket through Shopify cart APIs.
 - PDP Decision Logic: each product answers usage, size and pairing questions near the purchase flow.
-- Collection Kaufpfade: curated paths for first purchase, refill and occasion activate product-grid filters; the gift path routes to the dedicated set collection when that is the stronger buying path.
+- Collection guidance: curated entries for first purchase, refill and occasion activate product-grid filters; the gift entry routes to the dedicated set collection when that is the stronger buying path.
 - Cart AOV Layer: the cart explains the shipping threshold and points users toward refill or set additions.
 - Quick Add: product cards add items without a full page transition while keeping the standard Shopify form fallback.
 
@@ -194,7 +196,7 @@ Final QA was run against the live theme `Spicelift Premium Store` (`#16005549283
 
 ## Recipe Gift Refill Pass
 
-The 2026-06-11 follow-up pass turns the Rimoco opportunity map into visible storefront surfaces:
+The 2026-06-11 follow-up pass turns the prospect opportunity map into visible storefront surfaces:
 
 - Recipe Hub: multiple cart-ready dish paths show how editorial content can become measurable commerce.
 - Geschenkfinder: host, team and client-gift intents are separated before the customer sees products.
@@ -216,3 +218,14 @@ The 2026-06-11 world-class baseline pass removes obvious premium breaks before a
 - Empty cart recovery: the empty cart now offers recipe, gift and refill paths instead of only category browsing.
 - Structured data: Recipe Hub and Geschenkfinder pages expose BreadcrumbList JSON-LD.
 - QA target: every future pass must verify home, search, product, cart, Recipe Hub and Geschenkfinder on desktop and mobile.
+
+## Real Store Polish Pass
+
+The 2026-06-11 real-store polish pass removes the remaining prototype signals from the storefront:
+
+- Header: four-item top navigation, text-only wordmark, icon search, icon cart and result-backed search suggestions.
+- Interaction language: no underlined links/buttons/chips, no visual breadcrumbs, no demo-oriented "Shopify implementation" copy.
+- Collection/PDP/cart: calmer path cards, stronger sticky filter spacing, button-style PDP next actions, conditional shipping-threshold messaging and clearer cart assurance.
+- Gift and business pages: copy now reads like real commerce surfaces, not a case-study explanation.
+- Data boundary: smart collections and pages sync through Shopify CLI; connector-owned Metaobjects are not written by CLI, so visible Aroma Finder copy is kept theme-owned.
+- QA boundary: Admin/Connector access and theme push are working; final rendered screenshot QA still needs the corrected storefront password because the current public and preview URLs resolve to the Shopify password page.

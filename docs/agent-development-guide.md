@@ -1,6 +1,6 @@
 # Agent And Human Development Guide
 
-Last updated: 2026-06-10
+Last updated: 2026-06-11
 
 This guide is for future agents and humans continuing the Spicelift Shopify store.
 
@@ -12,6 +12,8 @@ This guide is for future agents and humans continuing the Spicelift Shopify stor
 | Store password | Use `SHOPIFY_STORE_PASSWORD` from the local environment. Do not commit it. |
 | Live theme | `Spicelift Premium Store` |
 | Live theme ID | `160055492834` |
+| Current development theme | `Development (582b15-skyy)` |
+| Current development theme ID | `160055656674` |
 | Repo | `https://github.com/skyyware/spicelift` |
 | Local path | `/Volumes/web/spicelift` |
 
@@ -42,6 +44,8 @@ Avoid changes that only make the page look busier.
 - Do not hardcode prospect names or confidential context in theme files.
 - Keep copy compact and commercially useful.
 - Keep generated assets premium, restrained and label-aware.
+- Avoid visible demo/case-study wording in the storefront. It must read like a real shop.
+- Never underline links, chips or buttons visually; use spacing, icons, states and copy for affordance.
 
 ## Commands
 
@@ -92,8 +96,9 @@ Use the direct Shopify connector for Admin API operations that the CLI cannot ow
 Known boundary:
 
 - The connector can create and read `spicelift_use_case` and `spicelift_recipe`.
-- The Shopify CLI currently cannot read those connector-owned definitions.
+- The Shopify CLI currently cannot write those connector-owned definitions. A `SHOPIFY_SYNC_METAOBJECTS=1` run on 2026-06-11 failed with `Not authorized. This type is reserved for use by another application`.
 - `scripts/sync-commerce-data.mjs` skips Metaobjects by default and still maintains smart collections and pages.
+- The public Aroma Finder currently uses theme-owned fallback copy to prevent stale Metaobject text from appearing on the live storefront.
 
 Before a write mutation:
 
@@ -139,7 +144,14 @@ Check for:
 
 Latest QA artifact:
 
-`/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-live-polish-final-qa-v2-2026-06-11`
+`/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-real-shop-iab-qa-2026-06-11`
+
+2026-06-11 password-gate note:
+
+- Shopify Admin/Connector access works and the live theme can be pushed.
+- The public storefront and preview link currently still require the storefront password.
+- The previously provided local password value was rejected by Shopify CLI and Playwright, so automated screenshot QA lands on the password page until the store password is corrected in Shopify Admin or temporarily disabled.
+- Do not commit or print the password. Once corrected, rerun `scripts/qa-storefront.mjs` with `SHOPIFY_STORE_PASSWORD` and replace the artifact path above.
 
 Additional focused screenshot:
 

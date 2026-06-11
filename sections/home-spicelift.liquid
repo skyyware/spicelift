@@ -22,11 +22,11 @@
 {% endif %}
 {% assign use_case_handles = 'brunch,grill,alltag,geschenk' | split: ',' %}
 {% assign has_use_cases = false %}
-{% for use_case_handle in use_case_handles %}
-  {% if shop.metaobjects.spicelift_use_case[use_case_handle] != blank %}
-    {% assign has_use_cases = true %}
-  {% endif %}
-{% endfor %}
+{% comment %}
+  Keep the public storefront copy theme-owned for this demo store. The previous
+  Metaobject definitions are owned by another Shopify app, so CLI sync cannot
+  reliably update them during review passes.
+{% endcomment %}
 {% assign featured_recipe = shop.metaobjects.spicelift_recipe['knusprige-bagel-bowl'] %}
 {% assign bagel = all_products['bio-bagel-gewuerz'] %}
 {% assign avocado = all_products['bio-avocado-gewuerz'] %}
@@ -54,7 +54,7 @@
     </p>
     <div class="sf-hero__actions">
       <a class="sf-button" href="{{ spice_collection_url }}">Gewürze entdecken</a>
-      <a class="sf-button sf-button--on-dark" href="{{ recipes_url }}">Rezeptpfade ansehen</a>
+      <a class="sf-button sf-button--on-dark" href="{{ recipes_url }}">Rezepte ansehen</a>
     </div>
     <div class="sf-hero__proof" aria-label="Spicelift Vorteile">
       <div class="sf-proof-item"><strong>100% Bio</strong><span>Ausgewählte Rohstoffe und klare Zutaten.</span></div>
@@ -80,7 +80,7 @@
     </a>
     <a class="sf-category-card" href="{{ b2b_url }}">
       <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-brunch-bagel-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
-      <strong>B2B<span>Firmengeschenke und Private Label</span></strong>
+      <strong>Business<span>Firmengeschenke und White Label</span></strong>
     </a>
   </div>
 </section>
@@ -145,7 +145,7 @@
                   <h3>{{ use_case.heading.value }}</h3>
                   <p>{{ use_case.summary.value }}</p>
                   {% if case_collection != blank %}
-                    <a class="sf-inline-link" href="{{ case_collection.url }}">Diesen Kaufpfad ansehen</a>
+                    <a class="sf-inline-link" href="{{ case_collection.url }}">Auswahl ansehen</a>
                   {% endif %}
                 </div>
                 <div class="sf-finder-products">
@@ -184,7 +184,7 @@
             <div>
               <p class="sf-eyebrow">Empfehlung</p>
               <h3>Frisch, nussig, sofort verständlich.</h3>
-              <p>Bagel-Gewürz und Avocado-Gewürz bilden einen einfachen Brunch-Pfad mit hoher Wiederkauflogik.</p>
+              <p>Bagel-Gewürz und Avocado-Gewürz bilden eine einfache Brunch-Auswahl mit hoher Wiederkauflogik.</p>
             </div>
             <div class="sf-finder-products">
               {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
@@ -387,13 +387,13 @@
   <div class="sf-page sf-b2b-panel">
     <div>
       <p class="sf-eyebrow" style="color:#d9e6c4">B2B</p>
-      <h2 class="sf-heading sf-heading--medium">Firmengeschenke, Private Label und Wiederverkäufer sauber führen.</h2>
+      <h2 class="sf-heading sf-heading--medium">Geschäftskunden, Geschenke und White Label klar führen.</h2>
       <p class="sf-copy">
-        Für Teams, Kundengeschenke und Wiederverkäufer: Muster, Mindestmengen,
-        Personalisierung und Lieferzeit lassen sich direkt anfragen.
+        Für Teams, Kundengeschenke und Wiederverkauf: Mengen, Personalisierung,
+        Timing und Lieferfähigkeit werden früh sichtbar.
       </p>
     </div>
-    <a class="sf-button sf-button--light" href="{{ b2b_url }}">B2B Angebote</a>
+    <a class="sf-button sf-button--light" href="{{ b2b_url }}">Business-Angebote</a>
   </div>
 </section>
 

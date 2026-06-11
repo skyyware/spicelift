@@ -40,7 +40,9 @@
                   Kostenloser Versand ist erreicht.
                 {% endif %}
               </strong>
-              <span>Nachfüllpack oder Set ergänzen und Versandkosten sparen.</span>
+              {% if remaining > 0 %}
+                <span>Nachfüllpack oder Set ergänzen und Versandkosten sparen.</span>
+              {% endif %}
             </div>
             <div class="sf-progress-track" aria-hidden="true">
               <span style="width: {{ progress }}%;"></span>
@@ -104,14 +106,14 @@
             </div>
           </div>
 
-          <div class="sf-cart-next-actions" aria-label="Nächste Kaufpfade">
+          <div class="sf-cart-next-actions" aria-label="Nächste Schritte">
             <a href="{{ recipes_url }}">
               <span>Rezept</span>
               <strong>Aus dem Warenkorb ein Gericht machen</strong>
             </a>
             <a href="{{ gift_finder_url }}">
               <span>Geschenk</span>
-              <strong>Als Set oder Geschenkpfad prüfen</strong>
+              <strong>Als Set oder Geschenk prüfen</strong>
             </a>
           </div>
         </aside>

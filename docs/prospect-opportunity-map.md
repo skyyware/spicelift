@@ -1,4 +1,4 @@
-# Rimoco Opportunity Map
+# Prospect Opportunity Map
 
 Last updated: 2026-06-11
 
@@ -12,7 +12,7 @@ The strongest response is not a generic premium theme. The strongest response is
 
 ## Observed Brand And Commerce Context
 
-Rimoco already has substantial raw material:
+The target brand already has substantial raw material:
 
 - Broad organic spice catalog with many variants.
 - Refill packs, larger pack sizes and sustainable packaging logic.
@@ -69,7 +69,7 @@ Proof points:
 
 ### 3. Refill And Reorder Logic
 
-Rimoco's refill and packaging logic is a real differentiator. It should not sit silently inside variant labels.
+Refill and packaging logic is a real differentiator. It should not sit silently inside variant labels.
 
 High-impact UX:
 
@@ -97,7 +97,7 @@ The current project brief mentions cross-selling, upselling and app work. For a 
 - Dedicated corporate-gifts landing page.
 - Private label and reseller paths separated from consumer gifting.
 
-This is a major pitch angle because Rimoco already exposes B2B categories. A clear funnel would reduce manual clarification and create better leads.
+This is a major pitch angle because the target brand already exposes B2B categories. A clear funnel would reduce manual clarification and create better leads.
 
 Proof points:
 
