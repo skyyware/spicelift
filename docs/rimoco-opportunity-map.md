@@ -201,21 +201,20 @@ Useful AI-assisted areas:
 
 This supports the user's AI-driven development positioning without making the pitch feel unserious.
 
-## Suggested Next Spicelift Pass
+## Implemented Spicelift Pass
 
-Build the next pass around "from inspiration to basket":
+The implemented follow-up pass is built around "from inspiration to basket":
 
-1. Recipe hub with structured recipe metaobjects and add-to-cart.
-2. Gift finder landing page with budget and recipient logic.
-3. PDP pairing and substitute model.
-4. Search synonym/intent documentation and example config.
-5. Analytics event map and QA proof screenshots.
+1. Recipe Hub with structured recipe-to-cart flows.
+2. Gift Finder landing page with host, team and client-gift logic.
+3. PDP refill advisor for dose, refill and larger pack decisions.
+4. Cart next actions that continue toward recipes and gifts.
+5. QA coverage for new pages and interactions.
 
-This would align very tightly with the original ad: theme development, new features, landing pages, cross-sell/upsell, UX, conversion and maintainable operations.
+This aligns tightly with the original ad: theme development, new features, landing pages, cross-sell/upsell, UX, conversion and maintainable operations.
 
 ## Dossier Framing
 
 Suggested short framing:
 
 > Ich habe die Arbeitsprobe bewusst nicht als reines Theme-Redesign aufgebaut, sondern als Shopify-System für bessere Kaufentscheidungen: anlassbasierte Navigation, Guided Search, Recipe-to-Cart, Refill-Logik, Geschenk- und B2B-Pfade, PDP-Entscheidungshilfen und wiederholbare QA. Genau diese Flächen entsprechen den Aufgaben aus der Ausschreibung: Theme-Weiterentwicklung, Landingpages, Shopify-Logik, Cross-/Upselling, Conversion, Performance und laufende technische Betreuung.
-

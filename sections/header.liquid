@@ -9,9 +9,19 @@
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
 {% assign b2b_page = pages['b2b-corporate-gifts'] %}
+{% assign recipes_page = pages['recipes'] %}
+{% assign gift_finder_page = pages['gift-finder'] %}
 {% assign b2b_url = routes.root_url | append: '#b2b' %}
+{% assign recipes_url = routes.root_url | append: '#recipe-to-cart' %}
+{% assign gift_finder_url = routes.root_url | append: '#gifts' %}
 {% if b2b_page != blank %}
   {% assign b2b_url = b2b_page.url %}
+{% endif %}
+{% if recipes_page != blank %}
+  {% assign recipes_url = recipes_page.url %}
+{% endif %}
+{% if gift_finder_page != blank %}
+  {% assign gift_finder_url = gift_finder_page.url %}
 {% endif %}
 
 <header class="sf-header">
@@ -27,8 +37,8 @@
     <nav class="sf-nav" aria-label="Hauptnavigation">
       <a href="{{ spice_collection_url }}">Gewürzmischungen</a>
       <a href="{{ set_collection_url }}">Gewürzsets</a>
-      <a href="/#recipe-to-cart">Rezepte</a>
-      <a href="/#gifts">Geschenke</a>
+      <a href="{{ recipes_url }}">Rezepte</a>
+      <a href="{{ gift_finder_url }}">Geschenke</a>
       <a href="{{ b2b_url }}">B2B</a>
     </nav>
 

@@ -5,11 +5,20 @@
 {% assign dip_collection = collections['dips-saucen'] %}
 {% assign refill_collection = collections['nachfuellpacks-vorrat'] %}
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
-{% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
 {% assign b2b_page = pages['b2b-corporate-gifts'] %}
+{% assign recipes_page = pages['recipes'] %}
+{% assign gift_finder_page = pages['gift-finder'] %}
 {% assign b2b_url = routes.root_url | append: '#b2b' %}
+{% assign recipes_url = routes.root_url | append: '#recipe-to-cart' %}
+{% assign gift_finder_url = routes.root_url | append: '#gifts' %}
 {% if b2b_page != blank %}
   {% assign b2b_url = b2b_page.url %}
+{% endif %}
+{% if recipes_page != blank %}
+  {% assign recipes_url = recipes_page.url %}
+{% endif %}
+{% if gift_finder_page != blank %}
+  {% assign gift_finder_url = gift_finder_page.url %}
 {% endif %}
 {% assign use_case_handles = 'brunch,grill,alltag,geschenk' | split: ',' %}
 {% assign has_use_cases = false %}
@@ -45,7 +54,7 @@
     </p>
     <div class="sf-hero__actions">
       <a class="sf-button" href="{{ spice_collection_url }}">Gewürze entdecken</a>
-      <a class="sf-button sf-button--on-dark" href="#recipe-to-cart">Rezept des Tages</a>
+      <a class="sf-button sf-button--on-dark" href="{{ recipes_url }}">Rezeptpfade ansehen</a>
     </div>
     <div class="sf-hero__proof" aria-label="Spicelift Vorteile">
       <div class="sf-proof-item"><strong>100% Bio</strong><span>Ausgewählte Rohstoffe und klare Zutaten.</span></div>
@@ -61,7 +70,7 @@
       <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-bagel-gewuerz.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>Gewürzmischungen<span>Für Alltag, Grillen, Dips und Bowls</span></strong>
     </a>
-    <a class="sf-category-card" href="{{ set_collection_url }}">
+    <a class="sf-category-card" href="{{ gift_finder_url }}">
       <span class="sf-category-card__image"><img src="{{ 'spice-product-bio-grillabend-set.jpg' | asset_url }}" alt="" width="144" height="144" loading="lazy"></span>
       <strong>Geschenksets<span>Für Küche, Kundschaft und Gastgeber</span></strong>
     </a>
@@ -234,8 +243,8 @@
       <div class="sf-chip-row" aria-label="Kochanlässe">
         <a class="sf-chip" href="{% if grill_collection != blank %}{{ grill_collection.url }}{% else %}{{ spice_collection_url }}{% endif %}">Zum Grillen</a>
         <a class="sf-chip" href="{% if dip_collection != blank %}{{ dip_collection.url }}{% else %}{{ spice_collection_url }}{% endif %}">Für Dips</a>
-        <a class="sf-chip" href="{% if refill_collection != blank %}{{ refill_collection.url }}{% else %}{{ spice_collection_url }}{% endif %}">Nachfüllpacks</a>
-        <a class="sf-chip" href="{{ set_collection_url }}">Als Geschenk</a>
+      <a class="sf-chip" href="{% if refill_collection != blank %}{{ refill_collection.url }}{% else %}{{ spice_collection_url }}{% endif %}">Nachfüllpacks</a>
+        <a class="sf-chip" href="{{ gift_finder_url }}">Als Geschenk</a>
       </div>
     </div>
 
@@ -362,7 +371,7 @@
         <p class="sf-eyebrow">Geschenke und Vorrat</p>
         <h2 class="sf-heading sf-heading--medium">Sets für Menschen, die gern gut kochen.</h2>
       </div>
-      <a class="sf-button sf-button--ghost" href="{{ set_collection_url }}">Alle Sets ansehen</a>
+        <a class="sf-button sf-button--ghost" href="{{ gift_finder_url }}">Gift Finder öffnen</a>
     </div>
     <div class="sf-grid sf-grid--2">
       {% if set_collection.products.size > 0 %}
@@ -387,55 +396,6 @@
     <a class="sf-button sf-button--light" href="{{ b2b_url }}">B2B-Pfad ansehen</a>
   </div>
 </section>
-
-<script>
-  (() => {
-    document.querySelectorAll('[data-finder]').forEach((finder) => {
-      const choices = Array.from(finder.querySelectorAll('[data-finder-target]'));
-      const results = Array.from(finder.querySelectorAll('[data-finder-result]'));
-      choices.forEach((choice) => {
-        choice.addEventListener('click', () => {
-          const target = choice.dataset.finderTarget;
-          choices.forEach((item) => {
-            const active = item === choice;
-            item.classList.toggle('is-active', active);
-            item.setAttribute('aria-selected', active ? 'true' : 'false');
-          });
-          results.forEach((result) => {
-            const active = result.dataset.finderResult === target;
-            result.hidden = !active;
-            result.classList.toggle('is-active', active);
-          });
-        });
-      });
-    });
-
-    document.querySelectorAll('[data-bundle-add]').forEach((button) => {
-      button.addEventListener('click', async () => {
-        const note = button.parentElement.querySelector('[data-bundle-note]');
-        const originalText = button.textContent;
-        button.disabled = true;
-        button.textContent = 'Wird hinzugefügt ...';
-        try {
-          const items = JSON.parse(button.dataset.items || '[]');
-          const response = await fetch('/cart/add.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ items }),
-          });
-          if (!response.ok) throw new Error('Cart add failed');
-          button.textContent = 'Im Warenkorb';
-          if (note) note.textContent = 'Rezeptkorb hinzugefügt. Du wirst zum Warenkorb weitergeleitet.';
-          window.setTimeout(() => { window.location.href = '/cart'; }, 650);
-        } catch (error) {
-          button.disabled = false;
-          button.textContent = originalText;
-          if (note) note.textContent = 'Der Rezeptkorb konnte nicht hinzugefügt werden. Bitte Produkte einzeln wählen.';
-        }
-      });
-    });
-  })();
-</script>
 
 {% schema %}
 {

@@ -1,0 +1,183 @@
+{% assign bagel = all_products['bio-bagel-gewuerz'] %}
+{% assign avocado = all_products['bio-avocado-gewuerz'] %}
+{% assign cafe = all_products['bio-cafe-de-paris-gewuerz'] %}
+{% assign bruehe = all_products['bio-gemuesebruehe'] %}
+{% assign grill_set = all_products['bio-grillabend-set'] %}
+{% assign brunch_set = all_products['bio-brunch-bagel-set'] %}
+{% assign recipe = shop.metaobjects.spicelift_recipe['knusprige-bagel-bowl'] %}
+{% assign recipe_products = blank %}
+{% if recipe != blank %}
+  {% assign recipe_products = recipe.products.value %}
+{% endif %}
+
+<section class="sf-recipe-hub">
+  <div class="sf-page">
+    <nav class="sf-breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Start</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ page.title }}</span>
+    </nav>
+
+    <div class="sf-recipe-hub__hero">
+      <div>
+        <p class="sf-eyebrow">Recipe-to-Cart</p>
+        <h1 class="sf-heading">Rezepte, die nicht nur inspirieren, sondern Einkauf vereinfachen.</h1>
+        <p class="sf-copy">
+          Gewürzshops haben einen natürlichen Content-Vorteil. Der Hebel ist, Rezepte
+          strukturiert mit passenden Produkten, Größen und Wiederkaufpfaden zu verbinden.
+        </p>
+      </div>
+      <div class="sf-recipe-hub__proof" aria-label="Recipe commerce workflow">
+        <span><strong>01</strong> Gericht wählen</span>
+        <span><strong>02</strong> Gewürze verstehen</span>
+        <span><strong>03</strong> Rezeptkorb kaufen</span>
+      </div>
+    </div>
+
+    <section class="sf-recipe-feature" id="featured-recipe">
+      <div class="sf-recipe-feature__image">
+        <img src="{{ 'spice-editorial-workbench.jpg' | asset_url }}" width="1600" height="1000" loading="eager" fetchpriority="high" alt="">
+      </div>
+      <div class="sf-recipe-feature__content">
+        <p class="sf-eyebrow">{% if recipe != blank %}{{ recipe.occasion.value }}{% else %}Rezept des Tages{% endif %}</p>
+        <h2>{% if recipe != blank %}{{ recipe.title.value }}{% else %}Knusprige Bagel Bowl mit Avocado-Dip{% endif %}</h2>
+        <p class="sf-copy">
+          {% if recipe != blank %}
+            {{ recipe.summary.value }}
+          {% else %}
+            Ein schneller Brunch-Favorit mit zwei Gewürzen, die Bagel, Avocado und Dip zusammenbringen.
+          {% endif %}
+        </p>
+        <div class="sf-recipe-method">
+          <article>
+            <span>01</span>
+            <strong>Basis</strong>
+            <p>Joghurt, Avocado oder Frischkäse als cremiger Träger.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <strong>Würze</strong>
+            <p>Bagel-Gewürz für Crunch, Avocado-Gewürz für frische Tiefe.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <strong>Kaufpfad</strong>
+            <p>Dose zum Kennenlernen, Refill für Wiederkauf, Set zum Verschenken.</p>
+          </article>
+        </div>
+        {% if recipe_products != blank %}
+          {% capture featured_items_json %}
+            [
+              {% for recipe_product in recipe_products %}
+                {"id":{{ recipe_product.selected_or_first_available_variant.id | json }},"quantity":1}{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            ]
+          {% endcapture %}
+          <button class="sf-button sf-bundle-button" type="button" data-bundle-add data-items='{{ featured_items_json | strip_newlines | strip }}'>
+            {{ recipe.cta_label.value | default: 'Rezeptkorb hinzufügen' }}
+          </button>
+        {% elsif bagel != blank and avocado != blank %}
+          <button
+            class="sf-button sf-bundle-button"
+            type="button"
+            data-bundle-add
+            data-items='[{"id":{{ bagel.selected_or_first_available_variant.id | json }},"quantity":1},{"id":{{ avocado.selected_or_first_available_variant.id | json }},"quantity":1}]'
+          >
+            Rezeptkorb hinzufügen
+          </button>
+        {% endif %}
+        <p class="sf-bundle-note" data-bundle-note>Legt die passenden Gewürze in den Warenkorb und macht Content messbar kaufbar.</p>
+      </div>
+    </section>
+
+    <section class="sf-section-intro sf-recipe-commerce-intro">
+      <div>
+        <p class="sf-eyebrow">Rezeptpfade</p>
+        <h2 class="sf-heading sf-heading--medium">Drei Gerichte, drei Warenkörbe.</h2>
+      </div>
+      <p class="sf-copy">Jeder Rezeptpfad verbindet ein Gericht mit konkreten Produkten. So wird aus Inspiration ein handhabbarer Warenkorb.</p>
+    </section>
+
+    <div class="sf-recipe-grid">
+      <article class="sf-recipe-tile">
+        <p class="sf-eyebrow">Brunch</p>
+        <h3>Bagel Bowl mit Avocado-Dip</h3>
+        <p>Frühstück, Bowl und Dip werden zu einem klaren Einstieg für zwei wiederkehrende Produkte.</p>
+        <div class="sf-grid sf-grid--2">
+          {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
+          {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
+        </div>
+        {% if bagel != blank and avocado != blank %}
+          <button
+            class="sf-button sf-bundle-button"
+            type="button"
+            data-bundle-add
+            data-items='[{"id":{{ bagel.selected_or_first_available_variant.id | json }},"quantity":1},{"id":{{ avocado.selected_or_first_available_variant.id | json }},"quantity":1}]'
+          >
+            Brunchkorb hinzufügen
+          </button>
+          <p class="sf-bundle-note" data-bundle-note>Bagel und Avocado als Rezeptkorb.</p>
+        {% endif %}
+      </article>
+
+      <article class="sf-recipe-tile">
+        <p class="sf-eyebrow">Grillen</p>
+        <h3>Kräuterbutter, Gemüse und Dip</h3>
+        <p>Ein saisonaler Anlasskorb bündelt Einzelprodukt und Set ohne aggressive Rabattmechanik.</p>
+        <div class="sf-grid sf-grid--2">
+          {% if cafe != blank %}{% render 'product-card-spice', product: cafe, compact: true %}{% endif %}
+          {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
+        </div>
+        {% if cafe != blank and grill_set != blank %}
+          <button
+            class="sf-button sf-bundle-button"
+            type="button"
+            data-bundle-add
+            data-items='[{"id":{{ cafe.selected_or_first_available_variant.id | json }},"quantity":1},{"id":{{ grill_set.selected_or_first_available_variant.id | json }},"quantity":1}]'
+          >
+            Grillkorb hinzufügen
+          </button>
+          <p class="sf-bundle-note" data-bundle-note>Einzelgewürz und Set für den Sommeranlass.</p>
+        {% endif %}
+      </article>
+
+      <article class="sf-recipe-tile">
+        <p class="sf-eyebrow">Alltag</p>
+        <h3>Meal Prep mit Brühe und Finish</h3>
+        <p>Basisprodukt plus Finish-Gewürz löst den täglichen Bedarf und macht Wiederkauf naheliegend.</p>
+        <div class="sf-grid sf-grid--2">
+          {% if bruehe != blank %}{% render 'product-card-spice', product: bruehe, compact: true %}{% endif %}
+          {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
+        </div>
+        {% if bruehe != blank and avocado != blank %}
+          <button
+            class="sf-button sf-bundle-button"
+            type="button"
+            data-bundle-add
+            data-items='[{"id":{{ bruehe.selected_or_first_available_variant.id | json }},"quantity":1},{"id":{{ avocado.selected_or_first_available_variant.id | json }},"quantity":1}]'
+          >
+            Alltagskorb hinzufügen
+          </button>
+          <p class="sf-bundle-note" data-bundle-note>Basis und Finish für schnelle Küche.</p>
+        {% endif %}
+      </article>
+    </div>
+
+    {% if brunch_set != blank %}
+      <section class="sf-recipe-bottomline">
+        <div>
+          <p class="sf-eyebrow">Upsell ohne Druck</p>
+          <h2 class="sf-heading sf-heading--medium">Wenn das Rezept überzeugt, ist das passende Set der natürliche nächste Schritt.</h2>
+        </div>
+        {% render 'product-card-spice', product: brunch_set %}
+      </section>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Spicelift Recipe Hub",
+  "settings": []
+}
+{% endschema %}

@@ -465,4 +465,38 @@ upsertPage({
   ],
 });
 
+upsertPage({
+  title: 'Recipes',
+  handle: 'recipes',
+  body:
+    '<p>Spicelift zeigt, wie Rezept-Content in Shopify direkt mit Produkten, Varianten und Warenkorb-Logik verbunden werden kann.</p>',
+  isPublished: true,
+  templateSuffix: 'recipes',
+  metafields: [
+    {
+      namespace: 'custom',
+      key: 'lead',
+      type: 'multi_line_text_field',
+      value: 'Recipe-to-Cart verbindet Inspiration mit konkreten Produkten und macht Content als Kaufpfad messbar.',
+    },
+  ],
+});
+
+upsertPage({
+  title: 'Gift Finder',
+  handle: 'gift-finder',
+  body:
+    '<p>Spicelift zeigt, wie Geschenk-Sortimente nach Anlass, Budget und Zielgruppe geführt werden können.</p>',
+  isPublished: true,
+  templateSuffix: 'gift-finder',
+  metafields: [
+    {
+      namespace: 'custom',
+      key: 'lead',
+      type: 'multi_line_text_field',
+      value: 'Ein Gift Finder reduziert Auswahlstress und trennt D2C-Geschenke früh von B2B- oder Corporate-Gift-Anfragen.',
+    },
+  ],
+});
+
 console.log('Commerce data sync complete.');

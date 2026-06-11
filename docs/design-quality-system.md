@@ -40,6 +40,14 @@ The store should feel premium, useful and quiet. Every section must help the cus
 - B2B inquiry path using Shopify-native contact form fields.
 - Repeatable Playwright QA script for screenshots, overflow checks, broken image checks, relevant network failures and interaction proof.
 
+2026-06-11 recipe/gift/refill pass added:
+
+- Recipe Hub with structured recipe-to-cart flows and multiple cart-ready dish paths.
+- Gift Finder that segments host, team and client-gift buying intent.
+- PDP refill advisor that explains dose, refill and larger pack decisions.
+- Cart next-action surface for recipe and gift continuation.
+- Store sync support for `recipes` and `gift-finder` pages.
+
 ## QA Gate
 
 Before shipping a design pass:
@@ -64,6 +72,8 @@ Then inspect at least these screenshots manually:
 - Search with results
 - Mobile search
 - Product page mobile
+- Recipe Hub mobile
+- Gift Finder mobile
 - B2B mobile
 - B2B form desktop
 

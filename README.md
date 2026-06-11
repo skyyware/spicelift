@@ -19,6 +19,7 @@ The project is a real Online Store 2.0 theme, not a static mockup. It shows how 
 - 2k Grok Imagine asset pipeline for high-value product and editorial imagery
 - Shopify-native commerce data layer with smart collections, Metaobjects and a B2B page route
 - Premium search/discovery route, PDP decision support and B2B inquiry path
+- Dedicated Recipe Hub, Gift Finder and refill/reorder decision surfaces
 
 ## Stack
 
@@ -86,7 +87,7 @@ The commerce data sync keeps Shopify-native buying paths aligned with the theme:
 node scripts/sync-commerce-data.mjs
 ```
 
-It maintains smart collections and the B2B page through Shopify Admin GraphQL via the CLI. Metaobject definitions and entries are owned by the direct Shopify connector/Admin API app and are documented in `docs/commerce-data-layer.md`.
+It maintains smart collections and key pages through Shopify Admin GraphQL via the CLI. Metaobject definitions and entries are owned by the direct Shopify connector/Admin API app and are documented in `docs/commerce-data-layer.md`.
 
 Only opt into CLI Metaobject writes when the active API app can read and write those definitions:
 
@@ -122,12 +123,14 @@ Set `QA_OUTPUT_DIR=/path/to/folder` to store artifacts outside `.qa-artifacts/`.
 - `sections/home-spicelift.liquid` is the landing surface.
 - `sections/product.liquid` implements the conversion-focused PDP.
 - `sections/collection.liquid` implements the guided product grid.
+- `sections/page-recipes.liquid` implements the recipe-to-cart hub.
+- `sections/page-gift-finder.liquid` implements the gift finder path.
 - `snippets/product-card-spice.liquid` keeps product tiles reusable.
 - `snippets/image.liquid` centralizes responsive image loading behavior.
 - `scripts/seed-store.mjs` keeps store content reproducible.
 - `scripts/generate-grok-assets.mjs` keeps generated visual assets reproducible and documented.
 - `scripts/update-store-seo-media.mjs` keeps Shopify Admin product and collection data aligned with the theme.
-- `scripts/sync-commerce-data.mjs` keeps smart collections and the B2B page reproducible.
+- `scripts/sync-commerce-data.mjs` keeps smart collections and key pages reproducible.
 - `scripts/qa-storefront.mjs` runs repeatable storefront screenshot and interaction QA.
 - `docs/commerce-data-layer.md` documents the Shopify data model and Admin API ownership boundary.
 - `docs/agent-development-guide.md` documents the operating guide for future agents and humans.
@@ -188,5 +191,15 @@ Final QA was run against the live theme `Spicelift Premium Store` (`#16005549283
 - Routes: home, brunch collection, grill collection, gift collection, B2B page, product detail page and cart.
 - Checks: no page-level horizontal overflow, no broken images, no unwanted client/demo wording, one-line desktop navigation and hidden Shopify preview chrome.
 - Interaction proof: Aroma Finder starts with Brunch, switches to Grillen, Recipe-to-Cart redirects to cart and contains Bagel/Avocado products.
+
+## Recipe Gift Refill Pass
+
+The 2026-06-11 follow-up pass turns the Rimoco opportunity map into visible storefront surfaces:
+
+- Recipe Hub: multiple cart-ready dish paths show how editorial content can become measurable commerce.
+- Gift Finder: host, team and client-gift intents are separated before the customer sees products.
+- Refill Advisor: product pages explain dose, refill and larger-pack decisions near the purchase flow.
+- Cart Next Actions: checkout-adjacent links continue naturally toward recipes, gifts and refill logic.
+- Store Sync: `recipes` and `gift-finder` pages are created and maintained through the CLI sync script.
 - Relevant network check: no own theme asset failures; the remaining 404 is a Shopify CDN `ShopifySans--regular.woff` request outside the theme.
 - Final screenshots and matrix data: `/Users/sasha/Dropbox/Office/System/_application_assets/spicelift-commerce-data-qa-2026-06-10`.

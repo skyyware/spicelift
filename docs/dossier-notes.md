@@ -14,6 +14,9 @@ The shop demonstrates:
 - Product and collection architecture for real buying intent.
 - Guided search/discovery for dish, occasion, aroma and gift intent.
 - Product pages that answer taste, fit, size and pairing before the buy button.
+- Dedicated Recipe Hub with cart-ready dish paths.
+- Gift Finder for host, team and corporate-gift intent.
+- Refill and reorder guidance across PDP and cart.
 - Conversion-oriented UX without loud growth-hack patterns.
 - Maintainable Admin data structures.
 - High-quality product imagery and social preview assets.
@@ -104,6 +107,26 @@ Evidence in shop:
 - `/pages/b2b-corporate-gifts`
 - Shopify contact form in `sections/page-b2b.liquid`
 
+### 9. Recipe Hub
+
+The Recipe Hub turns editorial content into a direct commerce path. Recipes are framed as structured buying journeys: dish, products, method, cart action and follow-up set.
+
+Evidence in shop:
+
+- `/pages/recipes`
+- `sections/page-recipes.liquid`
+- Cart API bundle interaction
+
+### 10. Gift Finder
+
+Gift buying should be guided by recipient, budget and occasion rather than generic set categories. The Gift Finder separates host, team and client-gift intent and points larger needs toward B2B.
+
+Evidence in shop:
+
+- `/pages/gift-finder`
+- `sections/page-gift-finder.liquid`
+- Links into gift collections and B2B logic
+
 ## Short Dossier Language
 
 Suggested concise wording:
@@ -114,6 +137,8 @@ Suggested concise wording:
 
 > Zusätzlich habe ich die Qualitätssicherung als Teil der Umsetzung behandelt: Ein Playwright-QA-Skript prüft Viewports, zentrale Routen, horizontale Überläufe, kaputte Bilder, relevante Netzwerkfehler und Kerninteraktionen wie Aroma-Finder und Recipe-to-Cart.
 
+> Im zweiten Optimierungspass habe ich die Flächen gebaut, die am stärksten auf die Ausschreibung einzahlen: Recipe Hub, Gift Finder, Refill-/Vorratsentscheidung auf der PDP und Weiterführung im Warenkorb. Damit deckt die Arbeitsprobe Theme-Entwicklung, Landingpages, Cross-/Upselling, Conversion, UX und laufende Wartbarkeit ab.
+
 ## Screenshot Checklist
 
 Use screenshots that show concrete value:
@@ -121,7 +146,10 @@ Use screenshots that show concrete value:
 - Homepage first viewport with premium imagery.
 - Aroma Finder after selecting one use case.
 - Recipe-to-cart block.
+- Recipe Hub with multiple cart-ready dish paths.
+- Gift Finder recommendation state.
 - Product detail page with variants and usage guidance.
+- Refill advisor on product detail page.
 - B2B/corporate gifts page.
 - Mobile product page.
 - Cart with upgrade/shipping logic.

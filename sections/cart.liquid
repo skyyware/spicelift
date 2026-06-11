@@ -1,5 +1,16 @@
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
+{% assign refill_collection = collections['nachfuellpacks-vorrat'] %}
+{% assign recipes_page = pages['recipes'] %}
+{% assign gift_finder_page = pages['gift-finder'] %}
+{% assign recipes_url = routes.root_url | append: '#recipe-to-cart' %}
+{% assign gift_finder_url = routes.root_url | append: '#gifts' %}
+{% if recipes_page != blank %}
+  {% assign recipes_url = recipes_page.url %}
+{% endif %}
+{% if gift_finder_page != blank %}
+  {% assign gift_finder_url = gift_finder_page.url %}
+{% endif %}
 {% assign shipping_threshold = 4000 %}
 {% assign remaining = shipping_threshold | minus: cart.total_price %}
 {% assign progress = cart.total_price | times: 100 | divided_by: shipping_threshold %}
@@ -89,7 +100,19 @@
             <div class="sf-cart-upgrade__links">
               {% if bagel != blank %}<a href="{{ bagel.url }}">Nachfüllprodukt ansehen</a>{% endif %}
               {% if grill_set != blank %}<a href="{{ grill_set.url }}">Set ergänzen</a>{% endif %}
+              {% if refill_collection != blank %}<a href="{{ refill_collection.url }}">Refill & Vorrat</a>{% endif %}
             </div>
+          </div>
+
+          <div class="sf-cart-next-actions" aria-label="Nächste Kaufpfade">
+            <a href="{{ recipes_url }}">
+              <span>Rezept</span>
+              <strong>Aus dem Warenkorb ein Gericht machen</strong>
+            </a>
+            <a href="{{ gift_finder_url }}">
+              <span>Geschenk</span>
+              <strong>Als Set oder Geschenkpfad prüfen</strong>
+            </a>
           </div>
         </aside>
       </form>

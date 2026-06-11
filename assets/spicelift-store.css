@@ -491,7 +491,8 @@ body.spicelift-store {
 .sf-category-card__image img,
 .sf-product-card__image img,
 .sf-product-gallery img,
-.sf-editorial-image img {
+.sf-editorial-image img,
+.sf-recipe-feature__image img {
   display: block;
   width: 100%;
   height: 100%;
@@ -723,6 +724,8 @@ body.spicelift-store {
 
 .sf-product-card--compact h3 {
   font-size: 1.18rem;
+  hyphens: auto;
+  overflow-wrap: anywhere;
 }
 
 .sf-product-card--compact p {
@@ -1684,6 +1687,338 @@ body.spicelift-store {
   margin-top: 34px;
 }
 
+.sf-recipe-hub,
+.sf-gift-page {
+  padding: 56px 0 96px;
+}
+
+.sf-recipe-hub__hero,
+.sf-gift-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 42px;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background:
+    radial-gradient(circle at top right, rgba(214, 164, 74, 0.18), transparent 38%),
+    linear-gradient(135deg, rgba(251, 250, 244, 0.98), rgba(255, 255, 255, 0.9));
+  box-shadow: var(--sf-shadow-soft);
+}
+
+.sf-recipe-hub__proof,
+.sf-gift-hero__panel {
+  display: grid;
+  gap: 12px;
+}
+
+.sf-recipe-hub__proof span,
+.sf-gift-hero__panel span {
+  display: grid;
+  gap: 5px;
+  min-height: 86px;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: #fff;
+  color: var(--sf-muted);
+  font-weight: 800;
+  padding: 18px;
+}
+
+.sf-recipe-hub__proof strong {
+  color: var(--sf-green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.sf-recipe-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: 28px;
+  align-items: stretch;
+  margin-bottom: 58px;
+}
+
+.sf-recipe-feature__image {
+  min-height: 620px;
+  overflow: hidden;
+  border-radius: var(--sf-radius);
+  background: var(--sf-cream);
+  box-shadow: var(--sf-shadow-deep);
+}
+
+.sf-recipe-feature__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sf-recipe-feature__content,
+.sf-recipe-tile,
+.sf-gift-finder__surface,
+.sf-gift-result,
+.sf-gift-logic,
+.sf-recipe-bottomline {
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: #fff;
+  box-shadow: var(--sf-shadow-soft);
+}
+
+.sf-recipe-feature__content {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.sf-recipe-feature__content h2,
+.sf-recipe-tile h3,
+.sf-gift-result h3,
+.sf-gift-logic h3,
+.sf-refill-advisor h2,
+.sf-recipe-bottomline h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 550;
+  line-height: 1.05;
+}
+
+.sf-recipe-feature__content h2 {
+  font-size: clamp(2.2rem, 4vw, 4.8rem);
+}
+
+.sf-recipe-method,
+.sf-refill-advisor__grid {
+  display: grid;
+  gap: 10px;
+}
+
+.sf-recipe-method article,
+.sf-refill-advisor__grid article,
+.sf-gift-logic__grid article {
+  display: grid;
+  gap: 7px;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: var(--sf-paper);
+  padding: 16px;
+}
+
+.sf-recipe-method span,
+.sf-gift-logic__grid span {
+  color: var(--sf-green);
+  font-weight: 900;
+}
+
+.sf-recipe-method strong,
+.sf-refill-advisor__grid strong {
+  color: var(--sf-ink);
+}
+
+.sf-recipe-method p,
+.sf-recipe-tile p,
+.sf-gift-result p,
+.sf-gift-logic p,
+.sf-refill-advisor p {
+  margin: 0;
+  color: var(--sf-muted);
+  line-height: 1.55;
+}
+
+.sf-recipe-commerce-intro {
+  margin-top: 0;
+}
+
+.sf-recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.sf-recipe-tile {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  padding: 22px;
+}
+
+.sf-recipe-tile .sf-product-card__meta,
+.sf-gift-result .sf-product-card__meta {
+  flex-wrap: wrap;
+}
+
+.sf-recipe-tile .sf-product-card--compact .sf-quick-add,
+.sf-gift-result .sf-product-card--compact .sf-quick-add {
+  min-height: 34px;
+  padding: 0 11px;
+}
+
+.sf-recipe-tile h3,
+.sf-gift-result h3 {
+  font-size: clamp(1.55rem, 2.4vw, 2.3rem);
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+.sf-recipe-bottomline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 24px;
+  align-items: center;
+  margin-top: 34px;
+  padding: clamp(22px, 4vw, 36px);
+  background:
+    linear-gradient(135deg, rgba(36, 79, 53, 0.06), rgba(214, 164, 74, 0.1)),
+    #fff;
+}
+
+.sf-gift-hero {
+  background:
+    linear-gradient(115deg, rgba(251, 250, 244, 0.93), rgba(255, 255, 255, 0.72)),
+    url("spice-product-bio-grillabend-set.jpg") right center / contain no-repeat,
+    #fff;
+}
+
+.sf-gift-finder {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(560px, 1.22fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.sf-gift-finder__copy {
+  position: sticky;
+  top: 126px;
+}
+
+.sf-gift-finder__surface {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.sf-gift-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sf-gift-choice {
+  display: grid;
+  gap: 4px;
+  min-height: 96px;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: var(--sf-paper);
+  color: var(--sf-ink);
+  cursor: pointer;
+  padding: 16px;
+  text-align: left;
+}
+
+.sf-gift-choice.is-active {
+  border-color: var(--sf-green);
+  background: var(--sf-green);
+  color: #fff;
+}
+
+.sf-gift-choice span {
+  font-weight: 900;
+}
+
+.sf-gift-choice small {
+  color: var(--sf-muted);
+  line-height: 1.35;
+}
+
+.sf-gift-choice.is-active small {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.sf-gift-result {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  align-items: start;
+  padding: 22px;
+}
+
+.sf-gift-logic {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  gap: 28px;
+  align-items: start;
+  margin-top: 48px;
+  padding: clamp(22px, 4vw, 36px);
+}
+
+.sf-gift-logic__grid {
+  display: grid;
+  gap: 12px;
+}
+
+.sf-refill-advisor {
+  display: grid;
+  gap: 16px;
+  border: 1px solid color-mix(in srgb, var(--sf-green) 18%, var(--sf-line));
+  border-radius: var(--sf-radius);
+  background:
+    linear-gradient(135deg, rgba(36, 79, 53, 0.06), rgba(214, 164, 74, 0.08)),
+    #fff;
+  padding: 20px;
+}
+
+.sf-refill-advisor__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sf-refill-advisor__grid span {
+  color: var(--sf-green);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sf-refill-advisor__actions,
+.sf-cart-next-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sf-cart-next-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 2px;
+}
+
+.sf-cart-next-actions a {
+  display: grid;
+  gap: 5px;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: #fff;
+  color: var(--sf-ink);
+  padding: 14px;
+  text-decoration: none;
+}
+
+.sf-cart-next-actions span {
+  color: var(--sf-green);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sf-cart-next-actions strong {
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+
 .sf-cart-page {
   padding: 68px 0 96px;
 }
@@ -1987,12 +2322,27 @@ body.spicelift-store {
   .sf-b2b-panel,
   .sf-b2b-inquiry,
   .sf-cart-layout,
-  .sf-pdp-blueprint {
+  .sf-pdp-blueprint,
+  .sf-recipe-hub__hero,
+  .sf-gift-hero,
+  .sf-recipe-feature,
+  .sf-gift-finder,
+  .sf-gift-logic,
+  .sf-recipe-bottomline {
     grid-template-columns: 1fr;
   }
 
   .sf-product-gallery {
     position: static;
+  }
+
+  .sf-gift-finder__copy {
+    position: static;
+  }
+
+  .sf-recipe-grid,
+  .sf-refill-advisor__grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2147,6 +2497,8 @@ body.spicelift-store {
   .sf-finder__choices,
   .sf-finder-result,
   .sf-finder-products,
+  .sf-gift-choice-grid,
+  .sf-gift-result,
   .sf-grid--2,
   .sf-grid--3,
   .sf-grid--4,
@@ -2163,6 +2515,32 @@ body.spicelift-store {
   .sf-cart-item,
   .sf-footer__grid {
     grid-template-columns: 1fr;
+  }
+
+  .sf-recipe-hub,
+  .sf-gift-page {
+    padding: 34px 0 72px;
+  }
+
+  .sf-recipe-hub__hero,
+  .sf-gift-hero,
+  .sf-recipe-feature__content,
+  .sf-gift-finder__surface,
+  .sf-gift-result,
+  .sf-gift-logic,
+  .sf-recipe-bottomline,
+  .sf-refill-advisor {
+    padding: 20px;
+  }
+
+  .sf-recipe-feature__image {
+    min-height: 360px;
+  }
+
+  .sf-recipe-hub__proof span,
+  .sf-gift-hero__panel span,
+  .sf-gift-choice {
+    min-height: auto;
   }
 
   .sf-cart-summary {

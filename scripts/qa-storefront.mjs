@@ -26,6 +26,8 @@ const routes = [
   { name: 'collection-brunch', path: '/collections/brunch-fruehstueck' },
   { name: 'collection-grill', path: '/collections/grillen-sommer' },
   { name: 'collection-gifts', path: '/collections/geschenkideen' },
+  { name: 'recipes', path: '/pages/recipes' },
+  { name: 'gift-finder', path: '/pages/gift-finder' },
   { name: 'b2b', path: '/pages/b2b-corporate-gifts' },
   { name: 'product-bagel', path: '/products/bio-bagel-gewuerz' },
   { name: 'cart', path: '/cart' },
@@ -76,6 +78,22 @@ async function getPageMetrics(page) {
   });
 }
 
+async function hydrateLazyImages(page) {
+  await page.evaluate(async () => {
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const step = Math.max(320, Math.floor(window.innerHeight * 0.78));
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    for (let y = 0; y <= max; y += step) {
+      window.scrollTo(0, y);
+      await delay(80);
+    }
+    window.scrollTo(0, max);
+    await delay(160);
+    window.scrollTo(0, 0);
+    await delay(120);
+  });
+}
+
 async function checkInteractions(page) {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${baseUrl}/?qa=interactions-${Date.now()}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
@@ -95,15 +113,29 @@ async function checkInteractions(page) {
 
   const recipeText = await page.locator('#recipe-to-cart').innerText().catch((error) => `ERROR: ${error.message}`);
   await page.locator('[data-bundle-add]').first().click().catch(() => {});
-  await page.waitForTimeout(1800);
-  const cartText = await page.locator('body').innerText().catch((error) => `ERROR: ${error.message}`);
+  await page.waitForURL(/\/cart/, { timeout: 5000 }).catch(() => {});
+  const afterBundleUrl = page.url();
+  const cartState = await page.evaluate(async () => {
+    const response = await fetch('/cart.js', { headers: { Accept: 'application/json' } });
+    return response.json();
+  }).catch((error) => ({ error: error.message, items: [] }));
+  const cartProductTitles = (cartState.items || []).map((item) => item.product_title || item.title || '');
+
+  await page.goto(`${baseUrl}/pages/gift-finder?qa=gift-${Date.now()}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.waitForTimeout(1000);
+  await page.locator('[data-gift-target="client"]').first().click().catch(() => {});
+  await page.waitForTimeout(250);
+  const giftFinderText = await page.locator('[data-gift-result]:not([hidden])').first().innerText().catch((error) => `ERROR: ${error.message}`);
 
   return {
     finderButtons,
     finderAfter: finderAfter.slice(0, 500),
     recipeText: recipeText.slice(0, 500),
-    afterBundleUrl: page.url(),
-    cartContainsRecipeProducts: /Bagel|Avocado/.test(cartText),
+    afterBundleUrl,
+    cartContainsRecipeProducts: cartProductTitles.some((title) => /Bagel/.test(title))
+      && cartProductTitles.some((title) => /Avocado/.test(title)),
+    cartProductTitles,
+    giftFinderText: giftFinderText.slice(0, 500),
   };
 }
 
@@ -135,6 +167,7 @@ for (const viewport of viewports) {
   for (const route of routes) {
     await page.goto(`${baseUrl}${route.path}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await page.waitForTimeout(1200);
+    await hydrateLazyImages(page);
     const metrics = await getPageMetrics(page);
     const screenshot = path.join(outputDir, `${viewport.name}-${route.name}.png`);
     await page.screenshot({ path: screenshot, fullPage: true });
