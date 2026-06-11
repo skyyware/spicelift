@@ -8,6 +8,7 @@
 ehthumbs.db
 Thumbs.db
 node_modules/
+.qa-artifacts/
 
 # Shopify CLI files
 .shopify/

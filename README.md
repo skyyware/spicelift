@@ -18,6 +18,7 @@ The project is a real Online Store 2.0 theme, not a static mockup. It shows how 
 - Storefront modules that can be maintained in Shopify without coupling the shop to a custom app
 - 2k Grok Imagine asset pipeline for high-value product and editorial imagery
 - Shopify-native commerce data layer with smart collections, Metaobjects and a B2B page route
+- Premium search/discovery route, PDP decision support and B2B inquiry path
 
 ## Stack
 
@@ -102,6 +103,18 @@ shopify theme push \
   --theme 160055492834
 ```
 
+## Storefront QA
+
+The QA script captures screenshots across key routes and viewports, checks horizontal overflow, broken images, relevant network failures and critical interactions.
+
+```bash
+NODE_PATH=/Users/sasha/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules \
+SHOPIFY_STORE_PASSWORD=<demo-password> \
+node scripts/qa-storefront.mjs
+```
+
+Set `QA_OUTPUT_DIR=/path/to/folder` to store artifacts outside `.qa-artifacts/`.
+
 ## Architecture Notes
 
 - `assets/spicelift-store.css` contains the custom design system.
@@ -115,8 +128,10 @@ shopify theme push \
 - `scripts/generate-grok-assets.mjs` keeps generated visual assets reproducible and documented.
 - `scripts/update-store-seo-media.mjs` keeps Shopify Admin product and collection data aligned with the theme.
 - `scripts/sync-commerce-data.mjs` keeps smart collections and the B2B page reproducible.
+- `scripts/qa-storefront.mjs` runs repeatable storefront screenshot and interaction QA.
 - `docs/commerce-data-layer.md` documents the Shopify data model and Admin API ownership boundary.
 - `docs/agent-development-guide.md` documents the operating guide for future agents and humans.
+- `docs/design-quality-system.md` defines the visual and commerce quality bar.
 - `docs/dossier-notes.md` translates the build into application material.
 
 The theme deliberately avoids theme-app coupling. The first improvement pass is built with Shopify-native primitives before adding app complexity.
@@ -154,6 +169,16 @@ The 2026-06-10 pass moved the strongest buying paths into Shopify-native data:
 - Dedicated `page.b2b` route for corporate gifts, gastro/team stock-up and private label qualification.
 - Header and footer links that resolve to the B2B page when it exists.
 - A documented Admin API boundary: Metaobjects are managed by the direct Shopify connector, while the CLI script maintains smart collections and pages.
+
+## Design Excellence Pass
+
+The 2026-06-11 pass focused on design quality as a system:
+
+- Search became a guided discovery route with intent chips, premium empty state and product-card results.
+- PDPs now answer taste, fit and purchase path above the variant selector.
+- The B2B page now includes a real Shopify-native inquiry path for company, quantity, need and context.
+- `docs/design-quality-system.md` defines the design and commerce QA bar.
+- `scripts/qa-storefront.mjs` makes viewport and interaction QA repeatable.
 
 ## Device QA
 

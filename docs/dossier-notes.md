@@ -12,6 +12,8 @@ The shop demonstrates:
 
 - Fullstack Shopify thinking, not only Liquid edits.
 - Product and collection architecture for real buying intent.
+- Guided search/discovery for dish, occasion, aroma and gift intent.
+- Product pages that answer taste, fit, size and pairing before the buy button.
 - Conversion-oriented UX without loud growth-hack patterns.
 - Maintainable Admin data structures.
 - High-quality product imagery and social preview assets.
@@ -82,6 +84,24 @@ Evidence in shop:
 - Theme fallback behavior
 - `docs/commerce-data-layer.md`
 
+### 7. Search As Guided Discovery
+
+Search should not be a bare result list. For food commerce, customers search by dish, occasion, flavor, gifting and refill intent. The Spicelift search route turns those needs into intent chips, premium results and a useful empty state.
+
+Evidence in repo:
+
+- `sections/search.liquid`
+- Search QA route in `scripts/qa-storefront.mjs`
+
+### 8. B2B Qualification
+
+Corporate gifts and Private Label need more context than a standard contact link. A short Shopify-native inquiry path captures company, quantity, need and context without adding app complexity.
+
+Evidence in shop:
+
+- `/pages/b2b-corporate-gifts`
+- Shopify contact form in `sections/page-b2b.liquid`
+
 ## Short Dossier Language
 
 Suggested concise wording:
@@ -89,6 +109,8 @@ Suggested concise wording:
 > Für die Bewerbung habe ich eine lauffähige Shopify-Arbeitsprobe aufgebaut: ein Premium-Gewürzshop unter der Demo-Marke Spicelift. Der Fokus liegt nicht auf einem reinen Theme-Mockup, sondern auf Shopify-nativen Kaufpfaden: anlassbasierte Collections, ein Aroma-Finder, Recipe-to-Cart, Refill-/Vorratslogik, hochwertige Produktbilder, SEO-/Sharing-Basics und ein erster B2B-/Corporate-Gifts-Pfad.
 
 > Die Umsetzung zeigt, wie ich technische Shopify-Entwicklung mit Produktdenken verbinde: Liquid, Sections, JSON Templates, Admin GraphQL, Produkte, Varianten, Collections, Metafields, Metaobjects und progressive Cart-Interaktionen greifen zusammen, ohne den Shop unnötig durch Apps oder Sonderlogik aufzublähen.
+
+> Zusätzlich habe ich die Qualitätssicherung als Teil der Umsetzung behandelt: Ein Playwright-QA-Skript prüft Viewports, zentrale Routen, horizontale Überläufe, kaputte Bilder, relevante Netzwerkfehler und Kerninteraktionen wie Aroma-Finder und Recipe-to-Cart.
 
 ## Screenshot Checklist
 

@@ -9,7 +9,7 @@ This guide is for future agents and humans continuing the Spicelift Shopify stor
 | Item | Value |
 | --- | --- |
 | Store | `spicelift.myshopify.com` |
-| Store password | `spicelift2026` |
+| Store password | Use `SHOPIFY_STORE_PASSWORD` from the local environment. Do not commit it. |
 | Live theme | `Spicelift Premium Store` |
 | Live theme ID | `160055492834` |
 | Repo | `https://github.com/skyyware/spicelift` |
@@ -55,6 +55,14 @@ Validate:
 
 ```bash
 shopify theme check
+```
+
+Run storefront QA:
+
+```bash
+NODE_PATH=/Users/sasha/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules \
+SHOPIFY_STORE_PASSWORD=<demo-password> \
+node scripts/qa-storefront.mjs
 ```
 
 Sync Shopify Admin data:
@@ -143,6 +151,7 @@ After each meaningful pass, update at least one of:
 
 - `README.md` for top-level capability changes.
 - `docs/commerce-data-layer.md` for Shopify data model changes.
+- `docs/design-quality-system.md` for visual-system, UX and QA-gate changes.
 - `docs/dossier-notes.md` for prospect-facing argumentation.
 - This guide for development workflow or tool boundary changes.
 

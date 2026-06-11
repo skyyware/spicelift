@@ -44,9 +44,9 @@
           {% endif %}
         </div>
         <div class="sf-product-thumbs" aria-label="Produktvorteile">
-          <div class="sf-product-thumb"><strong>Bio</strong><br>Klare Zutaten und intensive Aromen.</div>
-          <div class="sf-product-thumb"><strong>Nachfüllbar</strong><br>Dose, Refill und Vorratsgröße.</div>
-          <div class="sf-product-thumb"><strong>Alltagstauglich</strong><br>Schnell passend zum Gericht.</div>
+          <div class="sf-product-thumb"><strong>Aroma</strong><br>{{ flavor }}</div>
+          <div class="sf-product-thumb"><strong>Anwendung</strong><br>{{ pairing | truncate: 84 }}</div>
+          <div class="sf-product-thumb"><strong>Kaufpfad</strong><br>Dose, Refill und Vorratsgröße.</div>
         </div>
       </div>
 
@@ -60,6 +60,21 @@
           <span class="sf-chip">Ohne Zusätze</span>
         </div>
         <p class="sf-rating">★★★★★ <span style="color:var(--sf-muted);">4,94 / 5 aus Kundenbewertungen</span></p>
+
+        <div class="sf-product-decision-panel" aria-label="Produktentscheidung">
+          <div>
+            <span>Geschmack</span>
+            <strong>{{ flavor }}</strong>
+          </div>
+          <div>
+            <span>Passt zu</span>
+            <strong>{{ pairing }}</strong>
+          </div>
+          <div>
+            <span>Kaufpfad</span>
+            <strong>Dose zum Start, Refill für Wiederkauf, Vorrat für Teams und Vielkocher.</strong>
+          </div>
+        </div>
 
         <div>
           <p class="sf-eyebrow">Wähle deine Größe</p>

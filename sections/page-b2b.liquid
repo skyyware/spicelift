@@ -60,6 +60,61 @@
       </div>
     </section>
 
+    <section class="sf-b2b-inquiry" aria-labelledby="b2b-inquiry-heading">
+      <div>
+        <p class="sf-eyebrow">Anfragepfad</p>
+        <h2 id="b2b-inquiry-heading" class="sf-heading sf-heading--medium">Wenige Angaben, sofort qualifizierbar.</h2>
+        <p class="sf-copy">
+          Für B2B reicht kein generisches Kontaktformular. Menge, Anlass und Zeitfenster entscheiden,
+          ob Geschenksets, Vorrat oder Private Label der richtige Einstieg sind.
+        </p>
+      </div>
+
+      {% form 'contact', class: 'sf-b2b-form' %}
+        {% if form.posted_successfully? %}
+          <p class="sf-form-success">Danke. Die Anfrage wurde vorbereitet.</p>
+        {% endif %}
+        {% if form.errors %}
+          <div class="sf-form-error">{{ form.errors | default_errors }}</div>
+        {% endif %}
+        <input type="hidden" name="contact[subject]" value="B2B Anfrage Spicelift">
+        <div class="sf-form-row">
+          <label>
+            Name
+            <input type="text" name="contact[name]" autocomplete="name" required>
+          </label>
+          <label>
+            E-Mail
+            <input type="email" name="contact[email]" autocomplete="email" required>
+          </label>
+        </div>
+        <div class="sf-form-row">
+          <label>
+            Unternehmen
+            <input type="text" name="contact[company]" autocomplete="organization">
+          </label>
+          <label>
+            Stückzahl
+            <input type="text" name="contact[quantity]" inputmode="numeric" placeholder="z. B. 50 Sets">
+          </label>
+        </div>
+        <label>
+          Bedarf
+          <select name="contact[request_type]">
+            <option>Corporate Gifts</option>
+            <option>Gastro & Teams</option>
+            <option>Private Label</option>
+            <option>Wiederverkauf</option>
+          </select>
+        </label>
+        <label>
+          Kontext
+          <textarea name="contact[body]" rows="5" placeholder="Anlass, gewünschtes Timing, Personalisierung, Budgetrahmen oder offene Fragen"></textarea>
+        </label>
+        <button class="sf-button" type="submit">Anfrage vorbereiten</button>
+      {% endform %}
+    </section>
+
     {% if set_collection.products.size > 0 %}
       <section class="sf-related-products">
         <div class="sf-section-intro">

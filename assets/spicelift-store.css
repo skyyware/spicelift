@@ -27,6 +27,15 @@
   display: none !important;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -1050,6 +1059,77 @@ body.spicelift-store {
   margin: 48px 0;
 }
 
+.sf-b2b-inquiry {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(360px, 1fr);
+  gap: 34px;
+  align-items: start;
+  margin: 56px 0 24px;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background:
+    linear-gradient(135deg, rgba(36, 79, 53, 0.06), rgba(199, 149, 50, 0.08)),
+    #fff;
+  box-shadow: var(--sf-shadow-soft);
+}
+
+.sf-b2b-form {
+  display: grid;
+  gap: 14px;
+}
+
+.sf-b2b-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--sf-ink);
+  font-weight: 850;
+}
+
+.sf-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.sf-b2b-form input,
+.sf-b2b-form select,
+.sf-b2b-form textarea {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--sf-line);
+  border-radius: 7px;
+  background: var(--sf-white);
+  color: var(--sf-ink);
+  font: inherit;
+  padding: 11px 13px;
+}
+
+.sf-b2b-form textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.sf-form-success,
+.sf-form-error {
+  margin: 0;
+  border-radius: var(--sf-radius);
+  padding: 12px 14px;
+}
+
+.sf-form-success {
+  border: 1px solid color-mix(in srgb, var(--sf-green) 35%, var(--sf-line));
+  background: color-mix(in srgb, var(--sf-green) 8%, #fff);
+  color: var(--sf-green);
+  font-weight: 850;
+}
+
+.sf-form-error {
+  border: 1px solid color-mix(in srgb, var(--sf-clay) 45%, var(--sf-line));
+  background: color-mix(in srgb, var(--sf-clay) 8%, #fff);
+  color: var(--sf-ink);
+}
+
 .sf-product-page {
   padding: 56px 0 96px;
 }
@@ -1133,6 +1213,40 @@ body.spicelift-store {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.sf-product-decision-panel {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: #fff;
+  box-shadow: var(--sf-shadow-soft);
+}
+
+.sf-product-decision-panel > div {
+  display: grid;
+  gap: 5px;
+  border-bottom: 1px solid var(--sf-line);
+  padding: 14px 16px;
+}
+
+.sf-product-decision-panel > div:last-child {
+  border-bottom: 0;
+}
+
+.sf-product-decision-panel span {
+  color: var(--sf-green);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sf-product-decision-panel strong {
+  color: var(--sf-ink);
+  font-size: 0.96rem;
+  line-height: 1.35;
 }
 
 .sf-variant-grid {
@@ -1281,10 +1395,12 @@ body.spicelift-store {
   background: var(--sf-green);
   color: #fff;
   font-weight: 900;
+  grid-row: 1 / span 2;
 }
 
 .sf-blueprint-steps h3,
 .sf-blueprint-steps p {
+  grid-column: 2;
   margin: 0;
 }
 
@@ -1417,6 +1533,155 @@ body.spicelift-store {
   background: #fff;
   color: var(--sf-muted);
   padding: 20px;
+}
+
+.sf-search-page {
+  padding: 56px 0 96px;
+}
+
+.sf-search-hero {
+  display: grid;
+  gap: 20px;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background:
+    linear-gradient(120deg, rgba(251, 250, 244, 0.94), rgba(255, 254, 249, 0.88)),
+    url("spice-editorial-workbench.jpg") center / cover no-repeat;
+  box-shadow: var(--sf-shadow-soft);
+}
+
+.sf-search-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  max-width: 860px;
+}
+
+.sf-search-form input[type="search"] {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid var(--sf-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--sf-ink);
+  font: inherit;
+  padding: 0 20px;
+}
+
+.sf-search-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sf-search-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  margin: 46px 0 24px;
+}
+
+.sf-search-summary h2,
+.sf-search-empty h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.sf-search-results,
+.sf-search-intent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.sf-search-intent-grid {
+  margin-top: 28px;
+}
+
+.sf-search-intent-grid a,
+.sf-search-result-card,
+.sf-search-empty {
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-radius);
+  background: #fff;
+  box-shadow: var(--sf-shadow-soft);
+}
+
+.sf-search-intent-grid a {
+  display: grid;
+  gap: 10px;
+  min-height: 180px;
+  color: var(--sf-ink);
+  padding: 22px;
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.sf-search-intent-grid a:hover {
+  border-color: rgba(36, 79, 53, 0.35);
+  box-shadow: 0 20px 48px rgba(35, 31, 22, 0.11);
+  transform: translateY(-2px);
+}
+
+.sf-search-intent-grid span {
+  color: var(--sf-sage);
+  font-weight: 900;
+}
+
+.sf-search-intent-grid strong,
+.sf-search-result-card h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.sf-search-intent-grid small,
+.sf-search-result-card p,
+.sf-search-empty p {
+  color: var(--sf-muted);
+  line-height: 1.5;
+}
+
+.sf-search-result-card {
+  overflow: hidden;
+}
+
+.sf-search-result-card__image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--sf-cream);
+}
+
+.sf-search-result-card > div {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+.sf-search-result-card h3,
+.sf-search-result-card p {
+  margin: 0;
+}
+
+.sf-search-result-card a {
+  color: var(--sf-ink);
+  text-decoration: none;
+}
+
+.sf-search-empty {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.sf-pagination {
+  margin-top: 34px;
 }
 
 .sf-cart-page {
@@ -1711,10 +1976,16 @@ body.spicelift-store {
     grid-template-columns: 1fr;
   }
 
+  .sf-search-results,
+  .sf-search-intent-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .sf-product-layout,
   .sf-usecase-grid,
   .sf-editorial-grid,
   .sf-b2b-panel,
+  .sf-b2b-inquiry,
   .sf-cart-layout,
   .sf-pdp-blueprint {
     grid-template-columns: 1fr;
@@ -1880,11 +2151,15 @@ body.spicelift-store {
   .sf-grid--3,
   .sf-grid--4,
   .sf-products-grid,
+  .sf-search-results,
+  .sf-search-intent-grid,
+  .sf-search-form,
   .sf-collection-grid,
   .sf-collection-paths,
   .sf-story,
   .sf-product-thumbs,
   .sf-trust-grid,
+  .sf-form-row,
   .sf-cart-item,
   .sf-footer__grid {
     grid-template-columns: 1fr;
@@ -1925,6 +2200,11 @@ body.spicelift-store {
     align-items: start;
   }
 
+  .sf-search-summary {
+    display: grid;
+    align-items: start;
+  }
+
   .sf-recipe-card {
     min-height: 460px;
     padding: 24px;
@@ -1951,11 +2231,18 @@ body.spicelift-store {
   }
 
   .sf-blueprint-steps article {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 1fr;
   }
 
   .sf-blueprint-steps span {
     height: 40px;
+    width: 40px;
+    grid-row: auto;
+  }
+
+  .sf-blueprint-steps h3,
+  .sf-blueprint-steps p {
+    grid-column: 1;
   }
 
   .sf-breadcrumb {
