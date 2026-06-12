@@ -3999,6 +3999,47 @@ body.spicelift-store {
   transform: translateY(-0.03em);
 }
 
+.sf-footer__grid > div {
+  display: grid;
+  align-content: start;
+  gap: 11px;
+}
+
+.sf-footer__grid > div:first-child {
+  gap: 16px;
+}
+
+.sf-footer__grid > div:first-child > p,
+.sf-footer h3,
+.sf-footer p {
+  margin: 0;
+}
+
+.sf-footer p a {
+  display: inline-flex;
+  min-height: 22px;
+  gap: 8px;
+  align-items: center;
+}
+
+.sf-footer p a::before {
+  content: "";
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  border: 1.2px solid #d9e6c4;
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, transparent 43%, #d9e6c4 44%, #d9e6c4 56%, transparent 57%),
+    linear-gradient(0deg, transparent 46%, #d9e6c4 47%, #d9e6c4 53%, transparent 54%);
+  opacity: 0.9;
+  transform: none;
+}
+
+.sf-footer-service {
+  gap: 11px;
+}
+
 @media (min-width: 901px) {
   #gifts .sf-grid--2 .sf-product-card {
     display: grid;
