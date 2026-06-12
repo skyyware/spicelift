@@ -715,10 +715,17 @@ body.spicelift-store {
 }
 
 .sf-product-card__image {
+  display: block;
+  flex: 0 0 auto;
   position: relative;
+  width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--sf-cream);
+}
+
+.sf-product-card__image .image {
+  height: 100%;
 }
 
 .sf-bio-badge {
@@ -3819,6 +3826,14 @@ body.spicelift-store {
 
 .sf-finder-result .sf-product-card__content {
   min-height: 100%;
+}
+
+.sf-finder-products .sf-product-card--compact .sf-product-card__image {
+  aspect-ratio: 4 / 3;
+}
+
+.sf-finder-products .sf-product-card--compact .sf-product-card__content > p {
+  min-height: 5em;
 }
 
 #favorites .sf-grid--4 .sf-product-card__image {
