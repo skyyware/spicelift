@@ -4240,6 +4240,22 @@ body.spicelift-store {
   line-height: 1.25;
 }
 
+.sf-footer__grid > div:nth-child(2),
+.sf-footer__grid > div:nth-child(3) {
+  gap: 5px;
+}
+
+.sf-footer__grid > div:nth-child(2) h3,
+.sf-footer__grid > div:nth-child(3) h3 {
+  margin-bottom: 4px;
+}
+
+.sf-footer__grid > div:nth-child(2) p a,
+.sf-footer__grid > div:nth-child(3) p a {
+  min-height: 19px;
+  line-height: 1.25;
+}
+
 @media (max-width: 760px) {
   .sf-footer__grid {
     gap: 30px;
