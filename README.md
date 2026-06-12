@@ -227,5 +227,5 @@ The 2026-06-11 real-store polish pass removes the remaining prototype signals fr
 - Interaction language: no underlined links/buttons/chips, no visual breadcrumbs, no demo-oriented "Shopify implementation" copy.
 - Collection/PDP/cart: calmer path cards, stronger sticky filter spacing, button-style PDP next actions, conditional shipping-threshold messaging and clearer cart assurance.
 - Gift and business pages: copy now reads like real commerce surfaces, not a case-study explanation.
-- Data boundary: smart collections and pages sync through Shopify CLI; connector-owned Metaobjects are not written by CLI, so visible Aroma Finder copy is kept theme-owned.
-- QA boundary: Admin/Connector access and theme push are working; final rendered screenshot QA still needs the corrected storefront password because the current public and preview URLs resolve to the Shopify password page.
+- Data boundary: smart collections and pages sync through Shopify CLI; connector-owned Metaobjects must be updated through the direct Shopify connector/Admin GraphQL path after schema validation.
+- QA boundary: headless screenshot QA needs a current storefront password. When the in-app browser is authenticated, use it for final responsive DOM checks before shipping.

@@ -3758,7 +3758,7 @@ body.spicelift-store {
   align-items: center;
 }
 
-.sf-footer p a::after {
+.sf-footer p a::before {
   content: "↗";
   color: #d9e6c4;
   font-size: 0.78em;
@@ -3767,6 +3767,107 @@ body.spicelift-store {
 
 .sf-footer-service {
   gap: 11px;
+}
+
+.sf-search,
+.sf-mobile-search {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sf-search input,
+.sf-mobile-search input {
+  padding-right: 0;
+}
+
+.sf-finder-choice.is-active,
+.sf-gift-choice.is-active {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.sf-product-card__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.sf-product-card h3 {
+  min-height: 3.1em;
+}
+
+.sf-product-card__content > p {
+  min-height: 5.6em;
+}
+
+.sf-product-card--compact h3 {
+  min-height: 0;
+}
+
+.sf-product-card--compact .sf-product-card__content > p {
+  min-height: 6.4em;
+}
+
+.sf-product-card__meta {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.sf-finder-products .sf-product-card__meta,
+.sf-recipe-stack .sf-product-card__meta {
+  padding-top: 22px;
+}
+
+.sf-finder-result .sf-product-card__content {
+  min-height: 100%;
+}
+
+#favorites .sf-grid--4 .sf-product-card__image {
+  flex: 0 0 auto;
+}
+
+#recipe-to-cart .sf-recipe-step h3 {
+  font-size: 1rem;
+  line-height: 1.24;
+}
+
+#recipe-to-cart .sf-recipe-step p {
+  max-width: 48ch;
+}
+
+#manufaktur.sf-section {
+  padding: 56px 0;
+}
+
+#manufaktur .sf-editorial-grid {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 48px);
+}
+
+#manufaktur .sf-editorial-image {
+  aspect-ratio: 16 / 9.4;
+}
+
+#manufaktur .sf-heading {
+  margin-bottom: 12px;
+}
+
+#manufaktur .sf-feature-list {
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#b2b .sf-b2b-panel .sf-copy {
+  max-width: 690px;
+}
+
+.sf-footer__grid > div:first-child > p {
+  line-height: 1.72;
+}
+
+.sf-footer p a {
+  min-height: 28px;
+  align-items: center;
 }
 
 @media (min-width: 1101px) {

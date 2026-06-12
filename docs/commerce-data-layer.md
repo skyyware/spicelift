@@ -126,6 +126,14 @@ SHOPIFY_SYNC_METAOBJECTS=1 node scripts/sync-commerce-data.mjs
 
 If the CLI returns `Not authorized. This type is reserved for use by another application.`, do not fight the theme. Use the owning Shopify Admin API app or connector for Metaobjects, then run the normal sync again for collections and pages.
 
+2026-06-12 note: the live `spicelift_recipe/knusprige-bagel-bowl` entry was updated through the direct Shopify connector after the CLI hit this ownership boundary. Required workflow:
+
+1. Inspect the Admin GraphQL schema for `Metaobject` and `MetaobjectUpdateInput`.
+2. Validate the read query and write mutation.
+3. Query the target metaobject by type/handle.
+4. Mutate only the fields that need to change.
+5. Reload the storefront with a cache-busting URL and confirm the live copy.
+
 ## Extension Pattern
 
 To add a new buying path:

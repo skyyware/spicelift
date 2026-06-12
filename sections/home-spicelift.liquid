@@ -289,15 +289,15 @@
         <div class="sf-recipe-step is-current">
           <span>01</span>
           <div>
-            <h3>Rezept als Warenkorb denken</h3>
-            <p>Das Rezept erklärt nicht nur, es führt direkt zu den passenden Produkten.</p>
+            <h3>Bagel Bowl vorbereiten</h3>
+            <p>Getoasteter Bagel, Avocado, Ei und Joghurt-Dip bilden die Basis.</p>
           </div>
         </div>
         <div class="sf-recipe-step">
           <span>02</span>
           <div>
-            <h3>Dose und Refill sichtbar machen</h3>
-            <p>Für Erstkauf und Wiederkauf entsteht ein klarer nächster Schritt.</p>
+            <h3>Mit zwei Gewürzen abrunden</h3>
+            <p>Bagel-Gewürz bringt Crunch, Avocado-Gewürz Frische und Zitrusnoten.</p>
           </div>
         </div>
       {% endif %}
@@ -327,7 +327,6 @@
         >
           {{ featured_recipe.cta_label.value | default: 'Rezeptkorb hinzufügen' }}
         </button>
-        <p class="sf-bundle-note" data-bundle-note>Fügt die im Rezept verknüpften Produkte in den Warenkorb.</p>
       {% elsif bagel != blank and avocado != blank %}
         <button
           class="sf-button sf-bundle-button"
@@ -337,7 +336,6 @@
         >
           Rezeptkorb hinzufügen
         </button>
-        <p class="sf-bundle-note" data-bundle-note>Fügt Bagel-Gewürz und Avocado-Gewürz in den Warenkorb.</p>
       {% endif %}
     </div>
   </div>
@@ -387,13 +385,13 @@
   <div class="sf-page sf-b2b-panel">
     <div>
       <p class="sf-eyebrow" style="color:#d9e6c4">B2B</p>
-      <h2 class="sf-heading sf-heading--medium">Geschäftskunden, Geschenke und White Label klar führen.</h2>
+      <h2 class="sf-heading sf-heading--medium">Geschenke, Vorrat und White Label für Geschäftskunden.</h2>
       <p class="sf-copy">
-        Für Teams, Kundengeschenke und Wiederverkauf: Mengen, Personalisierung,
-        Timing und Lieferfähigkeit werden früh sichtbar.
+        Für Teams, Kundengeschenke und Wiederverkauf: Mengen, Etiketten,
+        Liefertermine und Wiederbestellung gehören früh in die Anfrage.
       </p>
     </div>
-    <a class="sf-button sf-button--light" href="{{ b2b_url }}">Business-Angebote</a>
+    <a class="sf-button sf-button--light" href="{{ b2b_url }}">Business anfragen</a>
   </div>
 </section>
 

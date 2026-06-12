@@ -131,8 +131,8 @@ const recipes = [
     ctaLabel: 'Rezeptkorb hinzufügen',
     products: ['bio-bagel-gewuerz', 'bio-avocado-gewuerz'],
     steps: [
-      'Rezept als Warenkorb denken: Der Inhalt erklärt und führt direkt zu passenden Produkten.',
-      'Dose und Refill sichtbar machen: Erstkauf und Wiederkauf bekommen je einen klaren Einstieg.',
+      'Bagel Bowl vorbereiten: Getoasteter Bagel, Avocado, Ei und Joghurt-Dip bilden die Basis.',
+      'Mit zwei Gewürzen abrunden: Bagel-Gewürz bringt Crunch, Avocado-Gewürz Frische und Zitrusnoten.',
     ],
   },
 ];

@@ -1,6 +1,6 @@
 # Spicelift Design Quality System
 
-Last updated: 2026-06-11
+Last updated: 2026-06-12
 
 This document defines what "impeccable design" means for the Spicelift Shopify store. It is a working contract for humans and agents.
 
@@ -80,7 +80,18 @@ The store should feel premium, useful and quiet. Every section must help the cus
 - Gift, B2B, search and recipe copy now reads like a real shop instead of an implementation demo.
 - PDP next actions are buttons, not underlined links.
 - Cart assurance uses aligned check rows and only shows shipping encouragement before the threshold is reached.
-- The visible Aroma Finder copy is theme-owned because connector-created Metaobjects cannot currently be updated by the Shopify CLI.
+- The Shopify CLI does not own connector-created Metaobjects; use the direct Shopify connector/Admin GraphQL path when live content needs to change.
+
+2026-06-12 browser-comment polish added:
+
+- Header search submits from the input; the extra icon button was removed from desktop and mobile.
+- Finder and gift choices no longer show a double active border.
+- Normal and compact product cards now reserve stable title, copy, category and meta zones so category, price and cart buttons align across desktop, tablet and mobile.
+- Recipe-to-cart step copy uses real recipe guidance instead of implementation language, and bundle helper text was removed.
+- Manufaktur spacing is tighter with a more useful image/text ratio.
+- B2B home copy is merchant-facing and concrete: gifts, replenishment, labels, delivery dates and repeat orders.
+- Footer copy has a calmer line-height, and footer links carry the link icon before the text.
+- Visible recipe Metaobject copy was updated through the Shopify connector after the CLI reported the connector-owned type boundary.
 
 ## QA Gate
 
@@ -99,6 +110,8 @@ The QA script must report:
 - `relevantNetworkFailureCount: 0`
 - `cartContainsRecipeProducts: true`
 - No screenshots may show Shopify's password page. A password-page screenshot is a blocked QA run, not a visual pass.
+
+If headless QA is blocked by the storefront password but the in-app browser is already authenticated, run a targeted responsive DOM audit there before shipping: check 390, 768 and 1440px for no horizontal overflow, no password page, no stale demo copy, no search submit button, and equal product-card title/copy/category/meta offsets.
 
 Then inspect at least these screenshots manually:
 

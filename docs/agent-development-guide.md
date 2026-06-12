@@ -98,7 +98,7 @@ Known boundary:
 - The connector can create and read `spicelift_use_case` and `spicelift_recipe`.
 - The Shopify CLI currently cannot write those connector-owned definitions. A `SHOPIFY_SYNC_METAOBJECTS=1` run on 2026-06-11 failed with `Not authorized. This type is reserved for use by another application`.
 - `scripts/sync-commerce-data.mjs` skips Metaobjects by default and still maintains smart collections and pages.
-- The public Aroma Finder currently uses theme-owned fallback copy to prevent stale Metaobject text from appearing on the live storefront.
+- When visible Metaobject copy is stale, update the exact entry through the direct Shopify connector/Admin GraphQL path. On 2026-06-12 this was used for `spicelift_recipe/knusprige-bagel-bowl` after the CLI boundary repeated.
 
 Before a write mutation:
 
