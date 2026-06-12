@@ -4242,7 +4242,7 @@ body.spicelift-store {
 
 .sf-footer__grid > div:nth-child(2),
 .sf-footer__grid > div:nth-child(3) {
-  gap: 7px;
+  gap: 3px;
 }
 
 .sf-footer__grid > div:nth-child(2) h3,
@@ -4252,7 +4252,7 @@ body.spicelift-store {
 
 .sf-footer__grid > div:nth-child(2) p a,
 .sf-footer__grid > div:nth-child(3) p a {
-  min-height: 21px;
+  min-height: 22px;
   line-height: 1.3;
 }
 
