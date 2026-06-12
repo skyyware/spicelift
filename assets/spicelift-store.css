@@ -3929,6 +3929,17 @@ body.spicelift-store {
   min-height: 3.9em;
 }
 
+.sf-finder-products .sf-product-card--compact .sf-product-card__content {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+}
+
+.sf-finder-products .sf-product-card--compact .sf-product-card__meta {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
 .sf-product-card__meta {
   align-self: stretch;
   width: 100%;
