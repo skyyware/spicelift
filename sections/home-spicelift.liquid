@@ -97,7 +97,6 @@
       <div class="sf-finder__metrics" aria-label="Commerce-Hebel">
         <span><strong>1</strong> Anlass</span>
         <span><strong>2</strong> Empfehlungen</span>
-        <span><strong>0</strong> Suchweg</span>
       </div>
     </div>
 
@@ -140,7 +139,7 @@
               {% assign case_products = use_case.products.value %}
               {% assign case_collection = use_case.collection.value %}
               <div class="sf-finder-result{% if is_active %} is-active{% endif %}" data-finder-result="{{ use_case_handle }}"{% unless is_active %} hidden{% endunless %}>
-                <div>
+                <div class="sf-finder-result__copy">
                   <p class="sf-eyebrow">Empfehlung · {{ use_case.metric.value }}</p>
                   <h3>{{ use_case.heading.value }}</h3>
                   <p>{{ use_case.summary.value }}</p>
@@ -181,7 +180,7 @@
 
         <div class="sf-finder-results">
           <div class="sf-finder-result is-active" data-finder-result="brunch">
-            <div>
+            <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
               <h3>Frisch, nussig, sofort verständlich.</h3>
               <p>Bagel-Gewürz und Avocado-Gewürz bilden eine einfache Brunch-Auswahl mit hoher Wiederkauflogik.</p>
@@ -193,7 +192,7 @@
           </div>
 
           <div class="sf-finder-result" data-finder-result="grill" hidden>
-            <div>
+            <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
               <h3>Kräuterbutter, Grillgemüse, Geschenk.</h3>
               <p>Café de Paris plus Grillabend-Set macht aus einzelnen Produkten einen Anlasskorb.</p>
@@ -205,7 +204,7 @@
           </div>
 
           <div class="sf-finder-result" data-finder-result="alltag" hidden>
-            <div>
+            <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
               <h3>Basis für die schnelle Küche.</h3>
               <p>Gemüsebrühe und Avocado-Gewürz lösen zwei wiederkehrende Fälle: Basis und frisches Finish.</p>
@@ -217,7 +216,7 @@
           </div>
 
           <div class="sf-finder-result" data-finder-result="geschenk" hidden>
-            <div>
+            <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
               <h3>Auswahl ohne Geschenkrisiko.</h3>
               <p>Kuratierte Sets funktionieren für Gastgeber, Kundengeschenke und saisonale Kampagnen.</p>
@@ -385,10 +384,10 @@
   <div class="sf-page sf-b2b-panel">
     <div>
       <p class="sf-eyebrow" style="color:#d9e6c4">B2B</p>
-      <h2 class="sf-heading sf-heading--medium">Geschenke, Vorrat und White Label für Geschäftskunden.</h2>
+      <h2 class="sf-heading sf-heading--medium">Business-Geschenke, Vorrat und White Label sauber anfragen.</h2>
       <p class="sf-copy">
         Für Teams, Kundengeschenke und Wiederverkauf: Mengen, Etiketten,
-        Liefertermine und Wiederbestellung gehören früh in die Anfrage.
+        Liefertermine und Nachbestellung werden vor der Anfrage klar.
       </p>
     </div>
     <a class="sf-button sf-button--light" href="{{ b2b_url }}">Business anfragen</a>
