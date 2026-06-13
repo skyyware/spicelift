@@ -434,6 +434,7 @@ body.spicelift-store {
 
 .sf-hero .sf-heading {
   max-width: 740px;
+  font-size: clamp(2.35rem, 4.75vw, 5.55rem);
 }
 
 .sf-hero .sf-copy {
@@ -897,8 +898,6 @@ body.spicelift-store {
 
 .sf-recipe-step {
   display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 14px;
   align-items: start;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--sf-radius);
@@ -909,17 +908,6 @@ body.spicelift-store {
 .sf-recipe-step.is-current {
   border-color: rgba(255, 255, 255, 0.32);
   background: rgba(255, 255, 255, 0.13);
-}
-
-.sf-recipe-step span {
-  display: grid;
-  min-width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 50%;
-  background: #fff;
-  color: var(--sf-green);
-  font-weight: 900;
 }
 
 .sf-recipe-step h3,
@@ -4226,8 +4214,8 @@ body.spicelift-store {
 .sf-footer-payments {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  max-width: 200px;
+  gap: 6px;
+  max-width: 210px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -4235,29 +4223,23 @@ body.spicelift-store {
 
 .sf-footer-payments li {
   display: inline-flex;
-  width: 44px;
-  height: 28px;
+  width: 48px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid rgba(246, 241, 230, 0.12);
-  border-radius: 6px;
-  background: rgba(246, 241, 230, 0.95);
+  border: 1px solid rgba(17, 17, 13, 0.08);
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .sf-footer-payments svg,
 .sf-footer-payment-icon {
   display: block;
-  width: 34px;
-  max-width: 34px;
+  width: 38px;
+  max-width: 38px;
   height: auto;
-}
-
-.sf-footer-note {
-  max-width: 190px;
-  color: rgba(246, 241, 230, 0.58);
-  font-size: 0.84rem;
-  line-height: 1.35;
 }
 
 @media (max-width: 760px) {

@@ -277,7 +277,6 @@
       {% if recipe_steps != blank %}
         {% for step in recipe_steps %}
           <div class="sf-recipe-step{% if forloop.first %} is-current{% endif %}">
-            <span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
             <div>
               <h3>{{ step | split: ':' | first }}</h3>
               <p>{{ step | split: ':' | last }}</p>
@@ -286,14 +285,12 @@
         {% endfor %}
       {% else %}
         <div class="sf-recipe-step is-current">
-          <span>01</span>
           <div>
             <h3>Brunch-Basis bauen</h3>
             <p>Bagel, Avocado, Ei und cremiger Dip werden zu einem schnellen Teller mit klarer Richtung.</p>
           </div>
         </div>
         <div class="sf-recipe-step">
-          <span>02</span>
           <div>
             <h3>Geschmack gezielt setzen</h3>
             <p>Bagel-Gewürz gibt Sesam-Crunch, Avocado-Gewürz bringt Kräuter, Chili und Zitrusfrische.</p>
@@ -384,7 +381,7 @@
   <div class="sf-page sf-b2b-panel">
     <div>
       <p class="sf-eyebrow" style="color:#d9e6c4">B2B</p>
-      <h2 class="sf-heading sf-heading--medium">Business-Geschenke, Vorrat und White Label sauber anfragen.</h2>
+      <h2 class="sf-heading sf-heading--medium">White Label sauber anfragen.</h2>
       <p class="sf-copy">
         Für Teams, Kundengeschenke und Wiederverkauf: Mengen, Etiketten,
         Liefertermine und Nachbestellung werden vor der Anfrage klar.
