@@ -1,13 +1,3 @@
-{% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
-{% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
-{% assign recipe_url = routes.root_url | append: '#recipe-to-cart' %}
-{% assign gifts_url = routes.root_url | append: '#gifts' %}
-{% assign b2b_url = routes.root_url | append: '#b2b' %}
-{% assign b2b_page = pages['b2b-corporate-gifts'] %}
-{% if b2b_page != blank %}
-  {% assign b2b_url = b2b_page.url %}
-{% endif %}
-
 <footer class="sf-footer full-width">
   <div class="sf-page sf-footer__grid">
     <div>
@@ -23,23 +13,35 @@
       </p>
     </div>
     <div>
-      <h3>Shop</h3>
-      <p><a href="{{ spice_collection_url }}">Gewürzmischungen</a></p>
-      <p><a href="{{ set_collection_url }}">Gewürzsets</a></p>
-      <p><a href="{{ recipe_url }}">Rezepte</a></p>
+      <h3>Zahlungsarten</h3>
+      <ul class="sf-footer-payments" aria-label="Zahlungsarten">
+        {% if shop.enabled_payment_types != empty %}
+          {% for type in shop.enabled_payment_types %}
+            <li>{{ type | payment_type_svg_tag: class: 'sf-footer-payment-icon' }}</li>
+          {% endfor %}
+        {% else %}
+          <li><span>Shop Pay</span></li>
+          <li><span>PayPal</span></li>
+          <li><span>Visa</span></li>
+          <li><span>Mastercard</span></li>
+        {% endif %}
+      </ul>
+      <p class="sf-footer-note">Sicherer Shopify Checkout</p>
     </div>
     <div>
-      <h3>Anlässe</h3>
-      <p><a href="{{ gifts_url }}">Geschenke</a></p>
-      <p><a href="{{ b2b_url }}">Business & White Label</a></p>
-      <p><a href="{{ spice_collection_url }}">Vorrat & Nachfüllen</a></p>
+      <h3>Versandoptionen</h3>
+      <ul class="sf-footer-service" aria-label="Versandoptionen">
+        <li>DHL Paket</li>
+        <li>Packstation möglich</li>
+        <li>Sendungsverfolgung</li>
+      </ul>
     </div>
     <div>
       <h3>Service</h3>
       <ul class="sf-footer-service" aria-label="Serviceversprechen">
-        <li>Versandkostenfrei ab 40 €</li>
         <li>Bio-Qualität</li>
         <li>Sichere Zahlung</li>
+        <li>Versandkostenfrei ab 40 €</li>
       </ul>
     </div>
   </div>
