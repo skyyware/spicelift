@@ -20,10 +20,10 @@
             <li>{{ type | payment_type_svg_tag: class: 'sf-footer-payment-icon' }}</li>
           {% endfor %}
         {% else %}
-          <li><span>Shop Pay</span></li>
-          <li><span>PayPal</span></li>
-          <li><span>Visa</span></li>
-          <li><span>Mastercard</span></li>
+          {% assign fallback_payment_types = 'paypal,visa,master,american_express' | split: ',' %}
+          {% for type in fallback_payment_types %}
+            <li>{{ type | payment_type_svg_tag: class: 'sf-footer-payment-icon' }}</li>
+          {% endfor %}
         {% endif %}
       </ul>
       <p class="sf-footer-note">Sicherer Shopify Checkout</p>

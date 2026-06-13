@@ -4253,14 +4253,6 @@ body.spicelift-store {
   height: auto;
 }
 
-.sf-footer-payments span {
-  color: #173024;
-  font-size: 0.65rem;
-  font-weight: 850;
-  letter-spacing: 0;
-  line-height: 1;
-}
-
 .sf-footer-note {
   max-width: 190px;
   color: rgba(246, 241, 230, 0.58);
