@@ -1,6 +1,6 @@
 # Agent And Human Development Guide
 
-Last updated: 2026-06-11
+Last updated: 2026-06-15
 
 This guide is for future agents and humans continuing the Spicelift Shopify store.
 
@@ -123,11 +123,15 @@ Minimum viewport set:
 Critical routes:
 
 - `/`
+- `/search`
+- `/search?type=product&q=bagel`
 - `/collections/gewuerzmischungen`
 - `/collections/gewuerzsets`
 - `/collections/brunch-fruehstueck`
 - `/collections/grillen-sommer`
 - `/collections/geschenkideen`
+- `/pages/recipes`
+- `/pages/gift-finder`
 - `/pages/b2b-corporate-gifts`
 - `/products/bio-bagel-gewuerz`
 - `/cart`
@@ -152,6 +156,12 @@ Latest QA artifact:
 - The public storefront and preview link currently still require the storefront password.
 - The previously provided local password value was rejected by Shopify CLI and Playwright, so automated screenshot QA lands on the password page until the store password is corrected in Shopify Admin or temporarily disabled.
 - Do not commit or print the password. Once corrected, rerun `scripts/qa-storefront.mjs` with `SHOPIFY_STORE_PASSWORD` and replace the artifact path above.
+
+2026-06-15 responsive QA note:
+
+- The QA script now covers Home, Search, Collections, Recipe Hub, Geschenkfinder, B2B, PDP and Cart across mobile, tablet and desktop widths.
+- Default screenshots include the commercially important routes: home, search with results, main collection, gift collection, recipes, gift finder, B2B, PDP and cart.
+- The live theme can still be pushed through Shopify CLI. The storefront password supplied locally was rejected again on 2026-06-15, so headless screenshot QA remains blocked until the storefront password is corrected or password protection is temporarily disabled.
 
 Additional focused screenshot:
 

@@ -22,11 +22,6 @@
 {% endif %}
 {% assign use_case_handles = 'brunch,grill,alltag,geschenk' | split: ',' %}
 {% assign has_use_cases = false %}
-{% comment %}
-  Keep the public storefront copy theme-owned for this demo store. The previous
-  Metaobject definitions are owned by another Shopify app, so CLI sync cannot
-  reliably update them during review passes.
-{% endcomment %}
 {% assign featured_recipe = shop.metaobjects.spicelift_recipe['knusprige-bagel-bowl'] %}
 {% assign bagel = all_products['bio-bagel-gewuerz'] %}
 {% assign avocado = all_products['bio-avocado-gewuerz'] %}
@@ -47,7 +42,7 @@
   >
   <div class="sf-page sf-hero__inner">
     <p class="sf-eyebrow">Bio Gewürze aus der Manufaktur</p>
-    <h1 class="sf-heading">Gewürze, die jedes Gericht auf den Punkt bringen.</h1>
+    <h1 class="sf-heading">Bio-Gewürze für klare Küche.</h1>
     <p class="sf-copy">
       Intensive Bio-Gewürze, kuratierte Sets und einfache Rezeptideen für Küche,
       Geschenk und Vorrat. Klar in der Auswahl, hochwertig im Geschmack.
@@ -92,7 +87,7 @@
       <h2 class="sf-heading sf-heading--medium">Nicht suchen. Passend würzen.</h2>
       <p class="sf-copy">
         Der schnellste Weg zum richtigen Produkt ist nicht die Produktliste, sondern der Kochanlass.
-        Eine einfache Beratungsschicht senkt Auswahlstress und führt direkt zu Dose, Refill oder Set.
+        Wenige Anlässe, klare Empfehlungen und direkt passende Größen.
       </p>
       <div class="sf-finder__metrics" aria-label="Commerce-Hebel">
         <span><strong>1</strong> Anlass</span>
@@ -182,8 +177,8 @@
           <div class="sf-finder-result is-active" data-finder-result="brunch">
             <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
-              <h3>Alles für Bagel, Avocado und Ei.</h3>
-              <p>Zwei Mischungen, die Brunch schnell rund machen: Sesam-Crunch für den Bagel, Kräuter-Zitrus-Frische für Avocado und Dip.</p>
+              <h3>Brunch ohne Suchen.</h3>
+              <p>Bagel-Gewürz für Crunch, Avocado-Gewürz für Kräuter, Chili und Zitrusfrische.</p>
             </div>
             <div class="sf-finder-products">
               {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
@@ -194,8 +189,8 @@
           <div class="sf-finder-result" data-finder-result="grill" hidden>
             <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
-              <h3>Kräuterbutter, Grillgemüse, Geschenk.</h3>
-              <p>Café de Paris plus Grillabend-Set macht aus einzelnen Produkten einen Anlasskorb.</p>
+              <h3>Grillen mit Plan.</h3>
+              <p>Café de Paris für Kräuterbutter, Grillabend-Set für Gemüse, Dip und Marinade.</p>
             </div>
             <div class="sf-finder-products">
               {% if cafe != blank %}{% render 'product-card-spice', product: cafe, compact: true %}{% endif %}
@@ -206,8 +201,8 @@
           <div class="sf-finder-result" data-finder-result="alltag" hidden>
             <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
-              <h3>Basis für die schnelle Küche.</h3>
-              <p>Gemüsebrühe und Avocado-Gewürz lösen zwei wiederkehrende Fälle: Basis und frisches Finish.</p>
+              <h3>Alltag sauber gelöst.</h3>
+              <p>Gemüsebrühe als Basis, Avocado-Gewürz als frisches Finish für schnelle Küche.</p>
             </div>
             <div class="sf-finder-products">
               {% if bruehe != blank %}{% render 'product-card-spice', product: bruehe, compact: true %}{% endif %}
@@ -218,8 +213,8 @@
           <div class="sf-finder-result" data-finder-result="geschenk" hidden>
             <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
-              <h3>Auswahl ohne Geschenkrisiko.</h3>
-              <p>Kuratierte Sets funktionieren für Gastgeber, Kundengeschenke und saisonale Kampagnen.</p>
+              <h3>Geschenke ohne Rätselraten.</h3>
+              <p>Kuratierte Sets für Gastgeber, Kundschaft und saisonale Anlässe.</p>
             </div>
             <div class="sf-finder-products">
               {% if brunch_set != blank %}{% render 'product-card-spice', product: brunch_set, compact: true %}{% endif %}
@@ -286,14 +281,14 @@
       {% else %}
         <div class="sf-recipe-step is-current">
           <div>
-            <h3>Brunch-Basis bauen</h3>
-            <p>Bagel, Avocado, Ei und cremiger Dip werden zu einem schnellen Teller mit klarer Richtung.</p>
+            <h3>Basis wählen</h3>
+            <p>Bagel, Avocado, Ei und Joghurt-Dip bilden den Brunch-Teller.</p>
           </div>
         </div>
         <div class="sf-recipe-step">
           <div>
-            <h3>Geschmack gezielt setzen</h3>
-            <p>Bagel-Gewürz gibt Sesam-Crunch, Avocado-Gewürz bringt Kräuter, Chili und Zitrusfrische.</p>
+            <h3>Gewürze kombinieren</h3>
+            <p>Sesam-Crunch und Kräuter-Zitrus-Frische machen den Anlass vollständig.</p>
           </div>
         </div>
       {% endif %}
@@ -365,7 +360,7 @@
         <p class="sf-eyebrow">Geschenke und Vorrat</p>
         <h2 class="sf-heading sf-heading--medium">Für Menschen, die gern kochen.</h2>
       </div>
-        <a class="sf-button sf-button--ghost" href="{{ gift_finder_url }}">Geschenkfinder öffnen</a>
+      <a class="sf-button sf-button--ghost" href="{{ gift_finder_url }}">Geschenkfinder öffnen</a>
     </div>
     <div class="sf-grid sf-grid--2">
       {% if set_collection.products.size > 0 %}

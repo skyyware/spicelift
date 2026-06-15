@@ -1,6 +1,6 @@
 # Spicelift Design Quality System
 
-Last updated: 2026-06-12
+Last updated: 2026-06-15
 
 This document defines what "impeccable design" means for the Spicelift Shopify store. It is a working contract for humans and agents.
 
@@ -92,6 +92,16 @@ The store should feel premium, useful and quiet. Every section must help the cus
 - B2B home copy is merchant-facing and concrete: gifts, replenishment, labels, delivery dates and repeat orders.
 - Footer copy has a calmer line-height, and footer links carry the link icon before the text.
 - Visible recipe Metaobject copy was updated through the Shopify connector after the CLI reported the connector-owned type boundary.
+
+2026-06-15 all-screen optimization added:
+
+- Home, Search, Collections, Recipe Hub, Geschenkfinder, B2B, PDP and Cart share a final responsive layer for stable product-card heights, aligned price/action rows and no accidental underlined actions.
+- The Aroma Finder uses a wider recommendation surface with product images, real prices and quick-add actions preserved across desktop and mobile.
+- Recipe-to-cart cards now remove step numbers visually and use real customer guidance instead of process language.
+- The Manufaktur section uses tighter whitespace and a stronger crop so the product packaging remains the visual subject.
+- The B2B panel is calmer and more specific, with White Label language and a compact inquiry CTA.
+- The footer no longer repeats navigation links; it now presents payment methods, shipping options and service promises using Shopify-native payment icons.
+- The QA script now defaults to screenshots for every major commerce route and includes tablet plus wide-desktop breakpoints.
 
 ## QA Gate
 

@@ -5,24 +5,32 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 
 const require = createRequire(import.meta.url);
-const { chromium } = require('playwright');
+const { firefox } = require('playwright');
 
 const baseUrl = process.env.STOREFRONT_URL || 'https://spicelift.myshopify.com';
 const password = process.env.SHOPIFY_STORE_PASSWORD || '';
 const outputDir = process.env.QA_OUTPUT_DIR || path.resolve('.qa-artifacts', new Date().toISOString().replace(/[:.]/g, '-'));
+const fullAudit = process.env.QA_FULL === '1';
+const captureScreenshots = process.env.QA_SCREENSHOTS !== '0';
+const screenshotRoutes = new Set((process.env.QA_SCREENSHOT_ROUTES || 'home,search-bagel,collection-all,collection-gifts,recipes,gift-finder,b2b,product-bagel,cart').split(','));
+const screenshotViewports = new Set((process.env.QA_SCREENSHOT_VIEWPORTS || 'mobile-390,tablet-900,desktop-1440,desktop-1920').split(','));
 
 const viewports = [
   { name: 'mobile-320', width: 320, height: 740 },
   { name: 'mobile-390', width: 390, height: 844 },
   { name: 'mobile-430', width: 430, height: 932 },
   { name: 'tablet-768', width: 768, height: 1024 },
+  { name: 'tablet-900', width: 900, height: 1100 },
   { name: 'desktop-1440', width: 1440, height: 1000 },
+  { name: 'desktop-1920', width: 1920, height: 1080 },
 ];
 
 const routes = [
   { name: 'home', path: '/' },
   { name: 'search-empty', path: '/search' },
   { name: 'search-bagel', path: '/search?type=product&q=bagel' },
+  { name: 'search-avocado', path: '/search?type=product&q=avocado' },
+  { name: 'collection-all', path: '/collections/gewuerzmischungen' },
   { name: 'collection-brunch', path: '/collections/brunch-fruehstueck' },
   { name: 'collection-grill', path: '/collections/grillen-sommer' },
   { name: 'collection-gifts', path: '/collections/geschenkideen' },
@@ -37,12 +45,17 @@ async function unlockStore(page) {
   await page.goto(`${baseUrl}/?qa=unlock-${Date.now()}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(1000);
   const passwordInput = page.locator('input[type="password"]').first();
-  if ((await passwordInput.count()) === 0 || !password) return;
+  if ((await passwordInput.count()) === 0) return;
+  if (!password) throw new Error('Storefront password required; set SHOPIFY_STORE_PASSWORD for QA.');
 
   await passwordInput.fill(password);
   await page.locator('button[type="submit"], input[type="submit"]').first().click();
   await page.waitForLoadState('domcontentloaded', { timeout: 60000 }).catch(() => {});
   await page.waitForTimeout(800);
+
+  if (page.url().includes('/password') || (await passwordInput.count()) > 0) {
+    throw new Error('Storefront password unlock failed.');
+  }
 }
 
 async function getPageMetrics(page) {
@@ -79,6 +92,16 @@ async function getPageMetrics(page) {
 }
 
 async function hydrateLazyImages(page) {
+  if (!fullAudit) {
+    await page.evaluate(async () => {
+      for (const image of Array.from(document.images)) {
+        image.loading = 'eager';
+      }
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    });
+    return;
+  }
+
   await page.evaluate(async () => {
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     const images = Array.from(document.images);
@@ -155,9 +178,11 @@ async function checkInteractions(page) {
 
 mkdirSync(outputDir, { recursive: true });
 
-const browser = await chromium.launch({ headless: true });
+const browser = await firefox.launch({ headless: true });
 const context = await browser.newContext();
 const page = await context.newPage();
+page.setDefaultTimeout(6000);
+page.setDefaultNavigationTimeout(60000);
 const consoleMessages = [];
 const networkFailures = [];
 
@@ -179,12 +204,16 @@ const results = [];
 for (const viewport of viewports) {
   await page.setViewportSize({ width: viewport.width, height: viewport.height });
   for (const route of routes) {
+    console.error(`[qa] ${viewport.name} ${route.name}`);
     await page.goto(`${baseUrl}${route.path}`, { waitUntil: 'domcontentloaded', timeout: 60000 });
-    await page.waitForTimeout(1200);
+    await page.waitForTimeout(fullAudit ? 650 : 250);
     await hydrateLazyImages(page);
     const metrics = await getPageMetrics(page);
-    const screenshot = path.join(outputDir, `${viewport.name}-${route.name}.png`);
-    await page.screenshot({ path: screenshot, fullPage: true });
+    let screenshot = null;
+    if (captureScreenshots && screenshotRoutes.has(route.name) && screenshotViewports.has(viewport.name)) {
+      screenshot = path.join(outputDir, `${viewport.name}-${route.name}.png`);
+      await page.screenshot({ path: screenshot, fullPage: true });
+    }
     results.push({ viewport: viewport.name, route: route.path, screenshot, ...metrics });
   }
 }

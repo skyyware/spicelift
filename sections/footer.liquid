@@ -20,7 +20,7 @@
             <li>{{ type | payment_type_svg_tag: class: 'sf-footer-payment-icon' }}</li>
           {% endfor %}
         {% else %}
-          {% assign fallback_payment_types = 'paypal,visa,master' | split: ',' %}
+          {% assign fallback_payment_types = 'paypal,visa,master,american_express' | split: ',' %}
           {% for type in fallback_payment_types %}
             <li>{{ type | payment_type_svg_tag: class: 'sf-footer-payment-icon' }}</li>
           {% endfor %}

@@ -2763,7 +2763,6 @@ body.spicelift-store {
   }
 }
 
-/* Final storefront polish pass from live viewport review. */
 .sf-topbar,
 .sf-header,
 .sf-footer {
@@ -3329,7 +3328,6 @@ body.spicelift-store {
   }
 }
 
-/* Header search popovers must escape the sticky header bounds. */
 .sf-header {
   clip-path: none;
   box-shadow: none;
@@ -3343,7 +3341,6 @@ body.spicelift-store {
   box-shadow: none;
 }
 
-/* Production polish pass: remove demo cues, tighten navigation, and normalize interaction states. */
 .spicelift-store a,
 .spicelift-store a:hover,
 .spicelift-store a:focus,
@@ -4127,7 +4124,6 @@ body.spicelift-store {
   }
 }
 
-/* Final footer composition: quiet navigation, distinct service signals. */
 .sf-footer {
   background: #11110d;
   box-shadow: 0 0 0 100vmax #11110d;
@@ -4244,5 +4240,1025 @@ body.spicelift-store {
 @media (max-width: 760px) {
   .sf-footer__grid {
     gap: 30px;
+  }
+}
+
+.sf-breadcrumb {
+  display: none !important;
+}
+
+.sf-hero {
+  min-height: clamp(560px, 68vw, 700px);
+}
+
+.sf-hero .sf-heading {
+  max-width: 620px;
+  font-size: clamp(2.3rem, 3.65vw, 4.45rem);
+  line-height: 1;
+}
+
+.sf-hero .sf-copy {
+  max-width: 590px;
+}
+
+.sf-button,
+.sf-quick-add,
+.sf-cart,
+.sf-chip,
+.sf-finder-choice,
+.sf-gift-choice,
+.sf-inline-link,
+.sf-cart-upgrade__links a,
+.sf-refill-advisor__actions a,
+.sf-footer a {
+  text-decoration: none !important;
+}
+
+.sf-header__actions {
+  min-width: 0;
+}
+
+.sf-cart {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 34px;
+  justify-content: center;
+}
+
+.sf-search input:focus-visible,
+.sf-mobile-search input:focus-visible {
+  outline: 0;
+}
+
+.sf-category-list {
+  align-items: stretch;
+}
+
+.sf-category-card {
+  min-height: 88px;
+}
+
+.sf-product-card {
+  height: 100%;
+}
+
+.sf-product-card__content {
+  flex: 1 1 auto;
+  grid-template-rows: auto auto minmax(4.55em, auto) auto auto;
+  min-height: 0;
+}
+
+.sf-product-card h3 {
+  min-height: 2.45em;
+}
+
+.sf-product-card__content > p {
+  min-height: 4.6em;
+}
+
+.sf-product-card--compact h3 {
+  min-height: 0;
+}
+
+.sf-product-card--compact .sf-product-card__content > p {
+  min-height: 3.9em;
+}
+
+.sf-product-card__meta {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  min-height: 44px;
+}
+
+.sf-product-card__meta .sf-price {
+  margin-right: auto;
+  text-align: left;
+}
+
+.sf-quick-add {
+  min-width: 106px;
+  white-space: nowrap;
+}
+
+.sf-finder-result {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  min-height: 0;
+}
+
+.sf-finder-result__copy {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(280px, 1.14fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.sf-finder-result h3 {
+  max-width: 13ch;
+  font-size: clamp(1.95rem, 2.45vw, 2.85rem);
+  line-height: 1.03;
+}
+
+.sf-finder-products .sf-product-card h3,
+#recipe-to-cart .sf-product-card h3 {
+  display: none;
+}
+
+.sf-finder-products .sf-product-card__image {
+  aspect-ratio: 16 / 10.4;
+}
+
+.sf-finder-products .sf-product-card__content {
+  min-height: clamp(212px, 16vw, 244px);
+}
+
+.sf-finder-products .sf-product-card--compact .sf-product-card__content > p {
+  min-height: 3.8em;
+}
+
+#favorites .sf-grid--4 .sf-product-card__content > p,
+.sf-products-grid .sf-product-card__content > p,
+.sf-search-results .sf-product-card__content > p {
+  min-height: 5em;
+}
+
+.sf-recipe-step {
+  grid-template-columns: 1fr;
+  min-height: 78px;
+}
+
+.sf-recipe-step h3 {
+  font-size: 1.03rem;
+}
+
+.sf-recipe-step p {
+  max-width: 54ch;
+}
+
+.sf-recipe-method article {
+  grid-template-columns: 1fr;
+}
+
+.sf-recipe-method span {
+  display: none;
+}
+
+.sf-recipe-card {
+  background-position: center;
+}
+
+.sf-editorial-grid {
+  align-items: center;
+  min-height: 520px;
+}
+
+#manufaktur .sf-editorial-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 58% 52%;
+  transform: scale(1.1);
+}
+
+.sf-path-card {
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.sf-path-card:hover {
+  transform: none;
+}
+
+.sf-path-card strong {
+  font-family: inherit;
+  font-size: 1.12rem;
+  font-weight: 850;
+}
+
+.sf-filter-panel {
+  top: 104px;
+}
+
+.sf-gift-hero {
+  min-height: 0;
+  align-items: center;
+}
+
+.sf-gift-hero__panel {
+  align-self: stretch;
+  align-content: stretch;
+}
+
+.sf-gift-hero__panel span {
+  min-height: 0;
+  align-content: center;
+}
+
+.sf-gift-finder {
+  grid-template-columns: minmax(260px, 0.66fr) minmax(0, 1.34fr);
+}
+
+.sf-gift-choice {
+  min-height: 84px;
+}
+
+.sf-gift-result {
+  gap: 18px;
+}
+
+.sf-gift-result h3 {
+  max-width: 18ch;
+  font-size: clamp(1.7rem, 2.2vw, 2.45rem);
+}
+
+.sf-gift-result .sf-grid--2 {
+  align-items: stretch;
+}
+
+.sf-gift-logic {
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+}
+
+.sf-gift-logic .sf-heading {
+  line-height: 1.06;
+}
+
+.sf-b2b-panel {
+  min-height: 320px;
+  align-items: center;
+}
+
+.sf-b2b-panel .sf-heading {
+  max-width: 760px;
+  font-size: clamp(2.05rem, 3.6vw, 4.5rem);
+  line-height: 1.02;
+}
+
+.sf-b2b-panel .sf-button {
+  min-width: 132px;
+}
+
+.sf-b2b-card {
+  min-height: 210px;
+}
+
+.sf-search-summary {
+  margin-top: 0;
+}
+
+.sf-search-hero--bottom {
+  margin-top: 52px;
+}
+
+.sf-cart-summary,
+.sf-cart-item,
+.sf-shipping-progress,
+.sf-empty-cart {
+  background: #fffef9;
+}
+
+.sf-summary-row {
+  border: 0;
+  border-radius: var(--sf-radius);
+  padding: 16px;
+}
+
+.sf-cart-assurance {
+  border-top: 0;
+  padding-top: 2px;
+}
+
+.sf-cart-assurance span {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 8px;
+  align-items: start;
+  line-height: 1.35;
+}
+
+.sf-cart-assurance span::before {
+  content: "✓";
+}
+
+.sf-product-decision-panel {
+  gap: 1px;
+  background: var(--sf-line);
+}
+
+.sf-product-decision-panel > div {
+  border-bottom: 0;
+  background: #fff;
+}
+
+.sf-blueprint-steps {
+  gap: 14px;
+}
+
+.sf-blueprint-steps article {
+  grid-template-columns: 42px 1fr;
+  border-bottom: 0;
+  border-radius: var(--sf-radius);
+  background: color-mix(in srgb, var(--sf-green) 5%, #fff);
+  padding: 15px;
+}
+
+.sf-footer {
+  color: #f6f1e6;
+}
+
+.sf-footer__grid {
+  grid-template-columns: minmax(250px, 1.15fr) minmax(190px, 0.85fr) minmax(190px, 0.85fr) minmax(190px, 0.85fr);
+  gap: clamp(44px, 6vw, 88px);
+  align-items: start;
+}
+
+.sf-footer-payments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  max-width: 250px;
+  align-items: center;
+}
+
+.sf-footer-payments li {
+  display: flex;
+  width: 52px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.sf-footer-payments svg,
+.sf-footer-payment-icon {
+  display: block;
+  width: 44px;
+  max-width: 44px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.sf-footer-payment-icon[aria-labelledby*="american_express"],
+.sf-footer-payment-icon[aria-label*="American Express"] {
+  width: 40px;
+  max-width: 40px;
+}
+
+.sf-footer-service,
+.sf-footer-payments {
+  margin-top: 12px;
+}
+
+.sf-footer-service {
+  display: grid;
+  gap: 9px;
+}
+
+.sf-footer-service li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 7px;
+  align-items: start;
+  line-height: 1.35;
+}
+
+@media (min-width: 1101px) {
+  .sf-products-grid {
+    align-items: stretch;
+  }
+
+  .sf-recipe-grid {
+    gap: 26px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .sf-hero .sf-heading {
+    max-width: 590px;
+    font-size: clamp(2.15rem, 5.4vw, 3.9rem);
+  }
+
+  .sf-finder-result__copy,
+  .sf-gift-finder,
+  .sf-gift-logic {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-filter-panel {
+    position: static;
+  }
+
+  .sf-product-card__content {
+    grid-template-rows: auto auto minmax(3.6em, auto) auto auto;
+  }
+
+  .sf-editorial-grid {
+    min-height: 0;
+  }
+
+  .sf-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .sf-page,
+  .sf-narrow {
+    width: min(100% - 28px, 1240px);
+  }
+
+  .sf-heading {
+    font-size: clamp(2.05rem, 11vw, 3.35rem);
+    line-height: 1;
+  }
+
+  .sf-heading--medium,
+  .sf-hero .sf-heading {
+    font-size: clamp(2rem, 9vw, 2.85rem);
+    line-height: 1.02;
+  }
+
+  .sf-copy {
+    font-size: 1rem;
+    line-height: 1.58;
+  }
+
+  .sf-section {
+    padding: 56px 0;
+  }
+
+  .sf-hero {
+    min-height: 610px;
+  }
+
+  .sf-hero__inner {
+    padding: 44px 0 70px;
+  }
+
+  .sf-category-card {
+    min-height: 78px;
+  }
+
+  .sf-finder-result {
+    padding: 18px;
+  }
+
+  .sf-finder-result h3 {
+    max-width: none;
+    font-size: clamp(1.9rem, 9vw, 2.7rem);
+  }
+
+  .sf-finder-products .sf-product-card__content {
+    min-height: 0;
+  }
+
+  .sf-product-card h3,
+  .sf-product-card__content > p,
+  .sf-product-card--compact .sf-product-card__content > p,
+  #favorites .sf-grid--4 .sf-product-card__content > p,
+  .sf-products-grid .sf-product-card__content > p,
+  .sf-search-results .sf-product-card__content > p {
+    min-height: 0;
+  }
+
+  .sf-product-card__content {
+    grid-template-rows: none;
+  }
+
+  .sf-product-card__meta {
+    padding-top: 14px;
+  }
+
+  .sf-product-thumbs {
+    gap: 10px;
+  }
+
+  .sf-product-thumb {
+    padding: 13px;
+  }
+
+  .sf-refill-advisor__grid article {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-refill-advisor__grid strong,
+  .sf-refill-advisor__grid p {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .sf-gift-hero,
+  .sf-recipe-hub__hero {
+    padding: 22px;
+  }
+
+  .sf-gift-hero__panel,
+  .sf-recipe-hub__proof {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-gift-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-gift-choice {
+    min-height: 0;
+    padding: 14px;
+  }
+
+  .sf-gift-result h3 {
+    max-width: none;
+  }
+
+  .sf-gift-logic {
+    margin-top: 32px;
+  }
+
+  .sf-recipe-feature__image {
+    min-height: 300px;
+  }
+
+  .sf-recipe-tile {
+    padding: 18px;
+  }
+
+  .sf-b2b-panel {
+    min-height: 0;
+    gap: 22px;
+    padding: 24px;
+  }
+
+  .sf-b2b-panel .sf-heading {
+    font-size: clamp(1.85rem, 9vw, 2.8rem);
+  }
+
+  .sf-b2b-panel .sf-button {
+    width: 100%;
+  }
+
+  .sf-b2b-card {
+    min-height: 0;
+  }
+
+  .sf-search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-cart-item {
+    gap: 14px;
+  }
+
+  .sf-footer {
+    padding: 42px 0;
+  }
+
+  .sf-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .sf-footer__grid > div:first-child > p {
+    max-width: none;
+  }
+
+  .sf-footer-payments {
+    max-width: none;
+  }
+
+  .sf-footer-payments li {
+    width: 50px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 420px) {
+  .sf-page,
+  .sf-narrow {
+    width: min(100% - 22px, 1240px);
+  }
+
+  .sf-logo__wordmark {
+    font-size: clamp(1.18rem, 6vw, 1.42rem);
+  }
+
+  .sf-nav a {
+    font-size: 0.8rem;
+    padding-inline: 10px;
+  }
+
+  .sf-cart {
+    width: 34px;
+    height: 34px;
+  }
+
+  .sf-product-card__content {
+    padding: 16px;
+  }
+
+  .sf-quick-add {
+    min-width: 96px;
+    padding-inline: 11px;
+  }
+
+  .sf-product-card__meta {
+    gap: 10px;
+  }
+}
+
+.sf-hero .sf-heading {
+  max-width: 600px;
+  font-size: clamp(2.35rem, 3.25vw, 4.05rem);
+  letter-spacing: 0;
+}
+
+.sf-grid,
+.sf-products-grid,
+.sf-search-results {
+  align-items: stretch;
+}
+
+.sf-product-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.sf-product-card__image {
+  flex: 0 0 auto;
+}
+
+.sf-product-card__content {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.sf-product-card h3,
+.sf-product-card__content > p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.sf-product-card h3 {
+  min-height: 2.5em;
+  -webkit-line-clamp: 2;
+}
+
+.sf-product-card__content > p {
+  min-height: 4.8em;
+  -webkit-line-clamp: 3;
+}
+
+.sf-product-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.sf-product-card__meta .sf-price {
+  margin-right: auto;
+  text-align: left;
+}
+
+.sf-finder-result {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(18px, 2vw, 26px);
+}
+
+.sf-finder-result__copy {
+  grid-template-columns: minmax(0, 0.78fr) minmax(260px, 1.22fr);
+  align-items: end;
+}
+
+.sf-finder-result h3 {
+  max-width: 12ch;
+  font-size: clamp(2rem, 2.35vw, 2.75rem);
+}
+
+.sf-finder-products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 20px);
+}
+
+.sf-finder-products .sf-product-card--compact {
+  min-height: 100%;
+}
+
+.sf-finder-products .sf-product-card--compact .sf-product-card__image {
+  aspect-ratio: 16 / 10;
+}
+
+.sf-finder-products .sf-product-card--compact .sf-product-card__content {
+  min-height: clamp(214px, 15vw, 242px);
+}
+
+.sf-finder-products .sf-product-card--compact h3,
+#recipe-to-cart .sf-product-card h3 {
+  display: none;
+}
+
+.sf-finder-products .sf-product-card--compact .sf-product-card__content > p,
+#recipe-to-cart .sf-product-card__content > p {
+  min-height: 3.9em;
+}
+
+#favorites .sf-grid--4 .sf-product-card__content > p,
+.sf-products-grid .sf-product-card__content > p,
+.sf-search-results .sf-product-card__content > p {
+  min-height: 5em;
+}
+
+.sf-recipe-step {
+  grid-template-columns: 1fr;
+}
+
+.sf-recipe-step::before {
+  content: none;
+}
+
+.sf-recipe-step h3 {
+  font-size: 1.02rem;
+}
+
+#manufaktur.sf-section {
+  padding-block: clamp(58px, 6vw, 82px);
+}
+
+#manufaktur .sf-editorial-grid {
+  min-height: 0;
+  align-items: center;
+}
+
+#manufaktur .sf-editorial-image {
+  min-height: clamp(380px, 35vw, 520px);
+}
+
+#manufaktur .sf-editorial-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 56% 52%;
+  transform: scale(1.12);
+}
+
+.sf-gift-finder,
+.sf-gift-logic {
+  align-items: start;
+}
+
+.sf-gift-result .sf-grid--2,
+.sf-recipe-tile .sf-grid--2 {
+  align-items: stretch;
+}
+
+.sf-b2b-panel {
+  overflow: hidden;
+}
+
+.sf-b2b-panel .sf-heading {
+  max-width: 720px;
+  font-size: clamp(2.05rem, 3.25vw, 4.1rem);
+  line-height: 1.02;
+}
+
+.sf-search-summary,
+.sf-search-empty,
+.sf-search-hero {
+  overflow-wrap: anywhere;
+}
+
+.sf-cart-summary {
+  border: 1px solid rgba(20, 64, 41, 0.16);
+  background: #fffdf6;
+}
+
+.sf-summary-row {
+  background: rgba(20, 64, 41, 0.06);
+}
+
+.sf-cart-assurance {
+  display: grid;
+  gap: 10px;
+}
+
+.sf-cart-assurance span {
+  grid-template-columns: 18px minmax(0, 1fr);
+}
+
+.sf-footer {
+  background: #11110d;
+  box-shadow: 0 0 0 100vmax #11110d;
+  padding: clamp(48px, 6vw, 66px) 0;
+}
+
+.sf-footer__grid {
+  grid-template-columns: minmax(260px, 1.2fr) minmax(190px, 0.8fr) minmax(210px, 0.9fr) minmax(200px, 0.85fr);
+  gap: clamp(42px, 5.4vw, 82px);
+  align-items: start;
+}
+
+.sf-footer__grid > div {
+  display: grid;
+  align-content: start;
+  gap: 11px;
+}
+
+.sf-footer__grid > div:first-child {
+  gap: 15px;
+}
+
+.sf-footer h3,
+.sf-footer p {
+  margin: 0;
+}
+
+.sf-footer .sf-logo {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.sf-footer .sf-logo__wordmark {
+  color: #f6f1e6;
+  font-size: clamp(1.85rem, 2.2vw, 2.3rem);
+  line-height: 0.96;
+}
+
+.sf-footer .sf-logo__tagline {
+  color: rgba(246, 241, 230, 0.48);
+  font-size: 0.72rem;
+}
+
+.sf-footer__grid > div:first-child > p {
+  max-width: 315px;
+  color: rgba(246, 241, 230, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.68;
+}
+
+.sf-footer h3 {
+  color: rgba(246, 241, 230, 0.96);
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.sf-footer-payments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-width: 236px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sf-footer-payments li {
+  display: inline-flex;
+  width: 46px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.sf-footer-payments svg,
+.sf-footer-payment-icon {
+  display: block;
+  width: 46px !important;
+  max-width: none !important;
+  height: 30px !important;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.sf-footer-service {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  color: rgba(246, 241, 230, 0.74);
+  font-size: 0.96rem;
+  line-height: 1.36;
+  list-style: none;
+}
+
+.sf-footer-service li {
+  display: grid;
+  grid-template-columns: 15px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+.sf-footer-service li::before {
+  content: "✓";
+  color: #d9e6c4;
+  font-weight: 900;
+}
+
+@media (min-width: 1280px) {
+  .sf-finder {
+    grid-template-columns: minmax(300px, 0.7fr) minmax(0, 1.3fr);
+  }
+
+  .sf-usecase-grid {
+    grid-template-columns: minmax(420px, 0.95fr) minmax(0, 1.05fr);
+  }
+}
+
+@media (max-width: 1100px) {
+  .sf-hero .sf-heading {
+    max-width: 580px;
+    font-size: clamp(2.15rem, 5.2vw, 3.65rem);
+  }
+
+  .sf-finder-result__copy,
+  .sf-gift-finder,
+  .sf-gift-logic {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .sf-hero {
+    min-height: 560px;
+  }
+
+  .sf-hero .sf-heading,
+  .sf-heading--medium {
+    font-size: clamp(2rem, 9vw, 2.85rem);
+    line-height: 1.03;
+  }
+
+  .sf-category-list,
+  .sf-finder-products,
+  .sf-gift-result .sf-grid--2,
+  .sf-recipe-tile .sf-grid--2 {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-finder-result h3,
+  .sf-gift-result h3 {
+    max-width: none;
+  }
+
+  .sf-product-card h3,
+  .sf-product-card__content > p,
+  .sf-product-card--compact .sf-product-card__content > p,
+  #favorites .sf-grid--4 .sf-product-card__content > p,
+  .sf-products-grid .sf-product-card__content > p,
+  .sf-search-results .sf-product-card__content > p {
+    min-height: 0;
+  }
+
+  .sf-product-card__meta {
+    min-height: 42px;
+    padding-top: 14px;
+  }
+
+  #manufaktur .sf-editorial-image {
+    min-height: 300px;
+  }
+
+  .sf-b2b-panel .sf-button,
+  .sf-search-form .sf-button,
+  .sf-cart-summary .sf-button {
+    width: 100%;
+  }
+
+  .sf-footer {
+    padding: 42px 0;
+  }
+
+  .sf-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .sf-footer__grid > div:first-child > p,
+  .sf-footer-payments {
+    max-width: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .sf-quick-add {
+    min-width: 96px;
+    padding-inline: 11px;
+  }
+
+  .sf-product-card__meta {
+    gap: 10px;
   }
 }

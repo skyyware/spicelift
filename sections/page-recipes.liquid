@@ -21,16 +21,16 @@
     <div class="sf-recipe-hub__hero">
       <div>
         <p class="sf-eyebrow">Rezepte</p>
-        <h1 class="sf-heading">Rezepte, die nicht nur inspirieren, sondern Einkauf vereinfachen.</h1>
+        <h1 class="sf-heading">Rezepte, die direkt zum passenden Gewürz führen.</h1>
         <p class="sf-copy">
-          Gewürzshops haben einen natürlichen Content-Vorteil. Der Hebel ist, Rezepte
-          strukturiert mit passenden Produkten, Größen und Wiederkauf zu verbinden.
+          Gerichte, Gewürze und passende Größen gehören zusammen. So findest du vom Rezept
+          direkt zur Dose, zum Set oder zum Nachfüllpack.
         </p>
       </div>
       <div class="sf-recipe-hub__proof" aria-label="Recipe commerce workflow">
-        <span><strong>01</strong> Gericht wählen</span>
-        <span><strong>02</strong> Gewürze verstehen</span>
-        <span><strong>03</strong> Rezeptkorb kaufen</span>
+        <span><strong>Gericht</strong> Anlass und Geschmack klären</span>
+        <span><strong>Würze</strong> Passende Produkte verstehen</span>
+        <span><strong>Warenkorb</strong> Direkt sinnvoll kaufen</span>
       </div>
     </div>
 
@@ -50,17 +50,14 @@
         </p>
         <div class="sf-recipe-method">
           <article>
-            <span>01</span>
             <strong>Basis</strong>
             <p>Joghurt, Avocado oder Frischkäse als cremiger Träger.</p>
           </article>
           <article>
-            <span>02</span>
             <strong>Würze</strong>
             <p>Bagel-Gewürz für Crunch, Avocado-Gewürz für frische Tiefe.</p>
           </article>
           <article>
-            <span>03</span>
             <strong>Größe</strong>
             <p>Dose zum Kennenlernen, Refill für Wiederkauf, Set zum Verschenken.</p>
           </article>
@@ -86,23 +83,23 @@
             Rezeptkorb hinzufügen
           </button>
         {% endif %}
-        <p class="sf-bundle-note" data-bundle-note>Legt die passenden Gewürze in den Warenkorb.</p>
+        <p class="sf-bundle-note" data-bundle-note>Passende Gewürze für dieses Rezept.</p>
       </div>
     </section>
 
     <section class="sf-section-intro sf-recipe-commerce-intro">
       <div>
         <p class="sf-eyebrow">Rezepte</p>
-        <h2 class="sf-heading sf-heading--medium">Drei Gerichte, drei Warenkörbe.</h2>
+        <h2 class="sf-heading sf-heading--medium">Drei Gerichte, klare Gewürzauswahl.</h2>
       </div>
-      <p class="sf-copy">Jedes Rezept verbindet ein Gericht mit konkreten Produkten. So wird aus Inspiration ein handhabbarer Warenkorb.</p>
+      <p class="sf-copy">Jedes Rezept zeigt die passenden Produkte und macht den nächsten Einkauf naheliegend.</p>
     </section>
 
     <div class="sf-recipe-grid">
       <article class="sf-recipe-tile">
         <p class="sf-eyebrow">Brunch</p>
         <h3>Bagel Bowl mit Avocado-Dip</h3>
-        <p>Frühstück, Bowl und Dip werden zu einem klaren Einstieg für zwei wiederkehrende Produkte.</p>
+        <p>Für Frühstück, Bowl und Dip mit Sesam-Crunch und Kräuter-Zitrus-Frische.</p>
         <div class="sf-grid sf-grid--2">
           {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
           {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
@@ -123,7 +120,7 @@
       <article class="sf-recipe-tile">
         <p class="sf-eyebrow">Grillen</p>
         <h3>Kräuterbutter, Gemüse und Dip</h3>
-        <p>Ein saisonaler Anlasskorb bündelt Einzelprodukt und Set ohne aggressive Rabattmechanik.</p>
+        <p>Für Gemüse, Kräuterbutter und Dip mit einer kuratierten Sommerauswahl.</p>
         <div class="sf-grid sf-grid--2">
           {% if cafe != blank %}{% render 'product-card-spice', product: cafe, compact: true %}{% endif %}
           {% if grill_set != blank %}{% render 'product-card-spice', product: grill_set, compact: true %}{% endif %}
@@ -144,7 +141,7 @@
       <article class="sf-recipe-tile">
         <p class="sf-eyebrow">Alltag</p>
         <h3>Meal Prep mit Brühe und Finish</h3>
-        <p>Basisprodukt plus Finish-Gewürz löst den täglichen Bedarf und macht Wiederkauf naheliegend.</p>
+        <p>Für Suppen, Risotto und schnelle Küche mit Basis und frischem Finish.</p>
         <div class="sf-grid sf-grid--2">
           {% if bruehe != blank %}{% render 'product-card-spice', product: bruehe, compact: true %}{% endif %}
           {% if avocado != blank %}{% render 'product-card-spice', product: avocado, compact: true %}{% endif %}
@@ -167,7 +164,7 @@
       <section class="sf-recipe-bottomline">
         <div>
           <p class="sf-eyebrow">Upsell ohne Druck</p>
-          <h2 class="sf-heading sf-heading--medium">Wenn das Rezept überzeugt, ist das passende Set der natürliche nächste Schritt.</h2>
+          <h2 class="sf-heading sf-heading--medium">Wenn der Anlass stimmt, ist das passende Set der einfache nächste Schritt.</h2>
         </div>
         {% render 'product-card-spice', product: brunch_set %}
       </section>
