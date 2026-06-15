@@ -4228,18 +4228,17 @@ body.spicelift-store {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid rgba(17, 17, 13, 0.08);
-  border-radius: 7px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border: 0;
+  background: transparent;
 }
 
 .sf-footer-payments svg,
 .sf-footer-payment-icon {
   display: block;
-  width: 38px;
-  max-width: 38px;
-  height: auto;
+  width: 48px;
+  max-width: 48px;
+  height: 30px;
+  object-fit: cover;
 }
 
 @media (max-width: 760px) {
