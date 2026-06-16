@@ -281,14 +281,15 @@
           {% assign step_copy = step | split: ':' | last | strip %}
           {% if forloop.index == 1 %}
             {% assign step_heading = 'Brunch-Basis anrichten' %}
-            {% assign step_copy = 'Bagel toasten, Dip aufschlagen, Avocado und Ei als klare Basis auf den Teller bringen.' %}
+            {% assign step_copy = 'Bagel rösten, Dip aufschlagen, Avocado und Ei als klare Basis vorbereiten.' %}
           {% elsif forloop.index == 2 %}
-            {% assign step_heading = 'Mit zwei Gewürzen ausbalancieren' %}
-            {% assign step_copy = 'Bagel-Gewürz bringt Crunch, Avocado-Gewürz Kräuter, Zitrus und leichte Schärfe.' %}
+            {% assign step_heading = 'Mit Crunch und Frische finalisieren' %}
+            {% assign step_copy = 'Bagel-Gewürz bringt Sesam und Zwiebel, Avocado-Gewürz Kräuter, Zitrus und milde Schärfe.' %}
           {% else %}
             {% assign step_heading = step_heading | remove: '01 ' | remove: '02 ' | remove: '03 ' | remove: '04 ' %}
           {% endif %}
           <div class="sf-recipe-step{% if forloop.first %} is-current{% endif %}">
+            <span class="sf-recipe-step__index">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
             <div>
               <h3>{{ step_heading }}</h3>
               <p>{{ step_copy }}</p>
@@ -297,15 +298,17 @@
         {% endfor %}
       {% else %}
         <div class="sf-recipe-step is-current">
+          <span class="sf-recipe-step__index">01</span>
           <div>
             <h3>Brunch-Basis anrichten</h3>
-            <p>Bagel toasten, Dip aufschlagen, Avocado und Ei als klare Basis auf den Teller bringen.</p>
+            <p>Bagel rösten, Dip aufschlagen, Avocado und Ei als klare Basis vorbereiten.</p>
           </div>
         </div>
         <div class="sf-recipe-step">
+          <span class="sf-recipe-step__index">02</span>
           <div>
-            <h3>Mit zwei Gewürzen ausbalancieren</h3>
-            <p>Sesam-Crunch und Kräuter-Zitrus-Frische bringen Brunch, Dip und Bowl zusammen.</p>
+            <h3>Mit Crunch und Frische finalisieren</h3>
+            <p>Sesam, Zwiebel, Kräuter und Zitrus bringen Brunch, Dip und Bowl sauber zusammen.</p>
           </div>
         </div>
       {% endif %}
@@ -393,7 +396,7 @@
   <div class="sf-page sf-b2b-panel">
     <div>
       <p class="sf-eyebrow" style="color:#d9e6c4">B2B</p>
-      <h2 class="sf-heading sf-heading--medium">White Label sauber anfragen.</h2>
+      <h2 class="sf-heading sf-heading--medium">White Label.</h2>
       <p class="sf-copy">
         Für Teams, Kundengeschenke und Wiederverkauf: Mengen, Etiketten,
         Liefertermine und Nachbestellung werden vor der Anfrage klar.
