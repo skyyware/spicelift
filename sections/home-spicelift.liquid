@@ -127,17 +127,23 @@
             {% assign use_case = shop.metaobjects.spicelift_use_case[use_case_handle] %}
             {% if use_case != blank %}
               {% assign is_active = false %}
+              {% assign use_case_heading = use_case.heading.value %}
+              {% assign use_case_summary = use_case.summary.value %}
               {% unless active_assigned %}
                 {% assign is_active = true %}
                 {% assign active_assigned = true %}
               {% endunless %}
+              {% if use_case_handle == 'brunch' %}
+                {% assign use_case_heading = 'Brunch ohne Auswahlstress.' %}
+                {% assign use_case_summary = 'Bagel-Gewürz bringt Crunch, Avocado-Gewürz Kräuter, Chili und Zitrusfrische für Bagel, Ei, Dip und Bowl.' %}
+              {% endif %}
               {% assign case_products = use_case.products.value %}
               {% assign case_collection = use_case.collection.value %}
               <div class="sf-finder-result{% if is_active %} is-active{% endif %}" data-finder-result="{{ use_case_handle }}"{% unless is_active %} hidden{% endunless %}>
                 <div class="sf-finder-result__copy">
                   <p class="sf-eyebrow">Empfehlung · {{ use_case.metric.value }}</p>
-                  <h3>{{ use_case.heading.value }}</h3>
-                  <p>{{ use_case.summary.value }}</p>
+                  <h3>{{ use_case_heading }}</h3>
+                  <p>{{ use_case_summary }}</p>
                   {% if case_collection != blank %}
                     <a class="sf-inline-link" href="{{ case_collection.url }}">Auswahl ansehen</a>
                   {% endif %}
@@ -177,8 +183,8 @@
           <div class="sf-finder-result is-active" data-finder-result="brunch">
             <div class="sf-finder-result__copy">
               <p class="sf-eyebrow">Empfehlung</p>
-              <h3>Brunch ohne Suchen.</h3>
-              <p>Bagel-Gewürz für Crunch, Avocado-Gewürz für Kräuter, Chili und Zitrusfrische.</p>
+              <h3>Brunch ohne Auswahlstress.</h3>
+              <p>Bagel-Gewürz bringt Crunch, Avocado-Gewürz Kräuter, Chili und Zitrusfrische für Bagel, Ei, Dip und Bowl.</p>
             </div>
             <div class="sf-finder-products">
               {% if bagel != blank %}{% render 'product-card-spice', product: bagel, compact: true %}{% endif %}
@@ -271,24 +277,35 @@
     <div class="sf-recipe-stack">
       {% if recipe_steps != blank %}
         {% for step in recipe_steps %}
+          {% assign step_heading = step | split: ':' | first | strip %}
+          {% assign step_copy = step | split: ':' | last | strip %}
+          {% if forloop.index == 1 %}
+            {% assign step_heading = 'Brunch-Basis anrichten' %}
+            {% assign step_copy = 'Bagel toasten, Dip aufschlagen, Avocado und Ei als klare Basis auf den Teller bringen.' %}
+          {% elsif forloop.index == 2 %}
+            {% assign step_heading = 'Mit zwei Gewürzen ausbalancieren' %}
+            {% assign step_copy = 'Bagel-Gewürz bringt Crunch, Avocado-Gewürz Kräuter, Zitrus und leichte Schärfe.' %}
+          {% else %}
+            {% assign step_heading = step_heading | remove: '01 ' | remove: '02 ' | remove: '03 ' | remove: '04 ' %}
+          {% endif %}
           <div class="sf-recipe-step{% if forloop.first %} is-current{% endif %}">
             <div>
-              <h3>{{ step | split: ':' | first }}</h3>
-              <p>{{ step | split: ':' | last }}</p>
+              <h3>{{ step_heading }}</h3>
+              <p>{{ step_copy }}</p>
             </div>
           </div>
         {% endfor %}
       {% else %}
         <div class="sf-recipe-step is-current">
           <div>
-            <h3>Basis wählen</h3>
-            <p>Bagel, Avocado, Ei und Joghurt-Dip bilden den Brunch-Teller.</p>
+            <h3>Brunch-Basis anrichten</h3>
+            <p>Bagel toasten, Dip aufschlagen, Avocado und Ei als klare Basis auf den Teller bringen.</p>
           </div>
         </div>
         <div class="sf-recipe-step">
           <div>
-            <h3>Gewürze kombinieren</h3>
-            <p>Sesam-Crunch und Kräuter-Zitrus-Frische machen den Anlass vollständig.</p>
+            <h3>Mit zwei Gewürzen ausbalancieren</h3>
+            <p>Sesam-Crunch und Kräuter-Zitrus-Frische bringen Brunch, Dip und Bowl zusammen.</p>
           </div>
         </div>
       {% endif %}

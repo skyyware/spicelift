@@ -9,14 +9,14 @@
 {% assign spice_collection_url = routes.collections_url | append: '/gewuerzmischungen' %}
 {% assign set_collection_url = routes.collections_url | append: '/gewuerzsets' %}
 {% assign recipes_page = pages['recipes'] %}
-{% assign gift_finder_page = pages['gift-finder'] %}
+{% assign b2b_page = pages['b2b-corporate-gifts'] %}
 {% assign recipes_url = routes.root_url | append: '#recipe-to-cart' %}
-{% assign gift_finder_url = routes.root_url | append: '#gifts' %}
+{% assign b2b_url = routes.root_url | append: '#b2b' %}
 {% if recipes_page != blank %}
   {% assign recipes_url = recipes_page.url %}
 {% endif %}
-{% if gift_finder_page != blank %}
-  {% assign gift_finder_url = gift_finder_page.url %}
+{% if b2b_page != blank %}
+  {% assign b2b_url = b2b_page.url %}
 {% endif %}
 
 <header class="sf-header full-width">
@@ -32,7 +32,7 @@
       <a href="{{ spice_collection_url }}">Gewürzmischungen</a>
       <a href="{{ set_collection_url }}">Gewürzsets</a>
       <a href="{{ recipes_url }}">Rezepte</a>
-      <a href="{{ gift_finder_url }}">Geschenke</a>
+      <a href="{{ b2b_url }}">B2B</a>
     </nav>
 
     <div class="sf-header__actions">
@@ -43,7 +43,7 @@
           <a href="{{ routes.search_url }}?type=product&q=bagel">Bagel</a>
           <a href="{{ routes.search_url }}?type=product&q=avocado">Avocado</a>
           <a href="{{ routes.search_url }}?type=product&q=grillen">Grillen</a>
-          <a href="{{ routes.search_url }}?type=product&q=geschenk">Geschenk</a>
+          <a href="{{ routes.search_url }}?type=product&q=nachf%C3%BCllpack">Nachfüllpack</a>
         </div>
       </form>
 
@@ -55,16 +55,6 @@
       </a>
     </div>
 
-    <form class="sf-mobile-search" action="{{ routes.search_url }}" method="get" role="search">
-      <label class="visually-hidden" for="MobileSearch-{{ section.id }}">Suche</label>
-      <input id="MobileSearch-{{ section.id }}" type="search" name="q" placeholder="Gericht, Aroma, Set">
-      <div class="sf-search-suggestions-popover" aria-label="Beliebte Suchen">
-        <a href="{{ routes.search_url }}?type=product&q=bagel">Bagel</a>
-        <a href="{{ routes.search_url }}?type=product&q=avocado">Avocado</a>
-        <a href="{{ routes.search_url }}?type=product&q=grillen">Grillen</a>
-        <a href="{{ routes.search_url }}?type=product&q=geschenk">Geschenk</a>
-      </div>
-    </form>
   </div>
 </header>
 

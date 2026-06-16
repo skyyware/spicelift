@@ -5262,3 +5262,813 @@ body.spicelift-store {
     gap: 10px;
   }
 }
+
+.sf-breadcrumb,
+.sf-breadcrumb--hero {
+  display: none;
+}
+
+.sf-search-suggestions-popover a,
+.sf-search-suggestions-popover a:hover,
+.sf-search-suggestions-popover a:focus-visible,
+.sf-inline-link,
+.sf-inline-link:hover,
+.sf-inline-link:focus-visible,
+.sf-product-card h3 a:hover {
+  text-decoration: none;
+}
+
+.sf-hero .sf-heading {
+  max-width: 10ch;
+  font-size: clamp(1.95rem, 2.9vw, 3.5rem);
+}
+
+.sf-hero .sf-button--on-dark {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.sf-hero .sf-button--on-dark:hover {
+  border-color: rgba(255, 255, 255, 0.44);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.sf-header__actions .sf-search-suggestions-popover a {
+  line-height: 1.15;
+}
+
+#aroma-finder {
+  overflow: clip;
+}
+
+#aroma-finder .sf-finder {
+  align-items: start;
+  gap: clamp(20px, 2.8vw, 34px);
+}
+
+#aroma-finder .sf-finder__copy {
+  max-width: 30rem;
+}
+
+#aroma-finder .sf-finder-result__copy {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  gap: 14px 26px;
+  align-items: start;
+}
+
+#aroma-finder .sf-finder-result h3 {
+  max-width: 10ch;
+  font-size: clamp(1.8rem, 2.15vw, 2.5rem);
+}
+
+#aroma-finder .sf-finder-result__copy > p:not(.sf-eyebrow) {
+  max-width: 42ch;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact,
+#recipe-to-cart .sf-grid--2 .sf-product-card,
+#gifts .sf-grid--2 .sf-product-card,
+#favorites .sf-grid--4 .sf-product-card,
+.sf-products-grid .sf-product-card {
+  height: 100%;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact .sf-product-card__image,
+#recipe-to-cart .sf-product-card__image {
+  aspect-ratio: 1 / 1;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact .sf-product-card__content,
+#recipe-to-cart .sf-product-card__content,
+#gifts .sf-grid--2 .sf-product-card__content {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  align-content: start;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact .sf-product-card__meta,
+#recipe-to-cart .sf-product-card__meta,
+#gifts .sf-grid--2 .sf-product-card__meta {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+#manufaktur .sf-editorial-grid {
+  align-items: stretch;
+  min-height: clamp(560px, 84vh, 820px);
+}
+
+#manufaktur .sf-editorial-image {
+  height: 100%;
+  min-height: clamp(520px, 78vh, 760px);
+}
+
+#manufaktur .sf-editorial-image picture,
+#manufaktur .sf-editorial-image .image,
+#gifts .sf-product-card__image picture,
+#gifts .sf-product-card__image .image {
+  display: block;
+  height: 100%;
+}
+
+#manufaktur .sf-editorial-image img {
+  transform: scale(1.18);
+  object-position: 52% 56%;
+}
+
+#gifts .sf-product-card__image img {
+  object-position: center;
+}
+
+#b2b .sf-b2b-panel {
+  min-height: 0;
+  gap: 22px;
+}
+
+.sf-b2b-page {
+  padding-top: 28px;
+}
+
+.sf-b2b-page .sf-b2b-hero {
+  max-width: none;
+}
+
+.sf-b2b-page .sf-b2b-grid {
+  align-items: stretch;
+}
+
+.sf-product-page {
+  padding-top: 32px;
+}
+
+.sf-variant-card {
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+}
+
+.sf-variant-card > span > strong {
+  display: block;
+  font-size: 1.04rem;
+  line-height: 1.2;
+}
+
+.sf-variant-card small {
+  font-size: 0.89rem;
+  line-height: 1.46;
+}
+
+.sf-blueprint-steps article {
+  grid-template-columns: 44px minmax(0, 1fr);
+}
+
+.sf-blueprint-steps span {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.sf-cart-item__controls {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 12px;
+  align-items: end;
+}
+
+.sf-cart-item__controls label {
+  grid-column: 1 / -1;
+}
+
+.sf-footer-payments {
+  gap: 10px;
+}
+
+.sf-footer-payments li {
+  width: auto;
+  min-width: 0;
+  height: 24px;
+}
+
+.sf-footer-payments svg,
+.sf-footer-payment-icon {
+  width: auto !important;
+  max-width: 44px !important;
+  height: 24px !important;
+  border-radius: 0;
+}
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  #gifts .sf-grid--2 .sf-product-card {
+    min-height: 390px;
+  }
+
+  #gifts .sf-grid--2 .sf-product-card__image {
+    aspect-ratio: 1 / 1.08;
+  }
+}
+
+@media (max-width: 1100px) {
+  .sf-header__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 14px;
+    align-items: center;
+  }
+
+  .sf-header__actions {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .sf-header__actions .sf-search {
+    display: block !important;
+    width: min(320px, 36vw);
+  }
+
+  .sf-mobile-search {
+    display: none !important;
+  }
+
+  .sf-nav {
+    grid-column: 1 / -1;
+    order: 2;
+    padding-bottom: 0;
+    gap: 10px;
+  }
+
+  #aroma-finder .sf-finder {
+    grid-template-columns: 1fr;
+  }
+
+  #manufaktur .sf-editorial-grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    min-height: 0;
+  }
+
+  #manufaktur .sf-editorial-image {
+    min-height: 480px;
+  }
+
+  .sf-b2b-page .sf-b2b-hero {
+    padding: clamp(28px, 4.4vw, 54px);
+  }
+}
+
+@media (max-width: 900px) {
+  .sf-header__actions .sf-search {
+    display: none !important;
+  }
+
+  .sf-nav {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .sf-nav a {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .sf-header__inner {
+    row-gap: 12px;
+    padding-top: 12px;
+    padding-bottom: 14px;
+  }
+
+  .sf-logo__tagline {
+    display: none;
+  }
+
+  .sf-nav {
+    grid-column: 1 / -1;
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 10px;
+  }
+
+  .sf-nav a {
+    min-height: 44px;
+    padding-inline: 18px;
+  }
+
+  .sf-hero .sf-heading {
+    max-width: 9ch;
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  #aroma-finder .sf-finder {
+    grid-template-columns: 1fr !important;
+  }
+
+  #aroma-finder .sf-finder__choices {
+    grid-template-columns: 1fr;
+  }
+
+  #aroma-finder .sf-finder-result__copy,
+  #aroma-finder .sf-finder-products {
+    grid-template-columns: 1fr;
+  }
+
+  #aroma-finder .sf-finder-result h3 {
+    max-width: none;
+  }
+
+  #manufaktur .sf-editorial-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px;
+  }
+
+  #manufaktur .sf-editorial-image {
+    min-height: 280px;
+  }
+
+  #manufaktur .sf-editorial-image img {
+    transform: scale(1.24);
+    object-position: center;
+  }
+
+  #b2b .sf-b2b-panel {
+    padding: 24px 20px;
+    gap: 18px;
+  }
+
+  #b2b .sf-b2b-panel .sf-heading {
+    max-width: 12ch;
+    font-size: clamp(2rem, 10vw, 2.85rem);
+  }
+
+  #b2b .sf-b2b-panel .sf-button--light {
+    width: 100%;
+  }
+
+  .sf-collection-paths {
+    display: none;
+  }
+
+  .sf-collection-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 28px;
+  }
+
+  .sf-collection-grid > div {
+    order: 1;
+  }
+
+  .sf-filter-panel {
+    order: 2;
+    position: static;
+  }
+
+  .sf-b2b-page {
+    padding-top: 18px;
+  }
+
+  .sf-b2b-page .sf-b2b-hero {
+    gap: 18px;
+  }
+
+  .sf-b2b-page .sf-b2b-grid {
+    gap: 14px;
+  }
+
+  .sf-pdp-blueprint {
+    margin-top: 40px;
+    padding: 24px 18px;
+  }
+
+  .sf-blueprint-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-blueprint-steps article {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .sf-cart-item__controls {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.sf-hero .sf-heading {
+  font-size: clamp(1.78rem, 2.45vw, 2.92rem);
+}
+
+.sf-header__actions .sf-search {
+  position: relative;
+}
+
+#aroma-finder .sf-finder {
+  grid-template-columns: minmax(270px, 0.88fr) minmax(0, 1.12fr);
+}
+
+#aroma-finder .sf-finder-result {
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: clamp(22px, 2.4vw, 28px);
+}
+
+#aroma-finder .sf-finder-result__copy {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+#aroma-finder .sf-finder-result h3 {
+  max-width: 13ch;
+  font-size: clamp(1.68rem, 1.95vw, 2.24rem);
+  line-height: 0.98;
+}
+
+#aroma-finder .sf-finder-result__copy > p:not(.sf-eyebrow) {
+  max-width: 40ch;
+}
+
+#aroma-finder .sf-finder-products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact {
+  min-height: 100%;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact .sf-product-card__image {
+  aspect-ratio: 1 / 0.98;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact .sf-product-card__content {
+  grid-template-rows: auto auto auto 1fr auto;
+  min-height: 0;
+}
+
+#aroma-finder .sf-finder-products .sf-product-card--compact .sf-product-card__meta {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+#manufaktur .sf-editorial-grid {
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: clamp(24px, 3vw, 42px);
+  min-height: clamp(620px, 72vh, 780px);
+}
+
+#manufaktur .sf-editorial-image {
+  overflow: hidden;
+  border-radius: var(--sf-radius);
+}
+
+#manufaktur .sf-editorial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.15);
+  object-position: center;
+}
+
+#gifts .sf-grid--2 {
+  align-items: stretch;
+}
+
+#gifts .sf-grid--2 .sf-product-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+#gifts .sf-grid--2 .sf-product-card__image {
+  min-height: 280px;
+  height: 100%;
+}
+
+#gifts .sf-grid--2 .sf-product-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#gifts .sf-grid--2 .sf-product-card__content {
+  padding: 20px 22px 22px;
+}
+
+#b2b .sf-b2b-panel {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center;
+  gap: 24px;
+}
+
+#b2b .sf-b2b-panel .sf-button--light {
+  width: auto;
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.sf-b2b-page {
+  padding-top: 20px;
+}
+
+.sf-b2b-page .sf-b2b-hero {
+  max-width: none;
+  min-height: 0;
+  padding: clamp(28px, 4.5vw, 56px);
+  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(115deg, rgba(18, 64, 41, 0.96), rgba(11, 24, 18, 0.94)),
+    var(--sf-green);
+  color: #fff;
+}
+
+.sf-b2b-page .sf-b2b-hero .sf-copy,
+.sf-b2b-page .sf-b2b-hero .sf-eyebrow {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sf-b2b-page .sf-b2b-hero .sf-button--ghost {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.sf-b2b-page .sf-b2b-hero .sf-button--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.sf-b2b-page .sf-b2b-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.sf-b2b-page .sf-b2b-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  align-content: start;
+  gap: 10px;
+  min-height: 218px;
+}
+
+.sf-b2b-page .sf-b2b-card span {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  place-items: center;
+}
+
+.sf-b2b-page .sf-b2b-card h2 {
+  min-height: 2.5em;
+}
+
+.sf-blueprint-steps article,
+.sf-blueprint-steps h3,
+.sf-blueprint-steps p {
+  min-width: 0;
+  max-width: none;
+}
+
+.sf-blueprint-steps h3,
+.sf-blueprint-steps p {
+  grid-column: 2;
+}
+
+.sf-blueprint-steps h3,
+.sf-blueprint-steps p {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.sf-cart-item__controls {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px 14px;
+}
+
+.sf-cart-item__controls input {
+  max-width: 136px;
+  text-align: center;
+}
+
+.sf-cart-item__controls strong {
+  align-self: center;
+}
+
+.sf-footer {
+  padding: 56px 0 52px;
+}
+
+.sf-footer__grid {
+  align-items: start;
+  gap: 28px clamp(28px, 4vw, 52px);
+}
+
+.sf-footer__grid > div {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.sf-footer h3 {
+  margin: 0;
+}
+
+.sf-footer-payments {
+  align-items: center;
+  gap: 10px 12px;
+  margin-top: 2px;
+}
+
+.sf-footer-payments li {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 24px;
+  overflow: visible;
+}
+
+.sf-footer-payments svg,
+.sf-footer-payment-icon {
+  width: auto !important;
+  max-width: none !important;
+  height: 24px !important;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.sf-footer-payments li:last-child svg,
+.sf-footer-payments li:last-child .sf-footer-payment-icon {
+  height: 22px !important;
+}
+
+.sf-footer-service {
+  gap: 8px;
+}
+
+@media (max-width: 1100px) {
+  .sf-header__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px 16px;
+    padding-top: 16px;
+    padding-bottom: 18px;
+  }
+
+  .sf-header__actions {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+  }
+
+  .sf-header__actions .sf-search {
+    display: none !important;
+  }
+
+  .sf-nav {
+    grid-column: 1 / -1;
+    order: 2;
+    padding-bottom: 0;
+    gap: 10px 12px;
+  }
+
+  #aroma-finder .sf-finder {
+    grid-template-columns: 1fr;
+  }
+
+  #aroma-finder .sf-finder__copy {
+    max-width: none;
+  }
+
+  #manufaktur .sf-editorial-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  #manufaktur .sf-editorial-image {
+    min-height: 380px;
+  }
+
+  .sf-b2b-page .sf-b2b-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-b2b-page .sf-b2b-card h2 {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .sf-header__inner {
+    padding-top: 14px;
+    padding-bottom: 16px;
+    gap: 12px;
+  }
+
+  .sf-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .sf-nav a {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .sf-hero .sf-heading {
+    max-width: 8.5ch;
+    font-size: clamp(1.72rem, 10.4vw, 2.72rem);
+  }
+
+  #aroma-finder .sf-finder {
+    width: min(100% - 28px, 100%);
+  }
+
+  #aroma-finder .sf-finder__choices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #aroma-finder .sf-finder-products {
+    grid-template-columns: 1fr;
+  }
+
+  #manufaktur .sf-editorial-image {
+    min-height: 260px;
+  }
+
+  #b2b .sf-b2b-panel {
+    grid-template-columns: 1fr !important;
+    align-items: start;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  #b2b .sf-b2b-panel .sf-button--light {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .sf-b2b-page .sf-b2b-hero {
+    padding: 24px 20px;
+  }
+
+  .sf-pdp-blueprint {
+    gap: 20px;
+    padding: 22px 18px;
+  }
+
+  .sf-blueprint-steps article {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .sf-blueprint-steps span {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .sf-blueprint-steps h3 {
+    font-size: 1.08rem;
+    line-height: 1.16;
+  }
+
+  .sf-blueprint-steps p {
+    font-size: 0.96rem;
+    line-height: 1.42;
+  }
+
+  .sf-cart-item__controls {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .sf-cart-item__controls input {
+    max-width: none;
+  }
+
+  .sf-cart-item__controls strong {
+    justify-self: start;
+  }
+
+  .sf-footer {
+    padding: 44px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  #aroma-finder .sf-finder__choices {
+    grid-template-columns: 1fr;
+  }
+}
