@@ -6129,7 +6129,8 @@ body.spicelift-store {
 }
 
 #b2b .sf-b2b-panel .sf-heading {
-  max-width: 9ch;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .sf-b2b-page {
@@ -6222,5 +6223,9 @@ body.spicelift-store {
 
   .sf-b2b-page .sf-b2b-card {
     padding: 20px;
+  }
+
+  #b2b .sf-b2b-panel .sf-heading {
+    white-space: normal;
   }
 }
